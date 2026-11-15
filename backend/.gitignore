@@ -1,0 +1,10 @@
+# Entorno virtual y credenciales — nunca versionar.
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.local
+
+# Archivos temporales de Alembic/ML
+*.pyo
+.pytest_cache/

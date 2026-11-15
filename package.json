@@ -1,0 +1,35 @@
+{
+  "name": "kiosco-ciudadano",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Sistema de kiosco ciudadano y panel administrativo con clasificación de solicitudes mediante aprendizaje supervisado, NLP y una base de datos PostgreSQL (Supabase).",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "format": "oxfmt",
+    "api": "cd backend && .venv\\Scripts\\python.exe -m uvicorn app.main:app --reload --reload-dir app --reload-dir ml --reload-dir alembic --host 127.0.0.1 --port 8000",
+    "migrate": "cd backend && .venv\\Scripts\\python.exe -m alembic upgrade head",
+    "importar": "cd backend && .venv\\Scripts\\python.exe importar_csv.py",
+    "demo": "cd backend && .venv\\Scripts\\python.exe demo_mejora.py",
+    "test:backend": "cd backend && .venv\\Scripts\\python.exe -m pytest",
+    "dev:all": "concurrently -k -n API,WEB -c blue,green \"npm:api\" \"npm:dev\""
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "concurrently": "^9.1.0",
+    "tailwindcss": "^4.0.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "oxfmt": "^0.76.0",
+    "typescript": "^5.7.0",
+    "vite": "^8.0.5"
+  }
+}

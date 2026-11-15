@@ -1,0 +1,14 @@
+# Dependencias del backend — Kiosco Ciudadano (FastAPI + SQLAlchemy + scikit-learn)
+# Versiones fijadas y verificadas para Python 3.14 (wheels cp314 disponibles).
+
+fastapi==0.163.0
+uvicorn[standard]==0.54.0
+sqlalchemy==2.1.8
+psycopg2-binary==2.9.13
+alembic==1.20.1
+scikit-learn==1.9.1
+pandas==3.1.1
+python-dotenv==1.2.3
+joblib==1.6.0
+pytest==9.2.0
+httpx==0.28.1

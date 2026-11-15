@@ -1,0 +1,81 @@
+ID,Solicitud,Categoría,Prioridad
+1,El poste de luz frente a mi casa está apagado desde hace tres noches y la calle queda totalmente a oscuras,Alumbrado público,ALTA
+2,Varias luminarias del parque central no encienden y hay poca visibilidad por la noche,Alumbrado público,MEDIA
+3,Solicito la instalación de un nuevo punto de alumbrado en la calle que no tiene iluminación,Alumbrado público,BAJA
+4,El foco de la esquina parpadea toda la noche y molesta a los vecinos,Alumbrado público,BAJA
+5,Un cable del alumbrado público está suelto y cuelga a baja altura lo que es peligroso,Alumbrado público,ALTA
+6,La luminaria de la plaza fue dañada por un accidente y necesita reemplazo,Alumbrado público,MEDIA
+7,El poste de luz está inclinado y podría caer sobre la vereda,Alumbrado público,ALTA
+8,Cambiar las lámparas antiguas del pasaje por tecnología LED,Alumbrado público,BAJA
+9,Toda la cuadra se quedó sin alumbrado después del corte de energía,Alumbrado público,MEDIA
+10,Falta iluminación en la cancha del barrio y los jóvenes juegan a oscuras,Alumbrado público,MEDIA
+11,No pasó el camión recolector de basura en toda la semana y los contenedores están desbordados,Limpieza y residuos sólidos,ALTA
+12,Hay basura acumulada en la esquina del mercado y ya genera mal olor,Limpieza y residuos sólidos,MEDIA
+13,Solicito la limpieza del terreno baldío lleno de escombros,Limpieza y residuos sólidos,MEDIA
+14,Los vecinos botan basura en el canal y necesitamos una campaña de limpieza,Limpieza y residuos sólidos,BAJA
+15,El contenedor de residuos está roto y la basura se riega por toda la calle,Limpieza y residuos sólidos,MEDIA
+16,Pedimos la instalación de un nuevo contenedor de basura en la zona,Limpieza y residuos sólidos,BAJA
+17,Hay restos de poda y ramas acumuladas que nadie recoge,Limpieza y residuos sólidos,BAJA
+18,Se acumula basura junto a la escuela y hay presencia de roedores,Limpieza y residuos sólidos,ALTA
+19,El camión de basura pasa muy temprano y no alcanzamos a sacar los residuos,Limpieza y residuos sólidos,BAJA
+20,Necesitamos limpieza urgente tras la feria porque quedó mucha suciedad,Limpieza y residuos sólidos,ALTA
+21,Hay un bache profundo en la avenida principal que dañó la llanta de mi auto,Calles y vías públicas,ALTA
+22,La calle de tierra está llena de huecos y no se puede transitar en vehículo,Calles y vías públicas,MEDIA
+23,Solicito el arreglo del pavimento deteriorado en toda la cuadra,Calles y vías públicas,MEDIA
+24,Falta señalización de pare en la intersección y hay riesgo de accidentes,Calles y vías públicas,ALTA
+25,La vereda está rota y las personas mayores pueden tropezar,Calles y vías públicas,MEDIA
+26,Las líneas de la calzada están borradas y no se distinguen los carriles,Calles y vías públicas,BAJA
+27,Pedimos pintar un paso peatonal frente al colegio,Calles y vías públicas,BAJA
+28,Una alcantarilla sin tapa en medio de la calzada es un peligro para los autos,Calles y vías públicas,ALTA
+29,El asfalto se levantó por las lluvias y hay piedras sueltas en la vía,Calles y vías públicas,MEDIA
+30,Solicito la construcción de un badén para reducir la velocidad de los vehículos,Calles y vías públicas,BAJA
+31,Hay una fuga de agua potable en la tubería de la esquina y se pierde mucha agua,Agua potable y alcantarillado,ALTA
+32,No tenemos agua potable desde hace dos días en todo el barrio,Agua potable y alcantarillado,ALTA
+33,El agua sale turbia y con mal olor de la llave y no sirve para consumo,Agua potable y alcantarillado,ALTA
+34,El alcantarillado está tapado y las aguas negras salen por el desagüe de mi casa,Agua potable y alcantarillado,ALTA
+35,Baja presión de agua en las horas de la mañana y apenas llega un hilo,Agua potable y alcantarillado,MEDIA
+36,Solicito la conexión nueva de agua potable para mi vivienda,Agua potable y alcantarillado,BAJA
+37,El medidor de agua está dañado y la lectura no corresponde al consumo,Agua potable y alcantarillado,MEDIA
+38,Hay mal olor de las aguas servidas que salen de la cámara de inspección,Agua potable y alcantarillado,MEDIA
+39,La tapa del pozo de alcantarillado está rota y hay riesgo de caída,Agua potable y alcantarillado,ALTA
+40,Cambio de tubería antigua de agua potable por filtraciones constantes,Agua potable y alcantarillado,MEDIA
+41,Hay personas sospechosas merodeando de noche y los vecinos tememos un robo,Seguridad ciudadana,ALTA
+42,Necesitamos mayor presencia policial en el parque por las noches,Seguridad ciudadana,ALTA
+43,Un grupo de delincuentes asaltó a transeúntes en la esquina,Seguridad ciudadana,ALTA
+44,Solicito la instalación de cámaras de seguridad en la zona,Seguridad ciudadana,MEDIA
+45,Los postes de la calle están siendo usados para venta de drogas,Seguridad ciudadana,ALTA
+46,Pedimos iluminación y patrullaje en el pasaje donde ocurren robos,Seguridad ciudadana,MEDIA
+47,Hay peleas callejeras frecuentes los fines de semana en la plaza,Seguridad ciudadana,MEDIA
+48,Solicito la creación de una junta vecinal de seguridad,Seguridad ciudadana,BAJA
+49,Se escuchan detonaciones de arma de fuego en la madrugada,Seguridad ciudadana,ALTA
+50,Necesitamos un botón de auxilio en la parada de transporte,Seguridad ciudadana,MEDIA
+51,Las ramas de los árboles de la plaza están secas y podrían caer sobre los niños,Áreas verdes y espacios públicos,ALTA
+52,Solicito la poda de los árboles de la avenida que tapan el alumbrado,Áreas verdes y espacios públicos,MEDIA
+53,El césped del parque está muy crecido y hay presencia de insectos,Áreas verdes y espacios públicos,MEDIA
+54,Los juegos infantiles del parque están rotos y son peligrosos,Áreas verdes y espacios públicos,ALTA
+55,Pedimos la plantación de árboles en la plaza que no tiene sombra,Áreas verdes y espacios públicos,BAJA
+56,Las bancas del parque están rotas y no se pueden usar,Áreas verdes y espacios públicos,BAJA
+57,Un árbol cayó por el temporal y obstruye el paso en la acera,Áreas verdes y espacios públicos,ALTA
+58,El área verde está abandonada y llena de maleza,Áreas verdes y espacios públicos,MEDIA
+59,Solicito la limpieza y el mantenimiento del parque infantil,Áreas verdes y espacios públicos,BAJA
+60,Hay plagas en los árboles que afectan a todo el vecindario,Áreas verdes y espacios públicos,MEDIA
+61,Con la lluvia de anoche la calle se inundó y el agua pluvial entró a mi casa,Drenaje y desagüe pluvial,ALTA
+62,El sumidero de la esquina está tapado con hojas y no drena el agua de lluvia,Drenaje y desagüe pluvial,MEDIA
+63,Solicito la limpieza de la cuneta que está llena de tierra y basura,Drenaje y desagüe pluvial,MEDIA
+64,El canal de desagüe pluvial está colapsado y el agua estancada huele mal,Drenaje y desagüe pluvial,ALTA
+65,Hay una rejilla de drenaje pluvial rota por donde se cuelan objetos,Drenaje y desagüe pluvial,MEDIA
+66,El agua de lluvia se acumula en el pasaje porque falta un sumidero,Drenaje y desagüe pluvial,MEDIA
+67,Pedimos la construcción de una cuneta para evitar inundaciones,Drenaje y desagüe pluvial,BAJA
+68,El desagüe pluvial rebalsa cada vez que llueve con fuerza,Drenaje y desagüe pluvial,ALTA
+69,Solicito el mantenimiento preventivo de los sumideros antes de las lluvias,Drenaje y desagüe pluvial,BAJA
+70,El canal de hormigón del desagüe pluvial está erosionado por el agua,Drenaje y desagüe pluvial,MEDIA
+71,Una fábrica cercana bota humo negro y solventes al río contaminando el aire,Contaminación ambiental,ALTA
+72,Hay quema de basura y llantas en el terreno de al lado y el humo es tóxico,Contaminación ambiental,ALTA
+73,El río está contaminado con desechos y aguas residuales y huele muy mal,Contaminación ambiental,ALTA
+74,Vecinos botan escombros y basura al cauce del río,Contaminación ambiental,MEDIA
+75,Hay un taller que vierte aceite al drenaje y contamina el agua,Contaminación ambiental,ALTA
+76,Solicito control del ruido excesivo de un local nocturno,Contaminación ambiental,MEDIA
+77,El humo de la pollería molesta a todo el vecindario,Contaminación ambiental,MEDIA
+78,Pedimos una campaña de reciclaje para reducir la contaminación,Contaminación ambiental,BAJA
+79,Hay basura quemándose en el botadero clandestino del barrio,Contaminación ambiental,ALTA
+80,El polvo de la trituradora de áridos afecta la salud de los niños,Contaminación ambiental,MEDIA
