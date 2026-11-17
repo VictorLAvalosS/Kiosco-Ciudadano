@@ -1,8 +1,16 @@
-"""Demostración de mejora del agente al aumentar los datos etiquetados.
+"""Demostración REAL de mejora del agente al aumentar los datos etiquetados.
 
-Entrena el clasificador con el 20 %, el 50 % y el 100 % de las etiquetas vigentes
-y mide el F1 macro real sobre un conjunto de prueba reservado. Sirve para la defensa:
-muestra, con números reales, que más etiquetas producen un mejor modelo.
+Metodología (diseñada para la defensa y reproducible):
+  * Se reserva SIEMPRE el mismo conjunto de prueba fijo (por grupos de
+    casi-duplicados), de modo que todos los puntos de la curva son comparables.
+  * El pool de entrenamiento se submuestrea de forma ESTRATIFICADA por categoría
+    (misma proporción de cada clase) para las fracciones 10 %, 25 %, 50 %, 75 %
+    y 100 %.
+  * Cada fracción se repite con 5 semillas distintas y se reporta la MEDIA y la
+    DESVIACIÓN ESTÁNDAR del F1 macro y de la accuracy: así se evita depender de
+    una única partición afortunada.
+  * Todos los resultados se guardan en la tabla `experimentos` de la base de datos
+    y se pueden graficar en el panel (módulo Modelo).
 
 Uso:
     python demo_mejora.py
@@ -10,70 +18,172 @@ Uso:
 
 from __future__ import annotations
 
+from collections import defaultdict
+from typing import Any
+
+import numpy as np
+from sqlalchemy import select
+
+from app.categorias import CATEGORIAS_SEED
 from app.config import settings
 from app.database import SessionLocal
-from ml import entrenamiento
+from app.models import ConjuntoPruebaFijo, ExperimentoMejora
 from app.servicio_modelo import etiquetas_vigentes
+from ml import entrenamiento
+
+# Fracciones del pool de entrenamiento que se evalúan.
+FRACCIONES: tuple[float, ...] = (0.10, 0.25, 0.50, 0.75, 1.00)
+# Semillas distintas: permiten medir la variabilidad de cada punto de la curva.
+SEMILLAS: tuple[int, ...] = (1, 7, 13, 21, 42)
+# Algoritmo fijo para la demostración: mantiene comparables todos los puntos y
+# evita recalcular la comparación de algoritmos en cada iteración.
+ALGORITMO_DEMO = "Regresión Logística"
+
+
+def _submuestra_estratificada(
+    textos: list[str], etiquetas: list[str], fraccion: float, semilla: int
+) -> tuple[list[str], list[str]]:
+    """Submuestrea conservando la proporción de cada clase.
+
+    Se toma `round(n_clase * fraccion)` ejemplos por clase (mínimo 2 por clase
+    para que el entrenamiento sea posible) con una semilla fija.
+    """
+    if fraccion >= 1.0:
+        return list(textos), list(etiquetas)
+
+    rng = np.random.default_rng(semilla)
+    indices_por_clase: dict[str, list[int]] = defaultdict(list)
+    for indice, etiqueta in enumerate(etiquetas):
+        indices_por_clase[etiqueta].append(indice)
+
+    seleccion: list[int] = []
+    for indices in indices_por_clase.values():
+        arreglo = np.array(indices)
+        rng.shuffle(arreglo)
+        objetivo = max(2, int(round(len(arreglo) * fraccion)))
+        seleccion.extend(arreglo[: min(objetivo, len(arreglo))].tolist())
+
+    seleccion.sort()
+    return [textos[i] for i in seleccion], [etiquetas[i] for i in seleccion]
+
+
+def _ids_prueba(db: Any, registros: list[dict[str, Any]]) -> set[int]:
+    """Ids del conjunto de prueba fijo vigente (lo reserva si aún no existe)."""
+    ids = set(db.scalars(select(ConjuntoPruebaFijo.solicitud_id)).all())
+    if ids:
+        return {int(i) for i in ids}
+
+    # Si aún no existe (dataset pequeño), reserva uno reproducible por grupos.
+    from app.servicio_modelo import MINIMO_PARA_FIJO, regenerar_conjunto_prueba
+
+    if len(registros) < MINIMO_PARA_FIJO:
+        return set()
+    ids, _ = regenerar_conjunto_prueba(db, registros)
+    return ids
 
 
 def main() -> int:
-    """Ejecuta la demostración de mejora por volumen de datos."""
+    """Ejecuta la demostración de mejora por volumen de datos etiquetados."""
     settings.validar()
 
     with SessionLocal() as db:
         registros = etiquetas_vigentes(db)
+        if len(registros) < 20:
+            print(
+                "[AVISO] Se necesitan al menos 20 etiquetas vigentes para la demostración. "
+                f"Hay {len(registros)}."
+            )
+            return 1
 
-    total = len(registros)
-    if total < 10:
+        ids_prueba = _ids_prueba(db, registros)
+        pool = [r for r in registros if r["solicitud_id"] not in ids_prueba]
+        prueba = [r for r in registros if r["solicitud_id"] in ids_prueba]
+
+        if not prueba or not pool:
+            print(
+                "[AVISO] No se pudo reservar un conjunto de prueba fijo con grupos. "
+                "Se necesitan más datos etiquetados."
+            )
+            return 1
+
+        textos_pool = [r["texto"] for r in pool]
+        etiquetas_pool = [r["categoria"] for r in pool]
+        textos_prueba = [r["texto"] for r in prueba]
+        etiquetas_prueba = [r["categoria"] for r in prueba]
+        clases = [c["clave"] for c in CATEGORIAS_SEED]
+
+        print("=" * 78)
+        print("DEMOSTRACIÓN DE MEJORA POR VOLUMEN DE DATOS ETIQUETADOS")
+        print("=" * 78)
+        print(f"Etiquetas vigentes totales   : {len(registros)}")
+        print(f"Conjunto de prueba fijo      : {len(textos_prueba)} (nunca se usa para entrenar)")
+        print(f"Pool de entrenamiento        : {len(textos_pool)}")
+        print(f"Repeticiones por fracción    : {len(SEMILLAS)} semillas {SEMILLAS}")
+        print(f"Algoritmo de la demostración : {ALGORITMO_DEMO}")
+        print("-" * 78)
         print(
-            "[AVISO] Se necesitan al menos 10 etiquetas vigentes para la demostración. "
-            f"Hay {total}."
+            f"{'Fracción':>9} | {'n_train':>7} | {'accuracy (media±sd)':>22} | "
+            f"{'F1 macro (media±sd)':>22}"
         )
-        return 1
+        print("-" * 78)
 
-    textos = [r["texto"] for r in registros]
-    etiquetas = [r["categoria"] for r in registros]
+        puntos: list[dict[str, Any]] = []
+        for fraccion in FRACCIONES:
+            accuracies: list[float] = []
+            f1_scores: list[float] = []
+            n_train = 0
+            for semilla in SEMILLAS:
+                X_sub, y_sub = _submuestra_estratificada(
+                    textos_pool, etiquetas_pool, fraccion, semilla
+                )
+                n_train = len(X_sub)
+                modelo, _ = entrenamiento.construir_clasificador(
+                    X_sub, y_sub, comparacion={"ganador": ALGORITMO_DEMO}
+                )
+                metricas = entrenamiento.evaluar(modelo, textos_prueba, etiquetas_prueba, clases)
+                accuracies.append(float(metricas["accuracy"]))
+                f1_scores.append(float(metricas["f1_macro"]))
 
-    # Reserva un 20 % fijo como prueba (semilla constante para que sea reproducible).
-    from sklearn.model_selection import StratifiedShuffleSplit
+            punto = {
+                "fraccion": fraccion,
+                "n_entrenamiento": n_train,
+                "accuracy_media": round(float(np.mean(accuracies)), 4),
+                "accuracy_sd": round(float(np.std(accuracies)), 4),
+                "f1_media": round(float(np.mean(f1_scores)), 4),
+                "f1_sd": round(float(np.std(f1_scores)), 4),
+                "repeticiones": len(SEMILLAS),
+            }
+            puntos.append(punto)
+            print(
+                f"{int(fraccion * 100):>8}% | {n_train:>7} | "
+                f"{punto['accuracy_media']:>9.4f} ± {punto['accuracy_sd']:.4f}   | "
+                f"{punto['f1_media']:>9.4f} ± {punto['f1_sd']:.4f}"
+            )
 
-    divisor = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
-    idx_train, idx_test = next(divisor.split(textos, etiquetas))
+        resultado: dict[str, Any] = {
+            "metodologia": "submuestreo estratificado, repeticiones con semillas fijas",
+            "algoritmo": ALGORITMO_DEMO,
+            "semillas": list(SEMILLAS),
+            "n_prueba": len(textos_prueba),
+            "n_pool": len(textos_pool),
+            "puntos": puntos,
+        }
 
-    X_test = [textos[int(i)] for i in idx_test]
-    y_test = [etiquetas[int(i)] for i in idx_test]
-    X_pool = [textos[int(i)] for i in idx_train]
-    y_pool = [etiquetas[int(i)] for i in idx_train]
-
-    print("=" * 64)
-    print("DEMOSTRACIÓN DE MEJORA POR VOLUMEN DE DATOS ETIQUETADOS")
-    print("=" * 64)
-    print(f"Etiquetas vigentes totales : {total}")
-    print(f"Conjunto de prueba (20 %)  : {len(X_test)}")
-    print(f"Pool de entrenamiento      : {len(X_pool)}")
-    print("-" * 64)
-    print(f"{'Fracción':>10} | {'n_train':>7} | {'accuracy':>8} | "
-          f"{'F1 macro':>8} | {'algoritmo'}")
-    print("-" * 64)
-
-    fracciones = (0.2, 0.5, 1.0)
-    for fraccion in fracciones:
-        corte = max(4, int(len(X_pool) * fraccion))
-        X_sub = X_pool[:corte]
-        y_sub = y_pool[:corte]
-
-        modelo, comparacion = entrenamiento.construir_clasificador(X_sub, y_sub)
-        clases = [c for c in dict.fromkeys(y_sub)]
-        metricas = entrenamiento.evaluar(modelo, X_test, y_test, clases)
-
-        print(
-            f"{int(fraccion * 100):>9}% | {corte:>7} | {metricas['accuracy']:>8.4f} | "
-            f"{metricas['f1_macro']:>8.4f} | {comparacion['ganador']}"
+        db.add(
+            ExperimentoMejora(
+                tipo="mejora_volumen",
+                n_total=len(registros),
+                resultado=resultado,
+            )
         )
+        db.commit()
 
-    print("-" * 64)
-    print("Interpretación: al aumentar las etiquetas, el F1 macro sube porque el")
-    print("agente aprende más vocabulario y patrones por cada categoría.")
+    print("-" * 78)
+    print("Interpretación: al aumentar el porcentaje de etiquetas usadas en el")
+    print("entrenamiento, el F1 macro y la accuracy (medidos sobre el MISMO conjunto")
+    print("de prueba fijo) suben. La desviación estándar indica cuán estable es la")
+    print("mejora frente a distintas particiones de entrenamiento.")
+    print("Resultados guardados en la tabla `experimentos` de la base de datos.")
     return 0
 
 

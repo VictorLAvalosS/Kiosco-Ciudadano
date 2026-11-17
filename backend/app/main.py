@@ -10,7 +10,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import etiquetado, estadisticas, modelo, predecir, solicitudes
+from app.routers import (
+    etiquetado,
+    estadisticas,
+    informes,
+    modelo,
+    predecir,
+    sistema,
+    solicitudes,
+)
 
 app = FastAPI(
     title="Kiosco Ciudadano · API",
@@ -36,9 +44,5 @@ app.include_router(etiquetado.router, prefix="/api")
 app.include_router(modelo.router, prefix="/api")
 app.include_router(estadisticas.router, prefix="/api")
 app.include_router(predecir.router, prefix="/api")
-
-
-@app.get("/api/salud", tags=["sistema"])
-def salud() -> dict[str, str]:
-    """Comprobación rápida de disponibilidad del servicio."""
-    return {"estado": "ok", "servicio": "kiosco-ciudadano-api"}
+app.include_router(sistema.router, prefix="/api")
+app.include_router(informes.router, prefix="/api")

@@ -74,6 +74,10 @@ class Solicitud(Base):
     probabilidades: Mapped[dict | None] = mapped_column(JSONB, nullable=True)
     version_modelo: Mapped[str | None] = mapped_column(String(32), nullable=True)
     latencia_ms: Mapped[float | None] = mapped_column(Float, nullable=True)
+    # Marca de revisión humana: confianza/margen por debajo de los umbrales.
+    requiere_revision: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False, server_default=text("false")
+    )
 
     categoria_predicha: Mapped[Categoria | None] = relationship(lazy="joined")
     etiquetas: Mapped[list["Etiqueta"]] = relationship(
@@ -145,8 +149,40 @@ class Modelo(Base):
     curva_aprendizaje: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
     top_terminos: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
 
+    # --- Evaluación ampliada (Fase 1-2) -----------------------------------
+    # Versión del conjunto de prueba fijo usada (comparabilidad entre versiones).
+    version_prueba: Mapped[str] = mapped_column(String(16), nullable=False, default="")
+    # Método de evaluación ("conjunto_prueba_fijo" o "validacion_cruzada").
+    metodo_evaluacion: Mapped[str] = mapped_column(String(40), nullable=False, default="")
+
+    # Métricas del clasificador de PRIORIDAD (ALTA / MEDIA / BAJA).
+    accuracy_prioridad: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
+    precision_prioridad: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
+    recall_prioridad: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
+    f1_prioridad: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
+
+    # Bloque JSONB con el resto de la evaluación: baselines, calibración,
+    # curva cobertura-precisión, análisis de errores, matriz de prioridad,
+    # casi-duplicados e hiperparámetros ajustados.
+    evaluacion: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+
+    # --- Trazabilidad del entrenamiento (evita la fuga de datos) ----------
+    # Ids de solicitud usados para entrenar esta versión. Permite comprobar que
+    # el entrenamiento NO comparte ejemplos con el conjunto de prueba fijo.
+    ids_entrenamiento: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    # Una versión solo es comparable si no usó ejemplos del conjunto de prueba.
+    valida_para_comparacion: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=True, server_default=text("true")
+    )
+    # Motivo (texto) cuando la versión no es válida para comparación.
+    motivo_invalidez: Mapped[str] = mapped_column(String(200), nullable=False, default="")
+
     # Binario serializado con joblib: todo el equipo usa el mismo modelo desde la BD.
     modelo_binario: Mapped[bytes] = mapped_column(LargeBinary, nullable=False)
+
+    # Eficiencia medida realmente (Fase A3): tiempo de entrenamiento, tamaño del
+    # binario serializado y latencia de predicción (media y p95) sobre la prueba.
+    eficiencia: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
 
     activo: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
 
@@ -155,7 +191,11 @@ class Modelo(Base):
 
 
 class ConjuntoPruebaFijo(Base):
-    """Ids de solicitud reservados para prueba. Nunca se usan para entrenar."""
+    """Ids de solicitud reservados para prueba. Nunca se usan para entrenar.
+
+    El split es por GRUPOS de casi-duplicados: dos variantes de la misma frase
+    nunca quedan a la vez en entrenamiento y prueba (evita fuga de datos).
+    """
 
     __tablename__ = "conjunto_prueba_fijo"
 
@@ -165,6 +205,31 @@ class ConjuntoPruebaFijo(Base):
     fecha: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, server_default=func.now()
     )
+    # Número de generación del conjunto de prueba (1, 2, ...).
+    generacion: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+    # Etiqueta de la versión del conjunto de prueba (p. ej. "prueba-g1").
+    version_prueba: Mapped[str] = mapped_column(String(16), nullable=False, default="")
+    # Identificador del grupo de casi-duplicados al que pertenece la solicitud.
+    grupo: Mapped[str] = mapped_column(String(40), nullable=False, default="")
+
+
+class ExperimentoMejora(Base):
+    """Resultados de experimentos (p. ej. la demostración de mejora por volumen).
+
+    Se guardan como JSONB para poder graficarlos en la interfaz y citarlos en el
+    informe, sin depender de archivos locales.
+    """
+
+    __tablename__ = "experimentos"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    fecha: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    # Tipo de experimento (p. ej. "mejora_por_volumen").
+    tipo: Mapped[str] = mapped_column(String(40), nullable=False)
+    n_total: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    resultado: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
 
 
 class UsuarioEtiquetador(Base):
@@ -174,3 +239,31 @@ class UsuarioEtiquetador(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     nombre: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
+
+
+class Informe(Base):
+    """Informe del agente (Markdown + JSON) persistido en la base de datos.
+
+    Se guarda el contenido completo para poder consultarlo, descargarlo y
+    versionarlo desde la interfaz, sin depender de archivos locales.
+    """
+
+    __tablename__ = "informes"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    fecha: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    # Versión del modelo sobre la que se generó el informe.
+    version_modelo: Mapped[str] = mapped_column(String(32), nullable=False, default="")
+    # Persona (o proceso) que solicitó el informe.
+    generado_por: Mapped[str] = mapped_column(String(120), nullable=False, default="")
+    # Estado de la generación: en_proceso | completado | error.
+    estado: Mapped[str] = mapped_column(String(20), nullable=False, default="completado")
+    # Mensaje de error cuando la generación falla (vacío si todo fue bien).
+    error: Mapped[str] = mapped_column(String(300), nullable=False, default="")
+    # Contenido del informe en Markdown y en JSON estructurado.
+    contenido_md: Mapped[str] = mapped_column(Text, nullable=False, default="")
+    contenido_json: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    # Opciones usadas al generar (p. ej. los 2 textos de ejemplo del usuario).
+    opciones: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)

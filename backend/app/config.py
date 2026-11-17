@@ -34,8 +34,21 @@ class Settings:
             "ETIQUETADOR_POR_DEFECTO", "Equipo # 3"
         ).strip()
 
+        # Umbrales de "requiere revisión humana" (confianza y margen, en %).
+        # Se aplican en la inferencia: por debajo de ellos la predicción se marca
+        # como dudosa en lugar de forzar una categoría.
+        self.umbral_confianza: float = float(os.getenv("UMBRAL_CONFIANZA", "60"))
+        self.umbral_margen: float = float(os.getenv("UMBRAL_MARGEN", "15"))
+
+        # Clave de API opcional para proteger los endpoints sensibles. Si queda
+        # vacía, no se exige cabecera (útil en desarrollo y pruebas locales).
+        self.api_key: str = os.getenv("API_KEY", "").strip()
+
         # Directorio de datos (CSV de ejemplo) y de modelos temporales.
         self.data_dir: Path = BASE_DIR / "data"
+
+        # Directorio donde se generan los reportes del informe académico.
+        self.reporte_dir: Path = BASE_DIR / "reporte"
 
     def validar(self) -> None:
         """Comprueba que la configuración mínima esté presente."""

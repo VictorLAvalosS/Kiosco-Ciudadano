@@ -31,7 +31,8 @@ Comandos del backend:
 ```bash
 npm run migrate         # aplica las migraciones Alembic
 npm run importar        # importa etiquetas desde CSV
-npm run demo            # demuestra la mejora del F1 según el volumen de etiquetas
+npm run demo            # demuestra la mejora del F1 según el volumen de etiquetas (5 semillas)
+npm run informe         # genera backend/reporte/datos_informe.md desde la base de datos
 npm run test:backend    # ejecuta pytest
 ```
 
@@ -44,6 +45,9 @@ La conexión a Supabase se lee **solo** de `backend/.env` (plantilla:
   Debe usar el controlador `postgresql+psycopg2://`.
 - `CORS_ORIGINS` — origen permitido para el frontend de Vite.
 - `ETIQUETADOR_POR_DEFECTO` — nombre por defecto del integrante que etiqueta.
+- `UMBRAL_CONFIANZA` / `UMBRAL_MARGEN` — umbrales (en %) de "requiere revisión humana".
+- `API_KEY` — clave opcional que protege los endpoints sensibles (header `X-API-Key`).
+  El frontend la envía si se define `VITE_API_KEY` en el `.env` de la raíz.
 
 **Prohibido** escribir credenciales en el código, en el README o en commits.
 
@@ -58,7 +62,9 @@ La conexión a Supabase se lee **solo** de `backend/.env` (plantilla:
 - `src/lib/api.ts` - Cliente HTTP de la API (funciones por endpoint, `ApiError`)
 - `src/lib/catalogos.ts` - Catálogos de la interfaz (OTB, cuadrillas) y utilidades de formato
 - `src/components/` - Interfaz: `Kiosk`, `Processing`, `Result`, `Dashboard`,
-  `OperationsModules` (mapa y cuadrillas), `EtiquetadoPage`, `ModelPage`, `NlpInspector`, `Icon`, `shared`
+  `OperationsModules` (mapa y cuadrillas), `EtiquetadoPage`, `ModelPage`, `PruebaAgente`
+  (prueba del agente en vivo), `NlpInspector`, `Icon`, `shared`
+- `src/vite-env.d.ts` - Tipos de variables de entorno de Vite (`VITE_API_KEY`)
 - `vite.config.ts` - Configuración de Vite (React, Tailwind v4, alias `@`, proxy `/api`)
 - `index.html` - Contenedor HTML de Vite con el elemento `#root`
 
@@ -68,17 +74,23 @@ La conexión a Supabase se lee **solo** de `backend/.env` (plantilla:
 - `backend/app/config.py` - Lectura de variables de entorno (`DATABASE_URL`, `CORS_ORIGINS`)
 - `backend/app/database.py` - Motor y sesión de SQLAlchemy
 - `backend/app/models.py` - Modelos ORM: `categorias`, `solicitudes`, `etiquetas`,
-  `modelos`, `conjunto_prueba_fijo`, `usuarios_etiquetadores`
+  `modelos`, `conjunto_prueba_fijo`, `usuarios_etiquetadores`, `experimentos`
 - `backend/app/categorias.py` - Las 8 categorías fijas, prioridades y estados válidos
-- `backend/app/routers/` - Endpoints: `solicitudes`, `etiquetado`, `modelo`, `estadisticas`, `predecir`
+- `backend/app/seguridad.py` - Verificación opcional de la clave de API (`X-API-Key`)
+- `backend/app/serializadores.py` - Conversión de modelos ORM a diccionarios de la API
+- `backend/app/routers/` - Endpoints: `solicitudes`, `etiquetado`, `modelo`, `estadisticas`,
+  `predecir`, `sistema` (salud, calidad del dataset, acuerdo y experimentos)
 - `backend/app/servicio_solicitudes.py` - Ticket, etiquetas (con historial `vigente`), importación CSV
-- `backend/app/servicio_modelo.py` - Entrenamiento, versionado, activación y rollback
-- `backend/ml/` - `preprocesamiento` (normalización, stopwords), `entrenamiento` (TF-IDF,
-  comparación de algoritmos, métricas, curva de aprendizaje) e `inferencia` (predicción, explicabilidad)
+- `backend/app/servicio_modelo.py` - Entrenamiento, versionado, activación, rollback y reevaluación
+- `backend/ml/` - `preprocesamiento` (normalización, stopwords), `calidad` (casi-duplicados,
+  informe de calidad, kappa), `entrenamiento` (TF-IDF, comparación de algoritmos, ajuste de
+  hiperparámetros, métricas, baselines, calibración, cobertura-precisión, errores y curva de
+  aprendizaje) e `inferencia` (predicción, explicabilidad)
 - `backend/alembic/` - Migraciones de la base de datos
 - `backend/data/etiquetas_ejemplo.csv` - CSV de ejemplo (planilla de Google Sheets)
 - `backend/importar_csv.py` - Importación por línea de comandos
-- `backend/demo_mejora.py` - Demostración de la mejora por volumen de etiquetas
+- `backend/demo_mejora.py` - Demostración de la mejora por volumen de etiquetas (submuestreo estratificado, 5 semillas)
+- `backend/exportar_datos_informe.py` - Genera `backend/reporte/datos_informe.md` desde la BD
 - `backend/tests/` - Pruebas `pytest`
 
 ## Dependencias

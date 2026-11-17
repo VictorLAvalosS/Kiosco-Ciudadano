@@ -1,0 +1,41 @@
+ID,Solicitud,Categoría,Prioridad
+E1,La luminaria del pasaje Los Álamos lleva una semana sin encender y la gente camina a oscuras,Alumbrado público,ALTA
+E2,Hay un poste de alumbrado nuevo que nunca fue conectado y no alumbra el sector,Alumbrado público,MEDIA
+E3,El reflector del patio vecinal se apaga y se enciende de forma intermitente toda la madrugada,Alumbrado público,BAJA
+E4,En la calle sin iluminación los vecinos piden que se instalen dos luminarias,Alumbrado público,MEDIA
+E5,El cableado del alumbrado quedó suelto tras la tormenta y representa un riesgo,Alumbrado público,ALTA
+E6,Los contenedores de basura del mercado están desbordados y nadie los recoge hace días,Limpieza y residuos sólidos,ALTA
+E7,En el parque acumulan ramas y escombros que no permiten usar las bancas,Limpieza y residuos sólidos,MEDIA
+E8,Pasó el camión de la basura y dejó bolsas tiradas afuera del contenedor,Limpieza y residuos sólidos,BAJA
+E9,La plaza tiene papeles y envases por todos lados y hace falta barrido,Limpieza y residuos sólidos,MEDIA
+E10,Se acumula escombro de una construcción en la acera y obstruye el paso,Limpieza y residuos sólidos,ALTA
+E11,La calle frente al colegio tiene un bache profundo que daña los vehículos,Calles y vías públicas,ALTA
+E12,El pavimento de la avenida principal se hundió y forma un hoyo peligroso,Calles y vías públicas,ALTA
+E13,Los adoquines de la vía están levantados y provocan tropiezos,Calles y vías públicas,MEDIA
+E14,La señalización de la esquina se borró y no se distinguen los cruces,Calles y vías públicas,BAJA
+E15,Solicito el arreglo del camino de tierra porque se llena de barro cuando llueve,Calles y vías públicas,MEDIA
+E16,No hay agua potable en la zona alta desde la madrugada y la cisterna está vacía,Agua potable y alcantarillado,ALTA
+E17,La tubería de la calle tiene una fuga y el agua corre por la acera,Agua potable y alcantarillado,ALTA
+E18,Llega agua con sedimentos y mal olor por la cañería de la casa,Agua potable y alcantarillado,MEDIA
+E19,La presión del agua es muy baja en las tardes y no alcanza para el consumo,Agua potable y alcantarillado,MEDIA
+E20,El medidor de agua del vecindario está dañado y no registra el consumo,Agua potable y alcantarillado,BAJA
+E21,Un grupo de personas consume bebidas alcohólicas en la esquina y asusta a los vecinos,Seguridad ciudadana,ALTA
+E22,Los fines de semana hay riñas en la cancha y necesitamos presencia policial,Seguridad ciudadana,ALTA
+E23,La calle está muy sola y oscura y han ocurrido robos a transeúntes,Seguridad ciudadana,MEDIA
+E24,Se escuchan disparos por la noche cerca de la avenida y nadie patrulla,Seguridad ciudadana,ALTA
+E25,Piden más cámaras de vigilancia en el ingreso del barrio,Seguridad ciudadana,BAJA
+E26,Los árboles de la plaza tienen ramas secas que pueden caer sobre los niños,Áreas verdes y espacios públicos,MEDIA
+E27,El césped del parque está crecido y con basura y no se puede jugar,Áreas verdes y espacios públicos,MEDIA
+E28,Los juegos infantiles del parque están oxidados y con tornillos salidos,Áreas verdes y espacios públicos,ALTA
+E29,Hace falta regar y podar los jardines de la avenida porque están secos,Áreas verdes y espacios públicos,BAJA
+E30,La fuente del parque está sucia y con agua estancada que atrae mosquitos,Áreas verdes y espacios públicos,MEDIA
+E31,El sumidero de la esquina está tapado y el agua de lluvia inunda la casa,Drenaje y desagüe pluvial,ALTA
+E32,La cuneta no tiene rejilla y todo el barro cae al desagüe pluvial,Drenaje y desagüe pluvial,MEDIA
+E33,El alcantarillado pluvial expulsa malos olores en la bajada del cerro,Drenaje y desagüe pluvial,MEDIA
+E34,Con la lluvia se empoza el agua hasta media calle porque el canal está obstruido,Drenaje y desagüe pluvial,ALTA
+E35,La alcantarilla frente al mercado está rota y presenta un hueco en la vía,Drenaje y desagüe pluvial,ALTA
+E36,Una fábrica arroja humo negro todas las mañanas y afecta a los vecinos,Contaminación ambiental,ALTA
+E37,El arroyo del sector recibe desechos y despide un olor insoportable,Contaminación ambiental,ALTA
+E38,Queman basura y llantas en un terreno y el humo llega a las casas,Contaminación ambiental,MEDIA
+E39,Los talleres del barrio vierten aceite en la calle y contaminan el suelo,Contaminación ambiental,MEDIA
+E40,Hay mucho ruido de máquinas durante la noche y no dejan descansar,Contaminación ambiental,BAJA

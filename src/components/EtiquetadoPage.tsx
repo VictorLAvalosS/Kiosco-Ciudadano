@@ -103,7 +103,7 @@ export function EtiquetadoPage({
       <div className="module-heading">
         <div>
           <button className="module-back" onClick={onBack} type="button">
-            ← VOLVER AL PANEL
+            <span aria-hidden="true">←</span> VOLVER AL PANEL ADMINISTRATIVO
           </button>
           <span>MÓDULO DE ENTRENAMIENTO SUPERVISADO</span>
           <h2>Etiquetado de solicitudes</h2>

@@ -7,22 +7,58 @@
  */
 
 import type {
+  AcuerdoEtiquetadores,
+  CalidadDataset,
   Categoria,
   ColaEtiquetado,
   EntrenarResponse,
   Estadisticas,
+  ExperimentoMejora,
+  FormatoInforme,
   GuiaEtiquetado,
   ImportarResultado,
+  Informe,
+  InformeEstado,
+  InformeGenerarResponse,
+  InformeResumen,
   Modelo,
+  ParametrosModelo,
   Prediccion,
   Priority,
   RequestOrigin,
   RequestStatus,
+  Salud,
   Solicitud,
 } from "@/types";
 
 /** Ruta base de la API (el proxy de Vite la redirige al backend). */
 const BASE = "/api";
+
+/**
+ * Clave de API del frontend (opcional). Si el backend tiene configurada
+ * `API_KEY`, hay que definir `VITE_API_KEY` con el mismo valor para poder usar
+ * los endpoints sensibles (entrenar, activar, importar y etiquetar).
+ */
+const API_KEY = import.meta.env.VITE_API_KEY ?? "";
+
+/** Cabeceras base de cada petición (incluye la clave de API si está definida). */
+function cabecerasBase(extra?: HeadersInit): Record<string, string> {
+  const cabeceras: Record<string, string> = { "Content-Type": "application/json" };
+  if (API_KEY) cabeceras["X-API-Key"] = API_KEY;
+  if (!extra) return cabeceras;
+  if (extra instanceof Headers) {
+    extra.forEach((valor, clave) => {
+      cabeceras[clave] = valor;
+    });
+  } else if (Array.isArray(extra)) {
+    extra.forEach(([clave, valor]) => {
+      cabeceras[clave] = valor;
+    });
+  } else {
+    Object.assign(cabeceras, extra);
+  }
+  return cabeceras;
+}
 
 /** Error de la API con el mensaje devuelto por el backend. */
 export class ApiError extends Error {
@@ -51,7 +87,7 @@ async function pedir<T>(
     respuesta = await fetch(`${BASE}${ruta}`, {
       ...opciones,
       signal: controlador.signal,
-      headers: { "Content-Type": "application/json", ...(opciones.headers ?? {}) },
+      headers: cabecerasBase(opciones.headers),
     });
   } catch (fallo) {
     if (opciones.signal?.aborted) throw fallo;
@@ -206,9 +242,70 @@ export function listarVersiones(): Promise<Modelo[]> {
   return pedir<Modelo[]>("/modelo/versiones");
 }
 
-/** Activa una versión concreta (rollback). */
-export function activarVersion(version: string): Promise<Modelo> {
-  return pedir<Modelo>(`/modelo/${version}/activar`, { method: "POST" });
+/** Activa una versión concreta (rollback). `forzar` permite activar versiones no comparables. */
+export function activarVersion(version: string, forzar = false): Promise<Modelo> {
+  const sufijo = forzar ? "?forzar=true" : "";
+  return pedir<Modelo>(`/modelo/${version}/activar${sufijo}`, { method: "POST" });
+}
+
+/** Parámetros completos del modelo activo (Fase A2 + eficiencia A3). */
+export function modeloParametros(): Promise<ParametrosModelo> {
+  return pedir<ParametrosModelo>("/modelo/parametros");
+}
+
+// ---------------------------------------------------------------------------
+// Informe del agente (Fase A5)
+// ---------------------------------------------------------------------------
+
+/** Genera y guarda un informe del agente (Markdown + JSON). */
+export function generarInforme(payload: {
+  textos_ejemplo?: string[];
+  generado_por?: string;
+  segundo_plano?: boolean;
+}): Promise<InformeGenerarResponse> {
+  return pedir<InformeGenerarResponse>(
+    "/informe/generar",
+    { method: "POST", body: JSON.stringify(payload) },
+    180_000,
+  );
+}
+
+/** Historial de informes generados, del más reciente al más antiguo. */
+export function listarInformes(): Promise<InformeResumen[]> {
+  return pedir<InformeResumen[]>("/informe");
+}
+
+/** Contenido completo de un informe (Markdown + JSON estructurado). */
+export function obtenerInforme(id: number): Promise<Informe> {
+  return pedir<Informe>(`/informe/${id}`);
+}
+
+/** Estado de una generación de informe en segundo plano. */
+export function estadoInforme(id: number): Promise<InformeEstado> {
+  return pedir<InformeEstado>(`/informe/${id}/estado`);
+}
+
+/**
+ * Descarga el informe en el formato indicado y devuelve el contenido como Blob.
+ *
+ * Se usa `fetch` (en lugar de un enlace directo) porque el endpoint exige la
+ * cabecera `X-API-Key` cuando el backend tiene la clave configurada.
+ */
+export async function descargarInforme(id: number, formato: FormatoInforme): Promise<Blob> {
+  const respuesta = await fetch(`${BASE}/informe/${id}/descargar?formato=${formato}`, {
+    headers: cabecerasBase(),
+  });
+  if (!respuesta.ok) {
+    let detalle = `Error ${respuesta.status}`;
+    try {
+      const cuerpo = (await respuesta.json()) as { detail?: string };
+      if (cuerpo?.detail) detalle = cuerpo.detail;
+    } catch {
+      /* respuesta sin cuerpo JSON */
+    }
+    throw new ApiError(detalle, respuesta.status);
+  }
+  return respuesta.blob();
 }
 
 // ---------------------------------------------------------------------------
@@ -227,4 +324,28 @@ export function predecir(texto: string, signal?: AbortSignal): Promise<Prediccio
     body: JSON.stringify({ texto }),
     signal,
   });
+}
+
+// ---------------------------------------------------------------------------
+// Sistema: salud, calidad del dataset, acuerdo y experimentos
+// ---------------------------------------------------------------------------
+
+/** Estado REAL del servicio (base de datos, modelo activo y umbrales). */
+export function obtenerSalud(): Promise<Salud> {
+  return pedir<Salud>("/salud");
+}
+
+/** Informe de calidad del dataset etiquetado. */
+export function obtenerCalidadDataset(): Promise<CalidadDataset> {
+  return pedir<CalidadDataset>("/calidad-dataset", {}, 60_000);
+}
+
+/** Acuerdo entre etiquetadores (kappa de Cohen) y discrepancias. */
+export function obtenerAcuerdo(): Promise<AcuerdoEtiquetadores> {
+  return pedir<AcuerdoEtiquetadores>("/acuerdo-etiquetadores");
+}
+
+/** Experimentos guardados (p. ej. la demostración de mejora por volumen). */
+export function listarExperimentos(): Promise<ExperimentoMejora[]> {
+  return pedir<ExperimentoMejora[]>("/experimentos");
 }

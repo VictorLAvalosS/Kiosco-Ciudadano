@@ -27,11 +27,22 @@ def leer_csv(ruta: Path) -> list[dict[str, str]]:
 
 
 def main(argv: list[str]) -> int:
-    """Punto de entrada del script."""
+    """Punto de entrada del script.
+
+    Uso:
+        python importar_csv.py [ruta.csv] [--origen importado|prueba_externa]
+    """
     settings.validar()
 
-    if len(argv) > 1:
-        ruta = Path(argv[1]).resolve()
+    argumentos = list(argv[1:])
+    origen = "importado"
+    if "--origen" in argumentos:
+        indice = argumentos.index("--origen")
+        origen = argumentos[indice + 1] if indice + 1 < len(argumentos) else "importado"
+        argumentos = argumentos[:indice] + argumentos[indice + 2 :]
+
+    if argumentos:
+        ruta = Path(argumentos[0]).resolve()
     else:
         ruta = settings.data_dir / "etiquetas_ejemplo.csv"
 
@@ -40,10 +51,12 @@ def main(argv: list[str]) -> int:
         return 1
 
     filas = leer_csv(ruta)
-    print(f"[INFO] Archivo leído: {ruta} ({len(filas)} filas)")
+    print(f"[INFO] Archivo leído: {ruta} ({len(filas)} filas) · origen='{origen}'")
 
     with SessionLocal() as db:
-        resultado = importar_solicitudes(db, filas, etiquetado_por="Importación CSV")
+        resultado = importar_solicitudes(
+            db, filas, etiquetado_por="Importación CSV", origen=origen
+        )
 
     print("[RESULTADO]")
     print(f"  Filas totales : {resultado['total_filas']}")

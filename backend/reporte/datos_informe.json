@@ -1,0 +1,1860 @@
+{
+  "meta": {
+    "generado_por": "exportar_datos_informe.py",
+    "opciones": {
+      "textos_ejemplo": []
+    },
+    "fecha_generacion": "2026-11-16T18:59:30"
+  },
+  "cabecera": {
+    "fecha_generacion": "2026-11-16T18:59:30",
+    "version_modelo": "v6",
+    "version_prueba": "prueba-g3",
+    "metodo_evaluacion": "conjunto_prueba_fijo",
+    "n_entrenamiento": 464,
+    "n_prueba_fija": 116,
+    "n_prueba_externa": 40,
+    "n_pool_etiquetas": 580,
+    "hash_datos": "76ea27372094",
+    "nombre_archivo": "informe_agente_v6_2026-11-16",
+    "umbrales": {
+      "confianza": 60.0,
+      "margen": 15.0
+    }
+  },
+  "calidad": {
+    "total": 580,
+    "por_categoria": {
+      "alumbrado": 73,
+      "limpieza": 73,
+      "calles": 73,
+      "agua": 73,
+      "seguridad": 72,
+      "areas_verdes": 72,
+      "drenaje": 72,
+      "contaminacion": 72
+    },
+    "por_prioridad": {
+      "ALTA": 248,
+      "MEDIA": 229,
+      "BAJA": 103
+    },
+    "desbalance": {
+      "maximo_por_clase": 73,
+      "minimo_por_clase": 72,
+      "razon_max_min": 1.014,
+      "coeficiente_variacion": 0.0069
+    },
+    "longitud": {
+      "min_palabras": 8,
+      "max_palabras": 39,
+      "media_palabras": 26.37,
+      "mediana_palabras": 28.0
+    },
+    "duplicados_exactos": {
+      "grupos": 0,
+      "registros_extra": 0,
+      "ejemplos": []
+    },
+    "casi_duplicados": {
+      "umbral": 0.85,
+      "n_grupos": 569,
+      "registros_extra": 11,
+      "n_grupos_con_duplicados": 11,
+      "grupos": [
+        {
+          "grupo": "g81",
+          "n": 2,
+          "ejemplos": [
+            "Quiero reportar un problema en el barrio: las ramas de un árbol grande en la cuadra del tanque de agua están tocando los cables eléctricos y requieren poda.",
+            "Quiero reportar un problema en el barrio: las ramas de un árbol grande en la cuadra del tanque de agua están tocando los cables eléctricos y requieren poda y na"
+          ]
+        },
+        {
+          "grupo": "g104",
+          "n": 2,
+          "ejemplos": [
+            "Hacemos conocer este reclamo: hay acumulación de basura podrida con presencia de moscas y roedores al lado del parque infantil.",
+            "Hay acumulación de basura podrida con presencia de moscas y roedores al lado del parque infantil."
+          ]
+        },
+        {
+          "grupo": "g110",
+          "n": 2,
+          "ejemplos": [
+            "Por favor necesitamos ayuda urgente: vehículos pesados estacionados en la esquina del módulo policial dejan sus motores encendidos botando humo negro y nadie se",
+            "Por favor necesitamos ayuda urgente: vehículos pesados estacionados en la esquina del módulo policial dejan sus motores encendidos botando humo negro, por favor"
+          ]
+        },
+        {
+          "grupo": "g115",
+          "n": 2,
+          "ejemplos": [
+            "Solicitamos intervención de la OTB porque el rompemuelles al final de la calle pavimentada está destruido y quedaron fierros salidos que pinchan llantas, por fa",
+            "Solicitamos intervención de la OTB porque el rompemuelles al final de la calle pavimentada está destruido y quedaron fierros salidos que pinchan llantas y nadie"
+          ]
+        },
+        {
+          "grupo": "g144",
+          "n": 2,
+          "ejemplos": [
+            "Vecinos informan que un vecino está quemando llantas y plásticos al lado del parque infantil generando humo negro y tóxico, esperamos respuesta de la directiva.",
+            "Vecinos informan que un vecino está quemando llantas y plásticos al lado del parque infantil generando humo negro y tóxico, por favor dar solución pronto."
+          ]
+        },
+        {
+          "grupo": "g168",
+          "n": 2,
+          "ejemplos": [
+            "Por favor necesitamos ayuda urgente: se necesitan rondas de vigilancia en el ingreso principal de nuestra OTB porque asaltan a quienes salen temprano a trabajar",
+            "Se necesitan rondas de vigilancia en el ingreso principal de nuestra OTB porque asaltan a quienes salen temprano a trabajar, esto afecta a todas las familias de"
+          ]
+        },
+        {
+          "grupo": "g178",
+          "n": 2,
+          "ejemplos": [
+            "Quiero reportar un problema en el barrio: abandonaron muebles viejos, colchones y llantas frente a la unidad educativa de la zona generando un microbasural y na",
+            "Buenos días directiva, abandonaron muebles viejos, colchones y llantas frente a la unidad educativa de la zona generando un microbasural y nadie se hace cargo h"
+          ]
+        },
+        {
+          "grupo": "g233",
+          "n": 2,
+          "ejemplos": [
+            "Buenos días directiva, las cámaras de seguridad vecinal en la calle 2 de la urbanización están apagadas o fuera de servicio y nadie se hace cargo hasta ahora.",
+            "Buenos días directiva, las cámaras de seguridad vecinal en la calle 2 de la urbanización están apagadas o fuera de servicio."
+          ]
+        },
+        {
+          "grupo": "g249",
+          "n": 2,
+          "ejemplos": [
+            "Hacemos conocer este reclamo: el carro recolector pasó muy rápido a media cuadra de la sede social y dejó la mitad de la basura regada en la calle.",
+            "El carro recolector pasó muy rápido a media cuadra de la sede social y dejó la mitad de la basura regada en la calle, esperamos respuesta de la directiva."
+          ]
+        },
+        {
+          "grupo": "g398",
+          "n": 2,
+          "ejemplos": [
+            "Es urgente atender esto: el canal o torrentera en la calle Sucre esquina 16 de Julio está contaminado con desechos químicos y despide mal olor, esto afecta a to",
+            "Buenos días directiva, el canal o torrentera en la calle Sucre esquina 16 de Julio está contaminado con desechos químicos y despide mal olor, esto afecta a toda"
+          ]
+        }
+      ]
+    },
+    "etiquetas_contradictorias": {
+      "n": 0,
+      "ejemplos": []
+    },
+    "vocabulario_unico": 726
+  },
+  "parametros": {
+    "version": "v6",
+    "fecha": "2026-11-16T22:54:45.861938+00:00",
+    "algoritmo_categoria": "LinearSVC (calibrado)",
+    "algoritmo_prioridad": "Naive Bayes Multinomial",
+    "hiperparametros": {
+      "vectorizador": {
+        "min_df": 1,
+        "algoritmo": "LinearSVC (calibrado)",
+        "parametros": {
+          "C": 5.0
+        },
+        "ngram_range": [
+          1,
+          1
+        ]
+      },
+      "categoria": {
+        "C": 5.0,
+        "alpha": null,
+        "class_weight": "balanced",
+        "max_iter": 1000,
+        "calibrado": true
+      },
+      "prioridad": {
+        "C": null,
+        "alpha": 0.1,
+        "class_weight": null,
+        "max_iter": null,
+        "calibrado": false
+      }
+    },
+    "tfidf": {
+      "n_caracteristicas": 697,
+      "tamano_vocabulario": 697,
+      "ngram_range": [
+        1,
+        1
+      ],
+      "min_df": 1,
+      "sublinear_tf": true,
+      "n_caracteristicas_prioridad": 697
+    },
+    "division": {
+      "esquema": "entrenamiento + conjunto de prueba fijo reservado por grupos de casi-duplicados (comparabilidad entre versiones)",
+      "semilla": 42,
+      "entrenamiento": 464,
+      "prueba_fija": 116,
+      "prueba_externa": 40,
+      "proporcion_entrenamiento": 0.8,
+      "proporcion_prueba": 0.2,
+      "folds_max": 5,
+      "validacion_cruzada": "StratifiedGroupKFold / StratifiedKFold agrupada por casi-duplicados"
+    },
+    "umbrales": {
+      "confianza": 60.0,
+      "margen": 15.0
+    },
+    "n_entrenamiento": 464,
+    "n_prueba_fija": 116,
+    "n_prueba_externa": 40,
+    "version_prueba": "prueba-g3",
+    "metodo_evaluacion": "conjunto_prueba_fijo",
+    "comparacion_algoritmos": {
+      "ganador_categoria": "LinearSVC (calibrado)",
+      "ganador_prioridad": "Naive Bayes Multinomial",
+      "categoria": {
+        "LinearSVC (calibrado)": {
+          "accuracy": 0.8987,
+          "f1_macro": 0.8988,
+          "recall_macro": 0.8985,
+          "precision_macro": 0.9004
+        },
+        "Regresión Logística": {
+          "accuracy": 0.8858,
+          "f1_macro": 0.8854,
+          "recall_macro": 0.8855,
+          "precision_macro": 0.8868
+        },
+        "Naive Bayes Multinomial": {
+          "accuracy": 0.8578,
+          "f1_macro": 0.8577,
+          "recall_macro": 0.8575,
+          "precision_macro": 0.8615
+        }
+      },
+      "prioridad": {
+        "LinearSVC (calibrado)": {
+          "accuracy": 0.8082,
+          "f1_macro": 0.8049,
+          "recall_macro": 0.7925,
+          "precision_macro": 0.8247
+        },
+        "Regresión Logística": {
+          "accuracy": 0.8017,
+          "f1_macro": 0.7941,
+          "recall_macro": 0.7872,
+          "precision_macro": 0.8042
+        },
+        "Naive Bayes Multinomial": {
+          "accuracy": 0.7392,
+          "f1_macro": 0.673,
+          "recall_macro": 0.6601,
+          "precision_macro": 0.8179
+        }
+      }
+    },
+    "eficiencia": {
+      "fecha_medicion": "2026-11-16T22:57:57+00:00",
+      "n_predicciones": 500,
+      "latencia_p95_ms": 428.267,
+      "tamano_modelo_kb": 292.87,
+      "latencia_media_ms": 111.864,
+      "n_textos_distintos": 116,
+      "tiempo_entrenamiento_s": 193.2795
+    }
+  },
+  "librerias": {
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.1.1",
+    "joblib": "1.6.0",
+    "fastapi": "0.163.0",
+    "starlette": "1.10.0",
+    "pydantic": "2.14.3",
+    "uvicorn": "0.54.0",
+    "sqlalchemy": "2.1.8",
+    "alembic": "1.20.1",
+    "psycopg2-binary": "2.9.13",
+    "python-dotenv": "1.2.3",
+    "pytest": "9.2.0",
+    "httpx": "0.28.1"
+  },
+  "comparacion_algoritmos": {
+    "ganador_categoria": "LinearSVC (calibrado)",
+    "ganador_prioridad": "Naive Bayes Multinomial",
+    "categoria": {
+      "LinearSVC (calibrado)": {
+        "accuracy": 0.8987,
+        "f1_macro": 0.8988,
+        "recall_macro": 0.8985,
+        "precision_macro": 0.9004
+      },
+      "Regresión Logística": {
+        "accuracy": 0.8858,
+        "f1_macro": 0.8854,
+        "recall_macro": 0.8855,
+        "precision_macro": 0.8868
+      },
+      "Naive Bayes Multinomial": {
+        "accuracy": 0.8578,
+        "f1_macro": 0.8577,
+        "recall_macro": 0.8575,
+        "precision_macro": 0.8615
+      }
+    },
+    "prioridad": {
+      "LinearSVC (calibrado)": {
+        "accuracy": 0.8082,
+        "f1_macro": 0.8049,
+        "recall_macro": 0.7925,
+        "precision_macro": 0.8247
+      },
+      "Regresión Logística": {
+        "accuracy": 0.8017,
+        "f1_macro": 0.7941,
+        "recall_macro": 0.7872,
+        "precision_macro": 0.8042
+      },
+      "Naive Bayes Multinomial": {
+        "accuracy": 0.7392,
+        "f1_macro": 0.673,
+        "recall_macro": 0.6601,
+        "precision_macro": 0.8179
+      }
+    }
+  },
+  "metricas": {
+    "categoria": {
+      "prueba_fija": {
+        "accuracy": 0.9569,
+        "precision_macro": 0.9575,
+        "recall_macro": 0.9565,
+        "f1_macro": 0.9568,
+        "n": 116,
+        "wilson_accuracy": {
+          "valor": 0.9569,
+          "bajo": 0.9031,
+          "alto": 0.9815,
+          "n": 116,
+          "aciertos": 111,
+          "z": 1.96
+        },
+        "wilson_por_clase": [
+          {
+            "clase": "alumbrado",
+            "tp": 15,
+            "fp": 0,
+            "fn": 0,
+            "soporte": 15,
+            "precision_wilson": {
+              "valor": 1.0,
+              "bajo": 0.7961,
+              "alto": 1.0,
+              "n": 15,
+              "aciertos": 15,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 1.0,
+              "bajo": 0.7961,
+              "alto": 1.0,
+              "n": 15,
+              "aciertos": 15,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "limpieza",
+            "tp": 15,
+            "fp": 0,
+            "fn": 0,
+            "soporte": 15,
+            "precision_wilson": {
+              "valor": 1.0,
+              "bajo": 0.7961,
+              "alto": 1.0,
+              "n": 15,
+              "aciertos": 15,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 1.0,
+              "bajo": 0.7961,
+              "alto": 1.0,
+              "n": 15,
+              "aciertos": 15,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "calles",
+            "tp": 14,
+            "fp": 1,
+            "fn": 1,
+            "soporte": 15,
+            "precision_wilson": {
+              "valor": 0.9333,
+              "bajo": 0.7018,
+              "alto": 0.9881,
+              "n": 15,
+              "aciertos": 14,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 0.9333,
+              "bajo": 0.7018,
+              "alto": 0.9881,
+              "n": 15,
+              "aciertos": 14,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "agua",
+            "tp": 14,
+            "fp": 0,
+            "fn": 0,
+            "soporte": 14,
+            "precision_wilson": {
+              "valor": 1.0,
+              "bajo": 0.7847,
+              "alto": 1.0,
+              "n": 14,
+              "aciertos": 14,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 1.0,
+              "bajo": 0.7847,
+              "alto": 1.0,
+              "n": 14,
+              "aciertos": 14,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "seguridad",
+            "tp": 14,
+            "fp": 2,
+            "fn": 1,
+            "soporte": 15,
+            "precision_wilson": {
+              "valor": 0.875,
+              "bajo": 0.6398,
+              "alto": 0.965,
+              "n": 16,
+              "aciertos": 14,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 0.9333,
+              "bajo": 0.7018,
+              "alto": 0.9881,
+              "n": 15,
+              "aciertos": 14,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "areas_verdes",
+            "tp": 13,
+            "fp": 1,
+            "fn": 1,
+            "soporte": 14,
+            "precision_wilson": {
+              "valor": 0.9286,
+              "bajo": 0.6853,
+              "alto": 0.9873,
+              "n": 14,
+              "aciertos": 13,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 0.9286,
+              "bajo": 0.6853,
+              "alto": 0.9873,
+              "n": 14,
+              "aciertos": 13,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "drenaje",
+            "tp": 14,
+            "fp": 0,
+            "fn": 0,
+            "soporte": 14,
+            "precision_wilson": {
+              "valor": 1.0,
+              "bajo": 0.7847,
+              "alto": 1.0,
+              "n": 14,
+              "aciertos": 14,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 1.0,
+              "bajo": 0.7847,
+              "alto": 1.0,
+              "n": 14,
+              "aciertos": 14,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "contaminacion",
+            "tp": 12,
+            "fp": 1,
+            "fn": 2,
+            "soporte": 14,
+            "precision_wilson": {
+              "valor": 0.9231,
+              "bajo": 0.6669,
+              "alto": 0.9863,
+              "n": 13,
+              "aciertos": 12,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 0.8571,
+              "bajo": 0.6006,
+              "alto": 0.9599,
+              "n": 14,
+              "aciertos": 12,
+              "z": 1.96
+            }
+          }
+        ],
+        "metricas_por_clase": {
+          "agua": {
+            "f1": 1.0,
+            "recall": 1.0,
+            "soporte": 14,
+            "precision": 1.0
+          },
+          "calles": {
+            "f1": 0.9333,
+            "recall": 0.9333,
+            "soporte": 15,
+            "precision": 0.9333
+          },
+          "drenaje": {
+            "f1": 1.0,
+            "recall": 1.0,
+            "soporte": 14,
+            "precision": 1.0
+          },
+          "limpieza": {
+            "f1": 1.0,
+            "recall": 1.0,
+            "soporte": 15,
+            "precision": 1.0
+          },
+          "alumbrado": {
+            "f1": 1.0,
+            "recall": 1.0,
+            "soporte": 15,
+            "precision": 1.0
+          },
+          "seguridad": {
+            "f1": 0.9032,
+            "recall": 0.9333,
+            "soporte": 15,
+            "precision": 0.875
+          },
+          "areas_verdes": {
+            "f1": 0.9286,
+            "recall": 0.9286,
+            "soporte": 14,
+            "precision": 0.9286
+          },
+          "contaminacion": {
+            "f1": 0.8889,
+            "recall": 0.8571,
+            "soporte": 14,
+            "precision": 0.9231
+          }
+        }
+      },
+      "externa": {
+        "accuracy": 0.85,
+        "precision_macro": 0.8685,
+        "recall_macro": 0.85,
+        "f1_macro": 0.8477,
+        "n": 40,
+        "wilson_accuracy": {
+          "valor": 0.85,
+          "bajo": 0.7093,
+          "alto": 0.9294,
+          "n": 40,
+          "aciertos": 34,
+          "z": 1.96
+        },
+        "wilson_por_clase": [
+          {
+            "clase": "alumbrado",
+            "tp": 4,
+            "fp": 1,
+            "fn": 1,
+            "soporte": 5,
+            "precision_wilson": {
+              "valor": 0.8,
+              "bajo": 0.3755,
+              "alto": 0.9638,
+              "n": 5,
+              "aciertos": 4,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 0.8,
+              "bajo": 0.3755,
+              "alto": 0.9638,
+              "n": 5,
+              "aciertos": 4,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "limpieza",
+            "tp": 3,
+            "fp": 0,
+            "fn": 2,
+            "soporte": 5,
+            "precision_wilson": {
+              "valor": 1.0,
+              "bajo": 0.4385,
+              "alto": 1.0,
+              "n": 3,
+              "aciertos": 3,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 0.6,
+              "bajo": 0.2307,
+              "alto": 0.8824,
+              "n": 5,
+              "aciertos": 3,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "calles",
+            "tp": 5,
+            "fp": 2,
+            "fn": 0,
+            "soporte": 5,
+            "precision_wilson": {
+              "valor": 0.7143,
+              "bajo": 0.3589,
+              "alto": 0.9178,
+              "n": 7,
+              "aciertos": 5,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 1.0,
+              "bajo": 0.5655,
+              "alto": 1.0,
+              "n": 5,
+              "aciertos": 5,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "agua",
+            "tp": 5,
+            "fp": 1,
+            "fn": 0,
+            "soporte": 5,
+            "precision_wilson": {
+              "valor": 0.8333,
+              "bajo": 0.4365,
+              "alto": 0.9699,
+              "n": 6,
+              "aciertos": 5,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 1.0,
+              "bajo": 0.5655,
+              "alto": 1.0,
+              "n": 5,
+              "aciertos": 5,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "seguridad",
+            "tp": 4,
+            "fp": 1,
+            "fn": 1,
+            "soporte": 5,
+            "precision_wilson": {
+              "valor": 0.8,
+              "bajo": 0.3755,
+              "alto": 0.9638,
+              "n": 5,
+              "aciertos": 4,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 0.8,
+              "bajo": 0.3755,
+              "alto": 0.9638,
+              "n": 5,
+              "aciertos": 4,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "areas_verdes",
+            "tp": 4,
+            "fp": 1,
+            "fn": 1,
+            "soporte": 5,
+            "precision_wilson": {
+              "valor": 0.8,
+              "bajo": 0.3755,
+              "alto": 0.9638,
+              "n": 5,
+              "aciertos": 4,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 0.8,
+              "bajo": 0.3755,
+              "alto": 0.9638,
+              "n": 5,
+              "aciertos": 4,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "drenaje",
+            "tp": 4,
+            "fp": 0,
+            "fn": 1,
+            "soporte": 5,
+            "precision_wilson": {
+              "valor": 1.0,
+              "bajo": 0.5101,
+              "alto": 1.0,
+              "n": 4,
+              "aciertos": 4,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 0.8,
+              "bajo": 0.3755,
+              "alto": 0.9638,
+              "n": 5,
+              "aciertos": 4,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "contaminacion",
+            "tp": 5,
+            "fp": 0,
+            "fn": 0,
+            "soporte": 5,
+            "precision_wilson": {
+              "valor": 1.0,
+              "bajo": 0.5655,
+              "alto": 1.0,
+              "n": 5,
+              "aciertos": 5,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 1.0,
+              "bajo": 0.5655,
+              "alto": 1.0,
+              "n": 5,
+              "aciertos": 5,
+              "z": 1.96
+            }
+          }
+        ],
+        "metricas_por_clase": {
+          "agua": {
+            "f1": 0.9091,
+            "recall": 1.0,
+            "soporte": 5,
+            "precision": 0.8333
+          },
+          "calles": {
+            "f1": 0.8333,
+            "recall": 1.0,
+            "soporte": 5,
+            "precision": 0.7143
+          },
+          "drenaje": {
+            "f1": 0.8889,
+            "recall": 0.8,
+            "soporte": 5,
+            "precision": 1.0
+          },
+          "limpieza": {
+            "f1": 0.75,
+            "recall": 0.6,
+            "soporte": 5,
+            "precision": 1.0
+          },
+          "alumbrado": {
+            "f1": 0.8,
+            "recall": 0.8,
+            "soporte": 5,
+            "precision": 0.8
+          },
+          "seguridad": {
+            "f1": 0.8,
+            "recall": 0.8,
+            "soporte": 5,
+            "precision": 0.8
+          },
+          "areas_verdes": {
+            "f1": 0.8,
+            "recall": 0.8,
+            "soporte": 5,
+            "precision": 0.8
+          },
+          "contaminacion": {
+            "f1": 1.0,
+            "recall": 1.0,
+            "soporte": 5,
+            "precision": 1.0
+          }
+        }
+      }
+    },
+    "prioridad": {
+      "prueba_fija": {
+        "accuracy": 0.931,
+        "precision_macro": 0.946,
+        "recall_macro": 0.9194,
+        "f1_macro": 0.9314,
+        "n": 116,
+        "wilson_accuracy": {
+          "valor": 0.931,
+          "bajo": 0.8698,
+          "alto": 0.9646,
+          "n": 116,
+          "aciertos": 108,
+          "z": 1.96
+        },
+        "wilson_por_clase": [
+          {
+            "clase": "ALTA",
+            "tp": 54,
+            "fp": 4,
+            "fn": 3,
+            "soporte": 57,
+            "precision_wilson": {
+              "valor": 0.931,
+              "bajo": 0.8357,
+              "alto": 0.9729,
+              "n": 58,
+              "aciertos": 54,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 0.9474,
+              "bajo": 0.8563,
+              "alto": 0.9819,
+              "n": 57,
+              "aciertos": 54,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "MEDIA",
+            "tp": 39,
+            "fp": 4,
+            "fn": 3,
+            "soporte": 42,
+            "precision_wilson": {
+              "valor": 0.907,
+              "bajo": 0.784,
+              "alto": 0.9632,
+              "n": 43,
+              "aciertos": 39,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 0.9286,
+              "bajo": 0.8099,
+              "alto": 0.9754,
+              "n": 42,
+              "aciertos": 39,
+              "z": 1.96
+            }
+          },
+          {
+            "clase": "BAJA",
+            "tp": 15,
+            "fp": 0,
+            "fn": 2,
+            "soporte": 17,
+            "precision_wilson": {
+              "valor": 1.0,
+              "bajo": 0.7961,
+              "alto": 1.0,
+              "n": 15,
+              "aciertos": 15,
+              "z": 1.96
+            },
+            "recall_wilson": {
+              "valor": 0.8824,
+              "bajo": 0.6566,
+              "alto": 0.9671,
+              "n": 17,
+              "aciertos": 15,
+              "z": 1.96
+            }
+          }
+        ],
+        "metricas_por_clase": {
+          "ALTA": {
+            "f1": 0.9391,
+            "recall": 0.9474,
+            "soporte": 57,
+            "precision": 0.931
+          },
+          "BAJA": {
+            "f1": 0.9375,
+            "recall": 0.8824,
+            "soporte": 17,
+            "precision": 1.0
+          },
+          "MEDIA": {
+            "f1": 0.9176,
+            "recall": 0.9286,
+            "soporte": 42,
+            "precision": 0.907
+          }
+        }
+      },
+      "externa": {
+        "accuracy": 0.45,
+        "f1_macro": 0.4305,
+        "n": 40,
+        "wilson_accuracy": {
+          "valor": 0.45,
+          "bajo": 0.3071,
+          "alto": 0.6017,
+          "n": 40,
+          "aciertos": 18,
+          "z": 1.96
+        },
+        "wilson_por_clase": [],
+        "metricas_por_clase": {}
+      }
+    }
+  },
+  "matrices_confusion": {
+    "categoria": {
+      "etiquetas": [
+        "alumbrado",
+        "limpieza",
+        "calles",
+        "agua",
+        "seguridad",
+        "areas_verdes",
+        "drenaje",
+        "contaminacion"
+      ],
+      "absoluta": [
+        [
+          15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          14,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          14,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          14,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          13,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          14,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          12
+        ]
+      ],
+      "normalizada": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.9333,
+          0.0,
+          0.0,
+          0.0667,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.9333,
+          0.0,
+          0.0,
+          0.0667
+        ],
+        [
+          0.0,
+          0.0,
+          0.0714,
+          0.0,
+          0.0,
+          0.9286,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1429,
+          0.0,
+          0.0,
+          0.8571
+        ]
+      ]
+    },
+    "prioridad": {
+      "etiquetas": [
+        "ALTA",
+        "MEDIA",
+        "BAJA"
+      ],
+      "absoluta": [
+        [
+          54,
+          3,
+          0
+        ],
+        [
+          3,
+          39,
+          0
+        ],
+        [
+          1,
+          1,
+          15
+        ]
+      ],
+      "normalizada": [
+        [
+          0.9474,
+          0.0526,
+          0.0
+        ],
+        [
+          0.0714,
+          0.9286,
+          0.0
+        ],
+        [
+          0.0588,
+          0.0588,
+          0.8824
+        ]
+      ]
+    }
+  },
+  "baselines": {
+    "categoria": {
+      "n_prueba": 116,
+      "mayoritaria": {
+        "clase": "agua",
+        "accuracy": 0.1207,
+        "f1_macro": 0.0269,
+        "recall_macro": 0.125,
+        "precision_macro": 0.0151
+      },
+      "aleatoria_estratificada": {
+        "accuracy": 0.1293,
+        "f1_macro": 0.1251,
+        "recall_macro": 0.1292,
+        "precision_macro": 0.1306
+      }
+    },
+    "prioridad": {
+      "n_prueba": 116,
+      "mayoritaria": {
+        "clase": "ALTA",
+        "accuracy": 0.4914,
+        "f1_macro": 0.2197,
+        "recall_macro": 0.3333,
+        "precision_macro": 0.1638
+      },
+      "aleatoria_estratificada": {
+        "accuracy": 0.3707,
+        "f1_macro": 0.3142,
+        "recall_macro": 0.3166,
+        "precision_macro": 0.318
+      }
+    }
+  },
+  "calibracion": {
+    "n": 116,
+    "ece": 0.1288,
+    "brier": 0.0643,
+    "tabla": [
+      {
+        "n": 6,
+        "rango": [
+          0.0,
+          0.5
+        ],
+        "exactitud": 0.1667,
+        "confianza_media": 0.398
+      },
+      {
+        "n": 2,
+        "rango": [
+          0.5,
+          0.6
+        ],
+        "exactitud": 1.0,
+        "confianza_media": 0.5762
+      },
+      {
+        "n": 0,
+        "rango": [
+          0.6,
+          0.7
+        ],
+        "exactitud": null,
+        "confianza_media": null
+      },
+      {
+        "n": 8,
+        "rango": [
+          0.7,
+          0.8
+        ],
+        "exactitud": 1.0,
+        "confianza_media": 0.7448
+      },
+      {
+        "n": 60,
+        "rango": [
+          0.8,
+          0.9
+        ],
+        "exactitud": 1.0,
+        "confianza_media": 0.8827
+      },
+      {
+        "n": 40,
+        "rango": [
+          0.9,
+          1.0
+        ],
+        "exactitud": 1.0,
+        "confianza_media": 0.9095
+      }
+    ]
+  },
+  "cobertura_precision": [
+    {
+      "n": 116,
+      "umbral": 0.0,
+      "cobertura": 1.0,
+      "precision": 0.9569
+    },
+    {
+      "n": 114,
+      "umbral": 0.4,
+      "cobertura": 0.9828,
+      "precision": 0.9649
+    },
+    {
+      "n": 110,
+      "umbral": 0.5,
+      "cobertura": 0.9483,
+      "precision": 1.0
+    },
+    {
+      "n": 108,
+      "umbral": 0.6,
+      "cobertura": 0.931,
+      "precision": 1.0
+    },
+    {
+      "n": 108,
+      "umbral": 0.7,
+      "cobertura": 0.931,
+      "precision": 1.0
+    },
+    {
+      "n": 100,
+      "umbral": 0.8,
+      "cobertura": 0.8621,
+      "precision": 1.0
+    },
+    {
+      "n": 40,
+      "umbral": 0.9,
+      "cobertura": 0.3448,
+      "precision": 1.0
+    },
+    {
+      "n": 0,
+      "umbral": 0.95,
+      "cobertura": 0.0,
+      "precision": null
+    }
+  ],
+  "errores": [
+    {
+      "real": "seguridad",
+      "texto": "Se escuchan detonaciones de arma de fuego en la madrugada",
+      "predicha": "contaminacion",
+      "confianza": 0.4506
+    },
+    {
+      "real": "calles",
+      "texto": "Pedimos pintar un paso peatonal frente al colegio",
+      "predicha": "areas_verdes",
+      "confianza": 0.4487
+    },
+    {
+      "real": "areas_verdes",
+      "texto": "Las bancas del parque están rotas y no se pueden usar",
+      "predicha": "calles",
+      "confianza": 0.4322
+    },
+    {
+      "real": "contaminacion",
+      "texto": "Alerta vecinal: hay un criadero clandestino de animales en el pasaje Los Pinos que genera olores fuertes y plagas, ya lleva varios días así.",
+      "predicha": "seguridad",
+      "confianza": 0.418
+    },
+    {
+      "real": "contaminacion",
+      "texto": "Es urgente atender esto: hay un criadero clandestino de animales en la calle 2 de la urbanización que genera olores fuertes y plagas y nadie se hace cargo hasta ahora.",
+      "predicha": "seguridad",
+      "confianza": 0.3803
+    }
+  ],
+  "curva_aprendizaje": {
+    "tamanos": [
+      74,
+      148,
+      222,
+      296,
+      371
+    ],
+    "f1_validacion": [
+      0.4428,
+      0.7373,
+      0.8673,
+      0.9065,
+      0.927
+    ],
+    "f1_entrenamiento": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "eficiencia": {
+    "fecha_medicion": "2026-11-16T22:57:57+00:00",
+    "n_predicciones": 500,
+    "latencia_p95_ms": 428.267,
+    "tamano_modelo_kb": 292.87,
+    "latencia_media_ms": 111.864,
+    "n_textos_distintos": 116,
+    "tiempo_entrenamiento_s": 193.2795
+  },
+  "evolucion": [
+    {
+      "version": "v5",
+      "activo": false,
+      "algoritmo": "LinearSVC (calibrado)",
+      "n_entrenamiento": 464,
+      "n_prueba": 116,
+      "accuracy": 0.9569,
+      "f1_macro": 0.9568,
+      "f1_prioridad": 0.9314,
+      "version_prueba": "prueba-g3",
+      "eficiencia": {}
+    },
+    {
+      "version": "v6",
+      "activo": true,
+      "algoritmo": "LinearSVC (calibrado)",
+      "n_entrenamiento": 464,
+      "n_prueba": 116,
+      "accuracy": 0.9569,
+      "f1_macro": 0.9568,
+      "f1_prioridad": 0.9314,
+      "version_prueba": "prueba-g3",
+      "eficiencia": {
+        "fecha_medicion": "2026-11-16T22:57:57+00:00",
+        "n_predicciones": 500,
+        "latencia_p95_ms": 428.267,
+        "tamano_modelo_kb": 292.87,
+        "latencia_media_ms": 111.864,
+        "n_textos_distintos": 116,
+        "tiempo_entrenamiento_s": 193.2795
+      }
+    }
+  ],
+  "versiones_excluidas": [
+    {
+      "version": "v1",
+      "n_entrenamiento": 64,
+      "motivo": "sin ids de entrenamiento registrados (versión anterior a la corrección)"
+    },
+    {
+      "version": "v2",
+      "n_entrenamiento": 564,
+      "motivo": "sin ids de entrenamiento registrados (versión anterior a la corrección)"
+    },
+    {
+      "version": "v3",
+      "n_entrenamiento": 564,
+      "motivo": "sin ids de entrenamiento registrados (versión anterior a la corrección)"
+    },
+    {
+      "version": "v4",
+      "n_entrenamiento": 464,
+      "motivo": "sin ids de entrenamiento registrados (versión anterior a la corrección)"
+    }
+  ],
+  "ejemplos_proceso": [
+    {
+      "texto": "Hay una fuga de agua potable en la tubería de la esquina y se pierde mucha agua",
+      "origen": "prueba_fija_alta_confianza",
+      "traza": {
+        "texto_original": "Hay una fuga de agua potable en la tubería de la esquina y se pierde mucha agua",
+        "texto_normalizado": "hay una fuga de agua potable en la tuberia de la esquina y se pierde mucha agua",
+        "tokens": [
+          "hay",
+          "una",
+          "fuga",
+          "de",
+          "agua",
+          "potable",
+          "en",
+          "la",
+          "tuberia",
+          "de",
+          "la",
+          "esquina",
+          "y",
+          "se",
+          "pierde",
+          "mucha",
+          "agua"
+        ],
+        "tokens_sin_stopwords": [
+          "fuga",
+          "agua",
+          "potable",
+          "tuberia",
+          "esquina",
+          "pierde",
+          "agua"
+        ],
+        "stopwords_eliminadas": [
+          "de",
+          "en",
+          "hay",
+          "la",
+          "mucha",
+          "se",
+          "una"
+        ],
+        "n_gramas": [
+          "fuga",
+          "agua",
+          "potable",
+          "tuberia",
+          "esquina",
+          "pierde",
+          "agua"
+        ],
+        "terminos_tfidf": [
+          {
+            "termino": "tuberia",
+            "tf": 1,
+            "idf": 5.5326,
+            "tfidf": 0.55784
+          },
+          {
+            "termino": "fuga",
+            "tf": 1,
+            "idf": 4.83945,
+            "tfidf": 0.48795
+          },
+          {
+            "termino": "agua",
+            "tf": 2,
+            "idf": 2.68769,
+            "tfidf": 0.45883
+          },
+          {
+            "termino": "potable",
+            "tf": 1,
+            "idf": 3.88394,
+            "tfidf": 0.39161
+          },
+          {
+            "termino": "esquina",
+            "tf": 1,
+            "idf": 2.92253,
+            "tfidf": 0.29467
+          }
+        ],
+        "puntajes_categoria": [
+          {
+            "clase": "agua",
+            "puntaje": 2.61188
+          },
+          {
+            "clase": "drenaje",
+            "puntaje": -0.0381
+          },
+          {
+            "clase": "areas_verdes",
+            "puntaje": -0.27468
+          },
+          {
+            "clase": "limpieza",
+            "puntaje": -0.38099
+          },
+          {
+            "clase": "alumbrado",
+            "puntaje": -0.42068
+          },
+          {
+            "clase": "contaminacion",
+            "puntaje": -0.50436
+          },
+          {
+            "clase": "calles",
+            "puntaje": -0.58696
+          },
+          {
+            "clase": "seguridad",
+            "puntaje": -0.67447
+          }
+        ],
+        "probabilidades_categoria": [
+          {
+            "clase": "agua",
+            "probabilidad": 0.9362
+          },
+          {
+            "clase": "drenaje",
+            "probabilidad": 0.0207
+          },
+          {
+            "clase": "areas_verdes",
+            "probabilidad": 0.013
+          },
+          {
+            "clase": "limpieza",
+            "probabilidad": 0.0078
+          },
+          {
+            "clase": "calles",
+            "probabilidad": 0.007
+          },
+          {
+            "clase": "alumbrado",
+            "probabilidad": 0.0061
+          },
+          {
+            "clase": "contaminacion",
+            "probabilidad": 0.0059
+          },
+          {
+            "clase": "seguridad",
+            "probabilidad": 0.0035
+          }
+        ],
+        "confianza_categoria": 93.62,
+        "margen_categoria": 91.55,
+        "decision": {
+          "confianza": 93.62,
+          "umbral_confianza": 60.0,
+          "cumple_confianza": true,
+          "margen": 91.55,
+          "umbral_margen": 15.0,
+          "cumple_margen": true,
+          "resultado": "automatica",
+          "categoria": "agua",
+          "prioridad": "ALTA"
+        },
+        "prioridad": {
+          "clase": "ALTA",
+          "puntajes": [
+            {
+              "clase": "ALTA",
+              "puntaje": -12.33097
+            },
+            {
+              "clase": "MEDIA",
+              "puntaje": -13.19262
+            },
+            {
+              "clase": "BAJA",
+              "puntaje": -15.08253
+            }
+          ],
+          "probabilidades": [
+            {
+              "clase": "ALTA",
+              "probabilidad": 0.6933
+            },
+            {
+              "clase": "MEDIA",
+              "probabilidad": 0.2868
+            },
+            {
+              "clase": "BAJA",
+              "probabilidad": 0.0199
+            }
+          ],
+          "confianza": 69.33,
+          "margen": 40.65
+        }
+      },
+      "matriz_documento_termino": [
+        {
+          "termino": "tuberia",
+          "tf": 1,
+          "idf": 5.5326,
+          "tfidf": 0.55784
+        },
+        {
+          "termino": "fuga",
+          "tf": 1,
+          "idf": 4.83945,
+          "tfidf": 0.48795
+        },
+        {
+          "termino": "agua",
+          "tf": 2,
+          "idf": 2.68769,
+          "tfidf": 0.45883
+        },
+        {
+          "termino": "potable",
+          "tf": 1,
+          "idf": 3.88394,
+          "tfidf": 0.39161
+        },
+        {
+          "termino": "esquina",
+          "tf": 1,
+          "idf": 2.92253,
+          "tfidf": 0.29467
+        }
+      ]
+    },
+    {
+      "texto": "Necesitamos un botón de auxilio en la parada de transporte",
+      "origen": "prueba_fija_dudosa",
+      "traza": {
+        "texto_original": "Necesitamos un botón de auxilio en la parada de transporte",
+        "texto_normalizado": "necesitamos un boton de auxilio en la parada de transporte",
+        "tokens": [
+          "necesitamos",
+          "un",
+          "boton",
+          "de",
+          "auxilio",
+          "en",
+          "la",
+          "parada",
+          "de",
+          "transporte"
+        ],
+        "tokens_sin_stopwords": [
+          "necesitamos",
+          "boton",
+          "auxilio",
+          "parada",
+          "transporte"
+        ],
+        "stopwords_eliminadas": [
+          "de",
+          "en",
+          "la",
+          "un"
+        ],
+        "n_gramas": [
+          "necesitamos",
+          "boton",
+          "auxilio",
+          "parada",
+          "transporte"
+        ],
+        "terminos_tfidf": [
+          {
+            "termino": "parada",
+            "tf": 1,
+            "idf": 4.25167,
+            "tfidf": 0.80811
+          },
+          {
+            "termino": "necesitamos",
+            "tf": 1,
+            "idf": 3.09899,
+            "tfidf": 0.58902
+          }
+        ],
+        "puntajes_categoria": [
+          {
+            "clase": "limpieza",
+            "puntaje": 0.14529
+          },
+          {
+            "clase": "areas_verdes",
+            "puntaje": 0.14101
+          },
+          {
+            "clase": "seguridad",
+            "puntaje": 0.11064
+          },
+          {
+            "clase": "calles",
+            "puntaje": -0.02713
+          },
+          {
+            "clase": "agua",
+            "puntaje": -0.04463
+          },
+          {
+            "clase": "drenaje",
+            "puntaje": -0.11671
+          },
+          {
+            "clase": "alumbrado",
+            "puntaje": -0.12077
+          },
+          {
+            "clase": "contaminacion",
+            "puntaje": -0.21343
+          }
+        ],
+        "probabilidades_categoria": [
+          {
+            "clase": "seguridad",
+            "probabilidad": 0.2581
+          },
+          {
+            "clase": "calles",
+            "probabilidad": 0.1813
+          },
+          {
+            "clase": "areas_verdes",
+            "probabilidad": 0.1726
+          },
+          {
+            "clase": "limpieza",
+            "probabilidad": 0.1709
+          },
+          {
+            "clase": "alumbrado",
+            "probabilidad": 0.0621
+          },
+          {
+            "clase": "agua",
+            "probabilidad": 0.0574
+          },
+          {
+            "clase": "contaminacion",
+            "probabilidad": 0.0556
+          },
+          {
+            "clase": "drenaje",
+            "probabilidad": 0.0418
+          }
+        ],
+        "confianza_categoria": 25.81,
+        "margen_categoria": 7.68,
+        "decision": {
+          "confianza": 25.81,
+          "umbral_confianza": 60.0,
+          "cumple_confianza": false,
+          "margen": 7.68,
+          "umbral_margen": 15.0,
+          "cumple_margen": false,
+          "resultado": "revision_humana",
+          "categoria": "seguridad",
+          "prioridad": "ALTA"
+        },
+        "prioridad": {
+          "clase": "ALTA",
+          "puntajes": [
+            {
+              "clase": "BAJA",
+              "puntaje": -7.5168
+            },
+            {
+              "clase": "ALTA",
+              "puntaje": -7.85531
+            },
+            {
+              "clase": "MEDIA",
+              "puntaje": -8.21866
+            }
+          ],
+          "probabilidades": [
+            {
+              "clase": "ALTA",
+              "probabilidad": 0.4324
+            },
+            {
+              "clase": "MEDIA",
+              "probabilidad": 0.2944
+            },
+            {
+              "clase": "BAJA",
+              "probabilidad": 0.2732
+            }
+          ],
+          "confianza": 43.24,
+          "margen": 13.8
+        }
+      },
+      "matriz_documento_termino": [
+        {
+          "termino": "parada",
+          "tf": 1,
+          "idf": 4.25167,
+          "tfidf": 0.80811
+        },
+        {
+          "termino": "necesitamos",
+          "tf": 1,
+          "idf": 3.09899,
+          "tfidf": 0.58902
+        }
+      ]
+    }
+  ]
+}

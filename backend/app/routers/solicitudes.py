@@ -23,6 +23,7 @@ from app.schemas import (
     SolicitudCreate,
     SolicitudOut,
 )
+from app.seguridad import verificar_api_key
 from app.serializadores import serializar_etiqueta, serializar_solicitud
 from app.servicio_modelo import predecir_con_explicacion
 from app.servicio_solicitudes import (
@@ -74,6 +75,9 @@ def crear_solicitud(payload: SolicitudCreate, db: Session = Depends(get_db)) -> 
         }
         solicitud.version_modelo = prediccion["version_modelo"]
         solicitud.latencia_ms = prediccion["latencia_ms"]
+        # Marca de revisión humana: si la confianza o el margen son bajos, el caso
+        # se deriva a revisión en lugar de forzar una categoría dudosa.
+        solicitud.requiere_revision = bool(prediccion.get("requiere_revision", False))
 
     db.commit()
     db.refresh(solicitud)
@@ -157,7 +161,11 @@ def asignar_solicitud(
     return serializar_solicitud(solicitud, _etiqueta_vigente(db, solicitud_id))
 
 
-@router.post("/solicitudes/{solicitud_id}/etiqueta", response_model=SolicitudOut)
+@router.post(
+    "/solicitudes/{solicitud_id}/etiqueta",
+    response_model=SolicitudOut,
+    dependencies=[Depends(verificar_api_key)],
+)
 def etiquetar_solicitud(
     solicitud_id: int, payload: EtiquetaCreate, db: Session = Depends(get_db)
 ) -> dict[str, Any]:
@@ -176,7 +184,11 @@ def etiquetar_solicitud(
     return serializar_solicitud(solicitud, _etiqueta_vigente(db, solicitud_id))
 
 
-@router.post("/solicitudes/importar", response_model=ImportarResponse)
+@router.post(
+    "/solicitudes/importar",
+    response_model=ImportarResponse,
+    dependencies=[Depends(verificar_api_key)],
+)
 async def importar(peticion: Request, db: Session = Depends(get_db)) -> dict[str, Any]:
     """Importa etiquetas desde un CSV (columnas: ID, Solicitud, Categoría, Prioridad).
 

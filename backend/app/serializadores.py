@@ -55,6 +55,7 @@ def serializar_solicitud(
         "probabilidades": probabilidades,
         "version_modelo": solicitud.version_modelo,
         "latencia_ms": solicitud.latencia_ms,
+        "requiere_revision": bool(solicitud.requiere_revision),
         "prediccion_detalle": prediccion_detalle,
         "etiquetada": etiqueta is not None,
         "etiqueta": serializar_etiqueta(etiqueta),
@@ -80,5 +81,18 @@ def serializar_modelo(modelo: Modelo) -> dict[str, Any]:
         "metricas_por_clase": modelo.metricas_por_clase,
         "curva_aprendizaje": modelo.curva_aprendizaje,
         "top_terminos": modelo.top_terminos,
+        "version_prueba": modelo.version_prueba,
+        "metodo_evaluacion": modelo.metodo_evaluacion,
+        "accuracy_prioridad": modelo.accuracy_prioridad,
+        "precision_prioridad": modelo.precision_prioridad,
+        "recall_prioridad": modelo.recall_prioridad,
+        "f1_prioridad": modelo.f1_prioridad,
+        "evaluacion": modelo.evaluacion,
+        # Trazabilidad: nº de ids usados al entrenar (no se exponen todos para no
+        # inflar la respuesta) y si la versión es comparable o no.
+        "n_ids_entrenamiento": len(modelo.ids_entrenamiento or []),
+        "valida_para_comparacion": bool(modelo.valida_para_comparacion),
+        "motivo_invalidez": modelo.motivo_invalidez or "",
+        "eficiencia": modelo.eficiencia or {},
         "activo": modelo.activo,
     }

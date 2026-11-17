@@ -1,19 +1,30 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { AdminSection, Categoria, Estadisticas, Modelo, Priority, Solicitud } from "@/types";
+import type {
+  AdminSection,
+  Categoria,
+  Estadisticas,
+  Modelo,
+  Priority,
+  Salud,
+  Solicitud,
+} from "@/types";
 import {
   asignarSolicitud,
   cambiarEstado,
   etiquetarSolicitud,
+  generarInforme,
   listarCategorias,
   listarSolicitudes,
   modeloActivo,
   obtenerEstadisticas,
+  obtenerSalud,
 } from "@/lib/api";
 import { crewForCategory, relativeTime } from "@/lib/catalogos";
 import { Icon } from "@/components/Icon";
 import { Brand } from "@/components/shared";
 import { ModelPage } from "@/components/ModelPage";
 import { EtiquetadoPage } from "@/components/EtiquetadoPage";
+import { PruebaAgente } from "@/components/PruebaAgente";
 import { CrewsPage, MapPage } from "@/components/OperationsModules";
 
 type UtilityPanel = "settings" | "support" | "profile" | null;
@@ -36,6 +47,7 @@ const SECTION_TITLES: Record<AdminSection, [string, string]> = {
   etiquetado: ["Entrenamiento", "del agente"],
   map: ["Mapa territorial", "de OTBs"],
   crews: ["Gestión de", "cuadrillas"],
+  prueba: ["Prueba del", "agente en vivo"],
   model: ["Laboratorio de", "inteligencia artificial"],
 };
 
@@ -57,6 +69,7 @@ export function Dashboard({
   const [solicitudes, setSolicitudes] = useState<Solicitud[]>([]);
   const [stats, setStats] = useState<Estadisticas | null>(null);
   const [modelo, setModelo] = useState<Modelo | null>(null);
+  const [salud, setSalud] = useState<Salud | null>(null);
   const [categorias, setCategorias] = useState<Categoria[]>([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
@@ -78,16 +91,19 @@ export function Dashboard({
     setCargando(true);
     setError("");
     try {
-      const [nuevasSolicitudes, nuevasStats, activo, nuevoCatalogo] = await Promise.all([
-        listarSolicitudes({ limite: 300 }),
-        obtenerEstadisticas(),
-        modeloActivo(),
-        listarCategorias(),
-      ]);
+      const [nuevasSolicitudes, nuevasStats, activo, nuevoCatalogo, nuevoSalud] =
+        await Promise.all([
+          listarSolicitudes({ limite: 300 }),
+          obtenerEstadisticas(),
+          modeloActivo(),
+          listarCategorias(),
+          obtenerSalud().catch(() => null),
+        ]);
       setSolicitudes(nuevasSolicitudes);
       setStats(nuevasStats);
       setModelo(activo);
       setCategorias(nuevoCatalogo);
+      setSalud(nuevoSalud);
     } catch (fallo) {
       setError(
         fallo instanceof Error
@@ -253,11 +269,18 @@ export function Dashboard({
             <span>Cuadrillas</span>
           </button>
           <button
+            className={activeSection === "prueba" ? "active" : ""}
+            onClick={() => setActiveSection("prueba")}
+          >
+            <Icon name="mic" />
+            <span>Prueba del agente</span>
+          </button>
+          <button
             className={activeSection === "model" ? "active" : ""}
             onClick={() => setActiveSection("model")}
           >
             <Icon name="bolt" />
-            <span>Modelo IA</span>
+            <span>Modelo Agente</span>
           </button>
         </nav>
         <div className="side-bottom">
@@ -462,6 +485,9 @@ export function Dashboard({
                           <span className="mini-confidence">
                             <i style={{ width: `${solicitud.confianza ?? 0}%` }} />
                           </span>
+                          {solicitud.requiere_revision && (
+                            <em className="review-tag">REQUIERE REVISIÓN</em>
+                          )}
                         </td>
                         <td>
                           <span className={`state ${solicitud.estado.toLowerCase().replace(" ", "-")}`}>
@@ -665,6 +691,9 @@ export function Dashboard({
               onDemo={solicitudes[0] ? () => onInspect(solicitudes[0]) : undefined}
             />
           )}
+          {activeSection === "prueba" && (
+            <PruebaAgente onBack={() => setActiveSection("overview")} />
+          )}
         </main>
       </div>
 
@@ -747,7 +776,10 @@ export function Dashboard({
                 <p>
                   Versión activa del modelo: <b>{modelo?.version ?? "sin modelo"}</b>
                   <br />
-                  Umbral de revisión humana: <b>confianza &lt; 70%</b>
+                  Umbral de revisión humana: <b>confianza &lt; {salud?.umbral_confianza ?? "—"}%</b> o{" "}
+                  <b>margen &lt; {salud?.umbral_margen ?? "—"}%</b>
+                  <br />
+                  Etiquetas registradas: <b>{salud?.n_etiquetas ?? stats?.etiquetadas ?? 0}</b>
                   <br />
                   Origen de datos: <b>Supabase PostgreSQL (backend FastAPI)</b>
                 </p>
@@ -769,17 +801,52 @@ export function Dashboard({
                 <small>CENTRO DE SOPORTE</small>
                 <h3>Estado del servicio</h3>
                 <p>
-                  Backend FastAPI: <b className="online-text">conectado</b>
+                  Backend FastAPI:{" "}
+                  <b className={salud?.estado === "ok" ? "online-text" : "offline-text"}>
+                    {salud ? salud.estado : "sin respuesta"}
+                  </b>
                   <br />
-                  Base de datos Supabase: <b className="online-text">conectada</b>
+                  Base de datos:{" "}
+                  <b className={salud?.base_datos === "conectada" ? "online-text" : "offline-text"}>
+                    {salud?.base_datos ?? "sin verificar"}
+                  </b>
+                  <br />
+                  Modelo activo: <b>{salud?.version_modelo ?? modelo?.version ?? "sin modelo"}</b>
+                  <br />
+                  Etiquetas registradas: <b>{salud?.n_etiquetas ?? 0}</b>
+                  <br />
+                  Clave de API: <b>{salud?.api_key_activa ? "requerida" : "no configurada"}</b>
                   <br />
                   Endpoint de la API: <b>/api → 127.0.0.1:8000</b>
                 </p>
                 <button
                   className="support-option"
-                  onClick={() => showNotice("Estado verificado correctamente")}
+                  onClick={() => {
+                    void cargar();
+                    showNotice("Estado del servicio verificado contra el backend");
+                  }}
                 >
                   Verificar conexión <Icon name="arrow" size={15} />
+                </button>
+                <button
+                  className="support-option"
+                  onClick={() => {
+                    void generarInforme({ generado_por: "Equipo # 3" })
+                      .then((respuesta) => {
+                        showNotice(
+                          `Informe #${respuesta.id} generado. Descárgalo en el Laboratorio de IA.`,
+                        );
+                        setUtilityPanel(null);
+                        setActiveSection("model");
+                      })
+                      .catch((fallo) =>
+                        showNotice(
+                          fallo instanceof Error ? fallo.message : "No se pudo generar el informe.",
+                        ),
+                      );
+                  }}
+                >
+                  Generar informe del agente <Icon name="arrow" size={15} />
                 </button>
               </>
             )}

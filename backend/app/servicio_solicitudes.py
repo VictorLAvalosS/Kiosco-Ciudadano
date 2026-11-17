@@ -91,12 +91,17 @@ def registrar_etiqueta(
 
 
 def importar_solicitudes(
-    db: Session, filas: Iterable[dict[str, str]], etiquetado_por: str = "Importación CSV"
+    db: Session,
+    filas: Iterable[dict[str, str]],
+    etiquetado_por: str = "Importación CSV",
+    origen: str = "importado",
 ) -> dict[str, Any]:
     """Importa filas (ID, Solicitud, Categoría, Prioridad) desde un CSV.
 
     Valida categoría y prioridad, evita duplicados por texto normalizado y
-    reporta las filas inválidas sin abortar el proceso completo.
+    reporta las filas inválidas sin abortar el proceso completo. `origen` permite
+    marcar el conjunto de prueba EXTERNO ("prueba_externa"), que nunca se usa para
+    entrenar.
     """
     total = 0
     importadas = 0
@@ -146,7 +151,7 @@ def importar_solicitudes(
             otb=(fila.get("OTB") or "Sin OTB").strip(),
             zona=(fila.get("Zona") or "Sin zona").strip(),
             estado="Sin asignar",
-            origen="importado",
+            origen=origen,
         )
         db.add(solicitud)
         db.flush()
