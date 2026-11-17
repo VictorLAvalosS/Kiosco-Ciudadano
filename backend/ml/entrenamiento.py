@@ -67,16 +67,28 @@ def _construir_vectorizador(
     )
 
 
-def _clasificador(nombre: str, n_folds: int, parametros: dict[str, Any] | None = None) -> Any:
-    """Devuelve un clasificador nuevo por nombre, aplicando hiperparámetros."""
+def _clasificador(
+    nombre: str,
+    n_folds: int,
+    parametros: dict[str, Any] | None = None,
+    calibrar: bool = True,
+) -> Any:
+    """Devuelve un clasificador nuevo por nombre, aplicando hiperparámetros.
+
+    `calibrar=False` deja el LinearSVC SIN la envoltura `CalibratedClassifierCV`.
+    Se usa en las etapas que solo necesitan `predict` (comparación de algoritmos,
+    rejilla de hiperparámetros y curva de aprendizaje): la calibración únicamente
+    aporta probabilidades y, al anidar una validación cruzada interna, multiplica
+    por `n_folds` el coste de esas etapas. El modelo FINAL sí se calibra.
+    """
     parametros = parametros or {}
     if nombre == "Naive Bayes Multinomial":
         return MultinomialNB(alpha=float(parametros.get("alpha", 1.0)))
     if nombre == "LinearSVC (calibrado)":
-        return CalibratedClassifierCV(
-            LinearSVC(class_weight="balanced", C=float(parametros.get("C", 1.0))),
-            cv=max(2, n_folds),
-        )
+        base = LinearSVC(class_weight="balanced", C=float(parametros.get("C", 1.0)))
+        if not calibrar:
+            return base
+        return CalibratedClassifierCV(base, cv=max(2, n_folds))
     return LogisticRegression(
         max_iter=2000,
         class_weight="balanced",
@@ -110,12 +122,22 @@ def _hay_una_sola_clase(etiquetas: list[str]) -> bool:
     return len(set(etiquetas)) < 2
 
 
-def candidatos(n_folds: int) -> dict[str, Callable[[], Any]]:
-    """Fábricas de los tres clasificadores que se comparan (sin ajuste)."""
+def candidatos(n_folds: int, calibrar: bool = True) -> dict[str, Callable[[], Any]]:
+    """Fábricas de los tres clasificadores que se comparan (sin ajuste).
+
+    `calibrar=False` se propaga a `_clasificador` (solo afecta al LinearSVC) y se
+    usa cuando el resultado se evalúa con `predict` y no se necesitan probabilidades.
+    """
     return {
-        "Naive Bayes Multinomial": lambda: _clasificador("Naive Bayes Multinomial", n_folds),
-        "Regresión Logística": lambda: _clasificador("Regresión Logística", n_folds),
-        "LinearSVC (calibrado)": lambda: _clasificador("LinearSVC (calibrado)", n_folds),
+        "Naive Bayes Multinomial": lambda: _clasificador(
+            "Naive Bayes Multinomial", n_folds, calibrar=calibrar
+        ),
+        "Regresión Logística": lambda: _clasificador(
+            "Regresión Logística", n_folds, calibrar=calibrar
+        ),
+        "LinearSVC (calibrado)": lambda: _clasificador(
+            "LinearSVC (calibrado)", n_folds, calibrar=calibrar
+        ),
     }
 
 
@@ -151,7 +173,7 @@ def comparar_algoritmos(
     mejor_nombre = ""
     mejor_f1 = -1.0
 
-    for nombre, fabrica in candidatos(folds).items():
+    for nombre, fabrica in candidatos(folds, calibrar=False).items():
         try:
             modelo = _pipeline(fabrica())
             if grupos is not None:
@@ -193,10 +215,13 @@ def comparar_algoritmos(
 
 # Rejillas por algoritmo: C (LogReg/LinearSVC), alpha (Naive Bayes) y parámetros
 # de la vectorización TF-IDF (ngram_range y min_df).
+# La búsqueda se hace sobre el LinearSVC SIN calibrar (clave `clf__C`): el F1 macro
+# se calcula con `predict`, por lo que la calibración (y su validación cruzada
+# interna) solo encarecería la búsqueda sin cambiar el criterio de selección.
 _REJILLAS: dict[str, dict[str, list[Any]]] = {
     "Naive Bayes Multinomial": {"clf__alpha": [0.1, 0.5, 1.0]},
     "Regresión Logística": {"clf__C": [0.5, 1.0, 2.0, 5.0]},
-    "LinearSVC (calibrado)": {"clf__estimator__C": [0.5, 1.0, 2.0, 5.0]},
+    "LinearSVC (calibrado)": {"clf__C": [0.5, 1.0, 2.0, 5.0]},
 }
 _GRID_VECTORIZADOR: dict[str, list[Any]] = {
     "tfidf__ngram_range": [(1, 1), (1, 2)],
@@ -226,10 +251,14 @@ def ajustar_hiperparametros(
 
     for nombre, rejilla in _REJILLAS.items():
         grid = {**_GRID_VECTORIZADOR, **rejilla}
-        pipeline = _pipeline(_clasificador(nombre, folds))
+        # Se busca con el clasificador SIN calibrar (solo se evalúa con `predict`).
+        pipeline = _pipeline(_clasificador(nombre, folds, calibrar=False))
         try:
             busqueda = GridSearchCV(
-                pipeline, grid, scoring="f1_macro", cv=cv, n_jobs=-1, error_score=0.0
+                # n_jobs=1 (un solo proceso): en Windows el multiproceso de joblib
+                # reimporta scikit-learn en cada worker y resulta MÁS LENTO que
+                # seguir en el proceso principal (medido para esta rejilla).
+                pipeline, grid, scoring="f1_macro", cv=cv, n_jobs=1, error_score=0.0
             )
             if grupos is not None:
                 busqueda.fit(limpios, etiquetas, groups=grupos)
@@ -667,7 +696,8 @@ def curva_de_aprendizaje(
     if comparacion is None:
         comparacion = comparar_algoritmos(textos, etiquetas)
     folds = _folds_viables(etiquetas)
-    fabricas = candidatos(folds)
+    # La curva solo necesita `predict` (F1 macro): basta el clasificador sin calibrar.
+    fabricas = candidatos(folds, calibrar=False)
     nombre = nombre_algoritmo or comparacion["ganador"]
     if nombre not in fabricas:
         nombre = "Regresión Logística"

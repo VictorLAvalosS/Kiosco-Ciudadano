@@ -1,0 +1,201 @@
+ID,Solicitud,Categoría,Prioridad
+1,La luminaria frente al parque infantil lleva cuatro noches apagada y está muy oscuro,alumbrado,ALTA
+2,El camión recolector no pasó por la calle Sucre y los perros rompieron las bolsas,limpieza,MEDIA
+3,Hay un hueco enorme en medio de la calzada que ya provocó el pinchazo de dos autos,calles,ALTA
+4,Llevamos dos días sin una sola gota de agua potable en toda la manzana norte,agua,ALTA
+5,Varios sujetos sospechosos merodean la parada de micros en horarios de la madrugada,seguridad,ALTA
+6,El césped de la plaza central creció demasiado y oculta las bancas y senderos,areas_verdes,BAJA
+7,La boca de tormenta de la esquina está llena de tierra y botellas plásticas,drenaje,MEDIA
+8,Un taller de chapa y pintura está trabajando en la acera emanando olor fuerte a solventes,contaminacion,MEDIA
+9,El poste de concreto en la avenida Bolívar tiene la lámpara colgando de un cable,alumbrado,ALTA
+10,Acumulación de basura orgánica en la esquina del mercado genera moscas y mal olor,limpieza,ALTA
+11,Las losetas de la acera peatonal están levantadas y los adultos mayores se tropiezan,calles,MEDIA
+12,Una tubería matriz rota está desperdiciando miles de litros de agua limpia en la calle,agua,ALTA
+13,Se registraron tres robos a transeúntes esta semana cerca del puente peatonal,seguridad,ALTA
+14,Dos árboles secos en la alameda tienen ramas grandes a punto de caer sobre los autos,areas_verdes,ALTA
+15,Cada vez que llueve se forma una laguna en el cruce porque el desagüe no traga agua,drenaje,ALTA
+16,Vecinos queman llantas y plásticos en el lote baldío llenando las casas de humo negro,contaminacion,ALTA
+17,Tres reflectores de la cancha deportiva del barrio dejaron de encender desde ayer,alumbrado,BAJA
+18,Falta instalar basureros públicos a lo largo del paseo peatonal principal,limpieza,BAJA
+19,La señal de Pare en la intersección escolar fue derribada y los autos pasan rápido,calles,ALTA
+20,La presión del agua domiciliaria bajó tanto que no sube ni al primer piso,agua,MEDIA
+21,Solicitamos rondas policiales preventivas a la salida del turno nocturno del colegio,seguridad,MEDIA
+22,Los juegos metálicos del parque necesitan pintura y mantenimiento general,areas_verdes,BAJA
+23,La cuneta de la calle Tarija está obstruida con escombros de una construcción vecina,drenaje,MEDIA
+24,Un local de eventos pone música a volumen ensordecedor hasta las cuatro de la mañana,contaminacion,MEDIA
+25,El foco de la esquina parpadea toda la noche y molesta directamente a las ventanas,alumbrado,BAJA
+26,Alguien dejó colchones viejos y muebles rotos abandonados en plena vía pública,limpieza,MEDIA
+27,El empedrado de la subida al mirador está deshecho y los taxis ya no quieren subir,calles,MEDIA
+28,Una cámara de alcantarillado está rebalsando aguas servidas hacia la calzada,agua,ALTA
+29,La puerta de ingreso al módulo policial del barrio permanece cerrada sin personal,seguridad,MEDIA
+30,Solicitamos poda de formación para los arbustos que invaden la visibilidad en la curva,areas_verdes,MEDIA
+31,Falta la rejilla metálica del sumidero pluvial y un niño puede caer adentro,drenaje,ALTA
+32,Una fábrica artesanal descarga líquidos espumosos de color oscuro al canal abierto,contaminacion,ALTA
+33,Todo el pasaje peatonal quedó a oscuras por un cortocircuito en el tablero de luz,alumbrado,ALTA
+34,Los contenedores soterrados de la avenida están rebalsando desde hace tres días,limpieza,ALTA
+35,Falta pintar el paso de cebra frente al centro de salud para proteger a los pacientes,calles,MEDIA
+36,El agua sale turbia y con sedimentos de tierra por las pilas desde esta mañana,agua,MEDIA
+37,Desconocidos consumen bebidas alcohólicas todas las noches en las graderías del parque,seguridad,MEDIA
+38,El sistema de riego por aspersión de la rotonda está roto y las plantas se secan,areas_verdes,BAJA
+39,El canal revestido necesita limpieza urgente de maleza antes de la época de lluvias,drenaje,MEDIA
+40,Acopio ilegal de escombros de demolición levanta mucho polvo con el viento,contaminacion,BAJA
+41,La fotocélula del alumbrado falla y las luces quedan encendidas todo el día,alumbrado,BAJA
+42,Se requiere barrido mecánico en las calles aledañas tras la feria dominical,limpieza,BAJA
+43,Hundimiento peligroso en el asfalto justo encima de una antigua excavación,calles,ALTA
+44,Corte no programado del servicio de agua potable afecta a más de cincuenta familias,agua,ALTA
+45,Sustrajeron el medidor de agua y cables telefónicos de tres viviendas anoche,seguridad,ALTA
+46,Necesitamos reforestar con plantines nativos el área verde detrás de la sede vecinal,areas_verdes,BAJA
+47,Agua estancada en la zanja pluvial está generando criaderos de mosquitos,drenaje,MEDIA
+48,Humo constante de una pollería sin campana extractora entra a los departamentos vecinos,contaminacion,MEDIA
+49,Un vehículo chocó contra un poste metálico de alumbrado y lo dejó inclinado,alumbrado,ALTA
+50,Bolsas con restos de poda y basura domiciliaria bloquean el paso en la acera,limpieza,MEDIA
+51,Baches seguidos en la ruta de transporte público obligan a los buses a invadir carril,calles,ALTA
+52,Fuga silenciosa debajo de la acera está humedeciendo los cimientos de mi vivienda,agua,MEDIA
+53,Falta iluminación y vigilancia en el callejón que conecta con la parada de trufis,seguridad,MEDIA
+54,La fuente ornamental de la plaza tiene el agua verde y llena de hojas secas,areas_verdes,BAJA
+55,El desagüe del paso a desnivel colapsó y los vehículos quedan varados en el agua,drenaje,ALTA
+56,Un lavadero de autos clandestino vierte detergentes y grasa directo a la calle,contaminacion,MEDIA
+57,Cambio de luminarias antiguas de sodio por focos LED en la calle Cochabamba,alumbrado,BAJA
+58,Perros callejeros esparcen la basura de los basureros abiertos todas las mañanas,limpieza,MEDIA
+59,Asfalto desgastado y con grietas profundas en toda la extensión de la avenida oeste,calles,BAJA
+60,Tapa de registro de agua potable hundida provoca golpes fuertes al pasar los autos,agua,MEDIA
+61,Personas ajenas al barrio intentan forzar candados de los portones durante la siesta,seguridad,ALTA
+62,Ramas caídas tras el viento fuerte bloquean el sendero de trote del parque lineal,areas_verdes,MEDIA
+63,Sedimentos acumulados taponaron la tubería de descarga pluvial hacia el río,drenaje,MEDIA
+64,Ruido constante de maquinaria industrial de una carpintería en zona residencial,contaminacion,MEDIA
+65,Cables de alumbrado público hacen chispa cada vez que corre viento fuerte,alumbrado,ALTA
+66,Falta un punto verde o contenedor diferenciado para reciclaje en la zona sur,limpieza,BAJA
+67,Se requiere construcción de rompemuelles frente a la guardería por exceso de velocidad,calles,ALTA
+68,Rebalse de alcantarilla sanitaria en la esquina del centro infantil es foco de infección,agua,ALTA
+69,Solicitamos instalación de cámaras de vigilancia vecinal conectadas a la estación policial,seguridad,BAJA
+70,Invasión de hormigas y plagas está secando los árboles antiguos de la plaza,areas_verdes,BAJA
+71,La cuneta de piedra se desmoronó y la tierra tapa el flujo del agua de lluvia,drenaje,MEDIA
+72,Quema de rastrojos y maleza seca en las afueras genera nube de humo irritable,contaminacion,MEDIA
+73,Dos manzanas enteras quedaron sin alumbrado público tras el corte de energía de ayer,alumbrado,ALTA
+74,Basura acumulada alrededor del contenedor vacío porque la tapa está trabada,limpieza,BAJA
+75,Cordones de acera destruidos dificultan el acceso de sillas de ruedas en las esquinas,calles,MEDIA
+76,Baja presión crónica de agua potable los fines de semana en la parte alta del barrio,agua,MEDIA
+77,Asalto a mano armada en la esquina de la farmacia anoche a las nueve,seguridad,ALTA
+78,Césped quemado y tierra suelta en la cancha de tierra del área recreativa,areas_verdes,BAJA
+79,Sifón del sumidero obstruido con grasa de los puestos de comida ambulante,drenaje,MEDIA
+80,Derrame de combustible de un camión cisterna estacionado contamina el suelo,contaminacion,ALTA
+81,Lámpara led quemada en el ingreso principal de la urbanización,alumbrado,MEDIA
+82,Animales muertos abandonados en la torrentera generan un olor insoportable,limpieza,ALTA
+83,Falta mantenimiento de ripio en las calles de tierra que se vuelven intransitables,calles,MEDIA
+84,Llave de paso general de la cuadra tiene fuga constante y forma charco en la vereda,agua,MEDIA
+85,Jóvenes grafitean las paredes recién pintadas de la sede social por las noches,seguridad,BAJA
+86,Bancas de madera del parque están astilladas y con clavos salidos peligrosos,areas_verdes,MEDIA
+87,El agua de lluvia baja con fuerza por la calle y entra a las casas por falta de bocatormenta,drenaje,ALTA
+88,Talleres mecánicos abandonan baterías viejas y filtros con aceite en la acera,contaminacion,ALTA
+89,Poste de madera podrido en la base amenaza con desplomarse sobre el tendido eléctrico,alumbrado,ALTA
+90,Acumulación de llantas viejas en la esquina junta agua y basura,limpieza,MEDIA
+91,Pintado de líneas divisorias de carril en la avenida de doble sentido,calles,BAJA
+92,Mal olor proveniente de los resumideros de alcantarillado en todo el sector este,agua,MEDIA
+93,Falta presencia de guardia municipal para controlar el comercio informal nocturno,seguridad,BAJA
+94,Árbol inclinado tras la tormenta quedó apoyado sobre el muro de una vivienda,areas_verdes,ALTA
+95,Limpieza profunda de cámaras de inspección del sistema pluvial del barrio,drenaje,BAJA
+96,Emisión de gases tóxicos de un horno de ladrillos clandestino cerca de las casas,contaminacion,ALTA
+97,El temporizador del alumbrado prende las luces recién a las ocho de la noche,alumbrado,BAJA
+98,Necesitamos fumigación y limpieza en el punto de acopio temporal de residuos,limpieza,MEDIA
+99,Bache en forma de zanja transversal obliga a frenar de golpe en la bajada,calles,ALTA
+100,Corte de agua sin aviso previo dejó sin servicio al centro de salud barrial,agua,ALTA
+101,Vehículos sin placa estacionados durante horas con personas adentro observando casas,seguridad,ALTA
+102,Poda de césped y deshierbe en las jardineras centrales de la avenida principal,areas_verdes,BAJA
+103,Rejilla de desagüe hundida provocó que la rueda de un motociclista quedara atrapada,drenaje,ALTA
+104,Ruido excesivo de bocinas y escapes libres de motos todas las noches de viernes,contaminacion,MEDIA
+105,Falta instalar dos postes nuevos de luz en el pasaje sin salida del sector norte,alumbrado,MEDIA
+106,Vecinos sacan su basura días que no pasa el carro y se acumula en las esquinas,limpieza,MEDIA
+107,Reparación de adoquines rotos en el callejón peatonal de acceso al mercado,calles,BAJA
+108,Fuga en la acometida domiciliaria desperdicia agua potable las veinticuatro horas,agua,MEDIA
+109,Robo de autopartes y retrovisores a vehículos estacionados frente a los domicilios,seguridad,MEDIA
+110,Falta malla olímpica de protección en la cancha múltiple junto a la avenida,areas_verdes,MEDIA
+111,Cuneta tapada con lodo seco impide el escurrimiento normal del agua de riego y lluvia,drenaje,BAJA
+112,Restos de pintura y solventes vertidos en la acequia afectan los cultivos cercanos,contaminacion,ALTA
+113,Luminaria intermitente en el cruce peatonal dificulta ver a las personas de noche,alumbrado,MEDIA
+114,Contenedor de basura quemado por vándalos necesita reemplazo inmediato,limpieza,ALTA
+115,Hundimiento en el pavimento rígido alrededor de la alcantarilla central,calles,MEDIA
+116,Obstrucción en la red matriz de alcantarillado provoca retorno de aguas negras en patios,agua,ALTA
+117,Alumbrado deficiente y falta de patrullaje en el puente que une ambos barrios,seguridad,ALTA
+118,Plantas ornamentales robadas y jardineras destruidas en la plaza principal,areas_verdes,BAJA
+119,El canal pluvial abierto no tiene barandas de seguridad en el tramo escolar,drenaje,ALTA
+120,Quema diaria de basura y cartones en el patio de un depósito comercial,contaminacion,MEDIA
+121,Caja de conexiones eléctricas de un poste abierta con cables pelados al alcance de niños,alumbrado,ALTA
+122,Acumulación de tierra y escombros tras arreglo de tubería que nunca recogieron,limpieza,MEDIA
+123,Falta señalización vertical de zona hospitalaria y prohibido estacionar,calles,BAJA
+124,Tuberia rota en la esquina inunda toda la cuadra con agua potable limpia,agua,ALTA
+125,Intento de ingreso a domicilio escalando el muro perimetral en horas de la tarde,seguridad,ALTA
+126,Ramas secas caen constantemente sobre el techo de calamina de la sede vecinal,areas_verdes,MEDIA
+127,Taponamiento del colector pluvial principal causa inundación en tres calles bajas,drenaje,ALTA
+128,Olor nauseabundo por vertido de desechos de matadero clandestino al desagüe,contaminacion,ALTA
+129,Foco fundido en el callejón posterior de la unidad educativa,alumbrado,MEDIA
+130,Falta frecuencia de recolección de basura en los pasajes angostos donde no entra el camión,limpieza,MEDIA
+131,Cráter en el asfalto cubierto de agua cuando llueve oculta su profundidad a los conductores,calles,ALTA
+132,Baja presión de agua impide el funcionamiento de calefones y duchas en todo el bloque,agua,BAJA
+133,Solicitamos alarma comunitaria vecinal conectada para alertas rápidas de emergencia,seguridad,MEDIA
+134,Mantenimiento de áreas verdes y reposición de tierra negra en los parques infantiles,areas_verdes,BAJA
+135,Sumidero pluvial lleno de botellas y bolsas plásticas tras la entrada folklórica,drenaje,MEDIA
+136,Taller de soldadura trabaja en la calle generando chispas y humo irritante,contaminacion,MEDIA
+137,Poste de alumbrado público sin pantalla protectora encandila directamente a las viviendas,alumbrado,BAJA
+138,Microbasural formado detrás de los quioscos de comida rápida en la avenida,limpieza,MEDIA
+139,Aceras inexistentes en tramo de dos cuadras obligan a caminar por la calzada vehicular,calles,ALTA
+140,Tapa de alcantarilla robada deja un hueco profundo en medio de la calle oscura,agua,ALTA
+141,Sujetos sospechosos ofrecen sustancias ilícitas cerca de la cancha deportiva,seguridad,ALTA
+142,Árboles frondosos tapan por completo la luz de los postes de alumbrado público,areas_verdes,MEDIA
+143,Desborde de aguas pluviales socava los cimientos del puente vehicular pequeño,drenaje,ALTA
+144,Polvareda constante por camiones pesados que circulan sin carpa transportando arena,contaminacion,MEDIA
+145,Cortocircuito en luminaria pública deja sin luz media cuadra cada vez que llueve,alumbrado,ALTA
+146,Falta limpieza de maleza y basura en la franja de seguridad de la vía férrea,limpieza,MEDIA
+147,Bacheo urgente en la esquina donde giran los buses de transporte interprovincial,calles,ALTA
+148,Filtración de agua limpia brota entre las juntas del pavimento desde hace una semana,agua,MEDIA
+149,Rondas policiales insuficientes durante los fines de semana en la zona de bares,seguridad,MEDIA
+150,Desbroce de hierba alta que sirve de escondite en el parque abandonado,areas_verdes,MEDIA
+151,Cunetas obstruidas con cemento seco dejado por albañiles de una obra privada,drenaje,MEDIA
+152,Ruido molesto de compresoras y taladros desde las seis de la mañana en domingo,contaminacion,BAJA
+153,Cambio de foco quemado en el poste frente al centro de adultos mayores,alumbrado,MEDIA
+154,Contenedor metálico oxidado y sin fondo deja caer toda la basura al piso,limpieza,MEDIA
+155,Señalización horizontal borrada en el cruce peligroso de cuatro esquinas,calles,MEDIA
+156,Rebalse de cámara séptica comunal genera contaminación en el pasaje,agua,ALTA
+157,Falta iluminación y presencia policial en el parqueo público nocturno,seguridad,MEDIA
+158,Poda de árboles cuyas raíces están levantando el pavimento de la acera,areas_verdes,MEDIA
+159,Limpieza de rejillas y bocas de tormenta en toda la pendiente de la zona norte,drenaje,BAJA
+160,Quema de cables para extraer cobre produce humo tóxico en el borde del río,contaminacion,ALTA
+161,Lámpara pública apagada en esquina muy transitada por estudiantes universitarios,alumbrado,MEDIA
+162,Basura dispersa por el viento tras dejar bolsas abiertas en la mediana de la avenida,limpieza,BAJA
+163,Hundimiento de calzada alrededor de buzón telefónico representa riesgo de accidente,calles,MEDIA
+164,Suministro de agua potable sale con fuerte olor a cloro y sabor desagradable,agua,MEDIA
+165,Robo de bicicletas y garrafas de gas dentro de los patios durante la madrugada,seguridad,ALTA
+166,Falta mantenimiento de jardineras y reposición de bancas rotas en el paseo,areas_verdes,BAJA
+167,Canal de drenaje pluvial colmatado de lodo tras las últimas lluvias intensas,drenaje,ALTA
+168,Vertido clandestino de aceite usado de cocina taponó el desagüe de la cuadra,contaminacion,MEDIA
+169,Poste de luz inclinado tras hundimiento del terreno amenaza con caer sobre viviendas,alumbrado,ALTA
+170,Recolección especial de residuos voluminosos y ramas podadas acumuladas,limpieza,BAJA
+171,Asfalto levantado por raíces de árboles forma un lomo peligroso para motocicletas,calles,ALTA
+172,Fuga de agua potable en medidor comunal inunda la vereda peatonal,agua,MEDIA
+173,Solicitamos patrullaje motorizado en horario nocturno por incremento de pandillas,seguridad,ALTA
+174,Corte de césped urgente en la cancha de fútbol barrial antes del campeonato,areas_verdes,BAJA
+175,Sumidero obstruido provoca que el agua de lluvia cruce toda la avenida formando hielo,drenaje,ALTA
+176,Humo negro de vehículos del transporte público sin mantenimiento circula por el barrio,contaminacion,BAJA
+177,Tres luminarias consecutivas apagadas en la avenida principal desde el apagón,alumbrado,ALTA
+178,Acumulación de basura en parada de buses por falta de basurero metálico,limpieza,BAJA
+179,Bache profundo oculto bajo charco de agua dañó la suspensión de un vehículo,calles,ALTA
+180,Corte de agua potable sin cronograma afecta labores de limpieza en la escuela,agua,ALTA
+181,Personas sospechosas vigilan movimientos de vecinos desde una esquina oscura,seguridad,MEDIA
+182,Riego y abono para los árboles recién plantados en el parque ecológico,areas_verdes,BAJA
+183,Tubería de desagüe pluvial rota socava la base del muro de contención,drenaje,ALTA
+184,Fábrica de plásticos emite olores químicos fuertes durante las horas de la noche,contaminacion,ALTA
+185,Foco del poste de luz parpadea y hace ruido eléctrico como chisporroteo,alumbrado,MEDIA
+186,Limpieza urgente de microbasural junto al muro del cementerio barrial,limpieza,ALTA
+187,Falta colocación de tachas reflectivas y señalización en curva cerrada sin visibilidad,calles,ALTA
+188,Agua servida brota por las rejillas de los baños debido a taponamiento en la calle,agua,ALTA
+189,Asalto a estudiante a plena luz del día cerca de la pasarela peatonal,seguridad,ALTA
+190,Poda preventiva de árboles altos antes de la temporada de vientos fuertes,areas_verdes,MEDIA
+191,Desagüe pluvial bloqueado por bolsas de cemento endurecidas en la cuneta,drenaje,MEDIA
+192,Local comercial deja cajas y basura orgánica descompuesta en la acera cada noche,contaminacion,MEDIA
+193,Luminaria led caída quedó colgando a dos metros del suelo sobre la acera,alumbrado,ALTA
+194,Falta barrido y recolección de hojas secas y basura en las calles secundarias,limpieza,BAJA
+195,Bacheo asfáltico en diez puntos críticos de la ruta principal de acceso al barrio,calles,MEDIA
+196,Rotura de tubería de distribución deja sin agua a toda la zona este del distrito,agua,ALTA
+197,Falta alumbrado y patrullaje en el terreno baldío usado como refugio por delincuentes,seguridad,ALTA
+198,Mantenimiento integral de juegos infantiles y áreas verdes de la plaza del barrio,areas_verdes,BAJA
+199,Rejilla de sumidero pluvial desplazada deja abertura peligrosa para peatones y bicis,drenaje,ALTA
+200,Descarga ilegal de aguas residuales industriales con espuma hacia el canal pluvial,contaminacion,ALTA
