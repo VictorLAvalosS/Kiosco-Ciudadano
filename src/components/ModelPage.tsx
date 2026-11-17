@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type {
   AcuerdoEtiquetadores,
   CalidadDataset,
@@ -341,17 +342,45 @@ function MatrizConfusion({
   etiquetas,
   matriz,
   abreviatura,
+  nombres,
+  titulo,
 }: {
   etiquetas: string[];
   matriz: number[][];
   abreviatura?: Record<string, string>;
+  nombres?: Map<string, string>;
+  titulo: string;
 }) {
   const [modo, setModo] = useState<"absoluta" | "normalizada">("absoluta");
+  const [ampliada, setAmpliada] = useState(false);
+  const botonAmpliarRef = useRef<HTMLButtonElement>(null);
+  const botonCerrarRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!ampliada) return;
+    const anterior = document.body.style.overflow;
+    const focoAnterior = document.activeElement;
+    const cerrarConEscape = (evento: KeyboardEvent) => {
+      if (evento.key === "Escape") setAmpliada(false);
+    };
+    document.body.style.overflow = "hidden";
+    botonCerrarRef.current?.focus();
+    window.addEventListener("keydown", cerrarConEscape);
+    return () => {
+      document.body.style.overflow = anterior;
+      window.removeEventListener("keydown", cerrarConEscape);
+      if (focoAnterior instanceof HTMLElement) focoAnterior.focus();
+    };
+  }, [ampliada]);
+
   if (etiquetas.length === 0 || matriz.length === 0) {
     return <p className="zone-empty">Sin matriz disponible para esta versión.</p>;
   }
 
-  const corta = (clave: string) => abreviatura?.[clave] ?? clave.slice(0, 5);
+  const corta = (clave: string, completa = false) =>
+    completa
+      ? (nombres?.get(clave) ?? clave.replace(/_/g, " "))
+      : (abreviatura?.[clave] ?? clave.slice(0, 5));
 
   // Normalización por fila: cada fila (clase real) suma 1.
   const normalizada = matriz.map((fila) => {
@@ -363,10 +392,11 @@ function MatrizConfusion({
   const intensidad = (i: number, j: number) =>
     modo === "absoluta" ? valores[i][j] / maxAbsoluto : valores[i][j];
 
-  return (
-    <div className="heatmap-wrap">
+  const contenido = (completa: boolean) => (
+    <div className={`heatmap-wrap${completa ? " heatmap-expanded-content" : ""}`}>
       <div className="heatmap-toggle">
         <button
+          aria-pressed={modo === "absoluta"}
           className={modo === "absoluta" ? "active" : ""}
           onClick={() => setModo("absoluta")}
           type="button"
@@ -374,6 +404,7 @@ function MatrizConfusion({
           ABSOLUTA
         </button>
         <button
+          aria-pressed={modo === "normalizada"}
           className={modo === "normalizada" ? "active" : ""}
           onClick={() => setModo("normalizada")}
           type="button"
@@ -383,21 +414,31 @@ function MatrizConfusion({
         <span>
           normalizada = proporción sobre el total real de cada clase (recall por fila)
         </span>
+        {!completa && (
+          <button
+            className="heatmap-expand-button"
+            onClick={() => setAmpliada(true)}
+            ref={botonAmpliarRef}
+            type="button"
+          >
+            AMPLIAR MATRIZ
+          </button>
+        )}
       </div>
       <div className="confusion-scroll">
         <table className="heatmap-table">
           <thead>
             <tr>
-              <th>real \ pred</th>
+              <th>Real ↓ / Predicción →</th>
               {etiquetas.map((clave) => (
-                <th key={clave}>{corta(clave)}</th>
+                <th key={clave}>{corta(clave, completa)}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {matriz.map((_, i) => (
               <tr key={etiquetas[i] ?? i}>
-                <th>{corta(etiquetas[i] ?? String(i))}</th>
+                <th>{corta(etiquetas[i] ?? String(i), completa)}</th>
                 {valores[i].map((valor, j) => {
                   const alfa = Math.min(0.85, Math.max(0, intensidad(i, j)));
                   return (
@@ -425,6 +466,46 @@ function MatrizConfusion({
       </div>
       <p>La diagonal (celdas resaltadas) muestra las predicciones correctas.</p>
     </div>
+  );
+
+  return (
+    <>
+      {contenido(false)}
+      {ampliada &&
+        createPortal(
+          <div
+            className="heatmap-modal-backdrop"
+            onMouseDown={(evento) => {
+              if (evento.target === evento.currentTarget) setAmpliada(false);
+            }}
+          >
+            <section
+              aria-modal="true"
+              aria-labelledby="heatmap-modal-title"
+              className="heatmap-modal"
+              role="dialog"
+            >
+              <header className="heatmap-modal-header">
+                <div>
+                  <span>MATRIZ DE CONFUSIÓN</span>
+                  <h2 id="heatmap-modal-title">{titulo}</h2>
+                </div>
+                <button
+                  aria-label="Cerrar matriz ampliada"
+                  className="heatmap-modal-close"
+                  onClick={() => setAmpliada(false)}
+                  ref={botonCerrarRef}
+                  type="button"
+                >
+                  CERRAR
+                </button>
+              </header>
+              {contenido(true)}
+            </section>
+          </div>,
+          document.body,
+        )}
+    </>
   );
 }
 
@@ -542,6 +623,14 @@ export function ModelPage({
   const matriz = modelo?.matriz_confusion ?? {};
   const etiquetasMatriz = matriz.etiquetas ?? [];
   const valoresMatriz = matriz.matriz ?? [];
+  const totalCasos =
+    (modelo?.n_entrenamiento ?? 0) + (modelo?.n_validacion ?? 0) + (modelo?.n_prueba ?? 0);
+  const mayorParticion = Math.max(
+    modelo?.n_entrenamiento ?? 0,
+    modelo?.n_validacion ?? 0,
+    modelo?.n_prueba ?? 0,
+    1,
+  );
   const pares = matriz.pares_confundidos ?? [];
   const porClase = modelo?.metricas_por_clase ?? {};
   const topTerminos: Record<string, { termino: string; peso: number }[]> =
@@ -730,8 +819,7 @@ export function ModelPage({
             <article>
               <small>CONJUNTO DE DATOS</small>
               <h3>
-                {modelo.n_entrenamiento + modelo.n_validacion + modelo.n_prueba}{" "}
-                <span>casos etiquetados</span>
+                {totalCasos} <span>casos etiquetados</span>
               </h3>
               <p>
                 Solicitudes reales etiquetadas por el equipo y almacenadas en Supabase. El conjunto
@@ -739,15 +827,27 @@ export function ModelPage({
               </p>
               <div className="dataset-split">
                 <span>
-                  <i style={{ width: "70%" }} />
+                  <i
+                    style={{
+                      width: `${(modelo.n_entrenamiento / mayorParticion) * 100}%`,
+                    }}
+                  />
                   {modelo.n_entrenamiento} Entrenamiento
                 </span>
                 <span>
-                  <i style={{ width: "15%" }} />
+                  <i
+                    style={{
+                      width: `${(modelo.n_validacion / mayorParticion) * 100}%`,
+                    }}
+                  />
                   {modelo.n_validacion} Validación
                 </span>
                 <span>
-                  <i style={{ width: "15%" }} />
+                  <i
+                    style={{
+                      width: `${(modelo.n_prueba / mayorParticion) * 100}%`,
+                    }}
+                  />
                   {modelo.n_prueba} Prueba fija
                 </span>
               </div>
@@ -782,6 +882,8 @@ export function ModelPage({
                 etiquetas={etiquetasMatriz}
                 matriz={valoresMatriz}
                 abreviatura={ABREVIATURA}
+                nombres={nombresPorClave}
+                titulo="Categoría"
               />
             </article>
 
@@ -894,7 +996,11 @@ export function ModelPage({
             </article>
             <article className="confusion-card">
               <small>MATRIZ DE CONFUSIÓN (PRIORIDAD)</small>
-              <MatrizConfusion etiquetas={etiquetasMatrizPri} matriz={valoresMatrizPri} />
+              <MatrizConfusion
+                etiquetas={etiquetasMatrizPri}
+                matriz={valoresMatrizPri}
+                titulo="Prioridad"
+              />
               {paresPri.length > 0 && (
                 <p>
                   Confusión más frecuente: <b>{paresPri[0].real}</b> →{" "}
