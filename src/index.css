@@ -21,6 +21,8 @@
     min-width: 320px;
     min-height: 100vh;
     background: #041014;
+    font-size: clamp(15px, 0.2vw + 14.2px, 17px);
+    line-height: 1.5;
   }
   button,
   textarea,
@@ -36,6 +38,7 @@
   scrollbar-width: thin;
   scrollbar-color: #1d6978 transparent;
 }
+
 button:focus-visible,
 textarea:focus-visible,
 input:focus-visible {
@@ -114,16 +117,16 @@ input:focus-visible {
   height: 18px;
 }
 .brand b {
-  font: 600 13px/1.2 "Space Grotesk";
-  letter-spacing: 0.15em;
+  font: 600 clamp(17.17px, 0.24vw + 16.03px, 20px)/1.2 "Space Grotesk";
+  letter-spacing: 0.083em;
   display: block;
   color: #dffbff;
 }
 .brand small {
   display: block;
   color: #647e87;
-  font-size: 8px;
-  letter-spacing: 0.2em;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
+  letter-spacing: 0.11em;
   margin-top: 5px;
 }
 .status-pill {
@@ -140,12 +143,12 @@ input:focus-visible {
   flex-direction: column;
 }
 .status-pill b {
-  font-size: 9px;
-  letter-spacing: 0.14em;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
+  letter-spacing: 0.077em;
   color: #55ecb9;
 }
 .status-pill small {
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #708c91;
   margin-top: 2px;
 }
@@ -175,9 +178,9 @@ input:focus-visible {
   z-index: 1;
 }
 .eyebrow {
-  font: 600 10px "Space Grotesk";
+  font: 600 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
   color: #71909a;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.121em;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -200,7 +203,7 @@ h2 em {
 }
 .lead {
   color: #839ba3;
-  font-size: 15px;
+  font-size: clamp(18px, 0.25vw + 16.8px, 21px);
   line-height: 1.65;
 }
 .report-input {
@@ -232,12 +235,12 @@ h2 em {
 }
 .territory-selector b {
   color: #a9c2c7;
-  font: 600 9px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
+  letter-spacing: 0.055em;
 }
 .territory-selector small {
   color: #5f7880;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   margin-top: 3px;
 }
 .territory-selector select {
@@ -246,7 +249,7 @@ h2 em {
   color: #b8d2d7;
   background: #0a2027;
   padding: 0 12px;
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
 }
 .report-input:focus-within,
 .report-input.is-listening {
@@ -259,8 +262,8 @@ h2 em {
   display: flex;
   justify-content: space-between;
   color: #6c8a93;
-  font: 600 9px "Space Grotesk";
-  letter-spacing: 0.15em;
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
+  letter-spacing: 0.083em;
 }
 .report-input textarea {
   resize: none;
@@ -270,7 +273,7 @@ h2 em {
   border: 0;
   color: #e8fbfe;
   padding: 18px 0;
-  font-size: 18px;
+  font-size: clamp(20px, 0.29vw + 18.6px, 23.5px);
   line-height: 1.5;
 }
 .report-input textarea::placeholder {
@@ -303,13 +306,13 @@ h2 em {
   margin-right: 14px;
 }
 .voice-button b {
-  font: 600 10px "Space Grotesk";
-  letter-spacing: 0.12em;
+  font: 600 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
+  letter-spacing: 0.066em;
   display: block;
   color: #c4d9dd;
 }
 .voice-button small {
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
   color: #668089;
 }
 .wave {
@@ -345,8 +348,8 @@ h2 em {
   align-items: center;
   gap: 18px;
   color: #5e7a83;
-  font: 600 9px "Space Grotesk";
-  letter-spacing: 0.15em;
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
+  letter-spacing: 0.083em;
   margin: 28px 0 16px;
 }
 .quick-head i {
@@ -369,7 +372,7 @@ h2 em {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: clamp(16.25px, 0.23vw + 15.15px, 19px);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   transition: 0.25s;
@@ -437,20 +440,20 @@ h2 em {
   text-align: left;
 }
 .analyze-button b {
-  font: 700 15px "Space Grotesk";
+  font: 700 clamp(18px, 0.25vw + 16.8px, 21px) "Space Grotesk";
   letter-spacing: 0.07em;
   display: block;
 }
 .analyze-button small {
-  font-size: 8px;
-  letter-spacing: 0.13em;
+  font-size: clamp(13.5px, 0.16vw + 12.75px, 15.5px);
+  letter-spacing: 0.072em;
 }
 .analyze-button > svg {
   margin-left: auto;
 }
 .privacy-note {
   text-align: center;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #58727a;
   margin-top: 18px;
 }
@@ -466,8 +469,8 @@ h2 em {
   align-items: center;
   justify-content: space-between;
   color: #4b6870;
-  font-size: 8px;
-  letter-spacing: 0.14em;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
+  letter-spacing: 0.077em;
   position: relative;
 }
 .kiosk-shell footer b {
@@ -489,8 +492,8 @@ h2 em {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 9px;
-  letter-spacing: 0.1em;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
+  letter-spacing: 0.055em;
   opacity: 0.55;
   transition: 0.2s;
 }
@@ -573,7 +576,7 @@ h2 em {
   margin: 17px 0 10px;
 }
 .processing-screen main > p {
-  font-size: 13px;
+  font-size: clamp(17.17px, 0.24vw + 16.03px, 20px);
   color: #779099;
 }
 .token-card {
@@ -604,9 +607,9 @@ h2 em {
   }
 }
 .token-label {
-  font: 600 9px "Space Grotesk";
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
   color: #68868e;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.088em;
   display: flex;
   justify-content: space-between;
 }
@@ -630,7 +633,7 @@ h2 em {
   position: absolute;
   top: -17px;
   left: 50%;
-  font: 500 7px "DM Sans";
+  font: 500 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "DM Sans";
   color: #041014;
   background: var(--cyan);
   padding: 1px 4px;
@@ -661,20 +664,20 @@ h2 em {
 }
 .progress-ring span {
   position: relative;
-  font: 600 21px "Space Grotesk";
+  font: 600 clamp(21.71px, 0.42vw + 19.71px, 26.71px) "Space Grotesk";
   color: white;
 }
 .progress-ring small {
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: var(--cyan);
 }
 .model-progress > div:last-child > b {
-  font: 600 11px/1.5 "Space Grotesk";
-  letter-spacing: 0.09em;
+  font: 600 clamp(16.25px, 0.23vw + 15.15px, 19px)/1.5 "Space Grotesk";
+  letter-spacing: 0.05em;
 }
 .model-progress > div:last-child > span {
   display: block;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #67828a;
   margin-top: 5px;
 }
@@ -720,7 +723,7 @@ h2 em {
   margin-bottom: 8px;
 }
 .result-screen .lead {
-  font-size: 13px;
+  font-size: clamp(17.17px, 0.24vw + 16.03px, 20px);
 }
 .result-card {
   margin-top: 30px;
@@ -736,8 +739,8 @@ h2 em {
 .assigned > small,
 .ticket-area small,
 .result-metrics small {
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.16em;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.088em;
   color: #67838b;
 }
 .department-icon {
@@ -751,7 +754,7 @@ h2 em {
   margin: 15px auto 10px;
 }
 .assigned h3 {
-  font: 600 21px/1.25 "Space Grotesk";
+  font: 600 clamp(21.71px, 0.42vw + 19.71px, 26.71px)/1.25 "Space Grotesk";
   letter-spacing: 0.03em;
 }
 .assigned h3 em {
@@ -764,8 +767,8 @@ h2 em {
   gap: 10px;
   justify-content: center;
   color: #38dca7;
-  font-size: 7px;
-  letter-spacing: 0.15em;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
+  letter-spacing: 0.083em;
   margin-top: 14px;
 }
 .route-line span {
@@ -793,21 +796,21 @@ h2 em {
   margin-bottom: 13px;
 }
 .result-metrics b {
-  font: 600 12px "Space Grotesk";
+  font: 600 clamp(16.75px, 0.23vw + 15.65px, 19.5px) "Space Grotesk";
   display: flex;
   align-items: center;
   gap: 9px;
 }
 .result-metrics b em {
   margin-left: auto;
-  font: 500 8px "DM Sans";
+  font: 500 clamp(14.75px, 0.19vw + 13.85px, 17px) "DM Sans";
   color: #ffb640;
   background: rgba(255, 182, 64, 0.09);
   border: 1px solid rgba(255, 182, 64, 0.2);
   padding: 5px 7px;
 }
 .result-metrics p {
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   color: #647c83;
   margin-top: 10px;
 }
@@ -826,7 +829,7 @@ h2 em {
   box-shadow: 0 0 8px #ffb640;
 }
 .result-metrics .confidence-number {
-  font-size: 25px;
+  font-size: clamp(24px, 0.58vw + 21.2px, 31px);
   color: var(--cyan);
 }
 .confidence-bar {
@@ -849,8 +852,8 @@ h2 em {
   text-align: left;
 }
 .ticket-area h4 {
-  font: 600 27px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(25.09px, 0.63vw + 22.07px, 32.64px) "Space Grotesk";
+  letter-spacing: 0.044em;
   margin: 7px 0;
   color: #eaffff;
 }
@@ -859,18 +862,18 @@ h2 em {
   align-items: center;
   gap: 6px;
   color: var(--cyan);
-  font: 600 8px "Space Grotesk";
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
   letter-spacing: 0.06em;
   margin: -1px 0 8px;
 }
 .ticket-area p {
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #637d84;
   line-height: 1.5;
 }
 .ticket-area button {
-  font-size: 8px;
-  letter-spacing: 0.1em;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
+  letter-spacing: 0.055em;
   color: #72a2aa;
   background: transparent;
   border: 0;
@@ -907,8 +910,8 @@ h2 em {
   border: 1px solid var(--cyan);
   background: var(--cyan);
   color: #021318;
-  font: 600 10px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
+  letter-spacing: 0.044em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -928,7 +931,7 @@ h2 em {
   align-items: center;
   gap: 10px;
   color: #5c767e;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   margin-top: 18px;
   text-align: left;
 }
@@ -965,7 +968,7 @@ h2 em {
   color: var(--dashtext);
 }
 .dashboard aside {
-  width: 218px;
+  width: 272px;
   position: fixed;
   inset: 0 auto 0 0;
   background: #071319;
@@ -984,7 +987,8 @@ h2 em {
 }
 .dashboard aside nav button,
 .side-bottom > button {
-  height: 46px;
+  min-height: 52px;
+  height: auto;
   width: 100%;
   border: 0;
   background: transparent;
@@ -992,8 +996,8 @@ h2 em {
   display: flex;
   align-items: center;
   gap: 13px;
-  padding: 0 13px;
-  font-size: 11px;
+  padding: 10px 13px;
+  font-size: clamp(15px, 0.18vw + 14.1px, 17.25px);
   text-align: left;
   border-radius: 3px;
   margin-bottom: 4px;
@@ -1014,7 +1018,7 @@ h2 em {
   background: var(--cyan);
   padding: 2px 6px;
   border-radius: 9px;
-  font-size: 8px;
+  font-size: clamp(13.5px, 0.16vw + 12.75px, 15.5px);
 }
 .side-bottom {
   margin-top: auto;
@@ -1030,35 +1034,36 @@ h2 em {
   margin-top: 12px;
 }
 .operator > span {
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
+  flex: none;
   border-radius: 50%;
   display: grid;
   place-items: center;
   color: #062029;
   background: linear-gradient(135deg, var(--cyan), #75efff);
-  font: 700 10px "Space Grotesk";
+  font: 700 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
 }
 .operator div {
   display: flex;
   flex-direction: column;
 }
 .operator b {
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
 }
 .operator small {
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   color: #587179;
 }
 .operator > i {
   font-style: normal;
   margin-left: auto;
   color: #49636b;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
 }
 .dash-content {
-  margin-left: 218px;
-  width: calc(100% - 218px);
+  margin-left: 272px;
+  width: calc(100% - 272px);
   background: var(--dashbg);
   min-height: 100vh;
 }
@@ -1069,21 +1074,27 @@ h2 em {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
   background: color-mix(in srgb, var(--dashpanel) 72%, transparent);
 }
+.dash-content > header > div:first-child {
+  min-width: 0;
+}
 .dash-content header h1 {
-  font: 600 25px "Space Grotesk";
+  font: 600 clamp(24px, 0.58vw + 21.2px, 31px) "Space Grotesk";
   margin: 6px 0 2px;
   letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
 }
 .dash-content header p {
   color: #668088;
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
 }
 .dash-header-actions {
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
 }
 .dash-header-actions > button {
   height: 36px;
@@ -1095,14 +1106,19 @@ h2 em {
 .dash-header-actions .kiosk-link {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  height: auto;
+  min-height: 36px;
   color: var(--cyan);
-  font-size: 8px;
-  letter-spacing: 0.08em;
+  font-size: clamp(13.5px, 0.16vw + 12.75px, 15.5px);
+  line-height: 1.2;
+  letter-spacing: 0.044em;
+  text-align: center;
 }
 .live {
-  font-size: 8px;
-  letter-spacing: 0.12em;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
+  letter-spacing: 0.066em;
   color: #72a096;
   border-right: 1px solid var(--line);
   padding-right: 15px;
@@ -1138,30 +1154,31 @@ h2 em {
 .metric-grid article > div:first-child {
   position: relative;
   z-index: 1;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 .metric-grid small {
   color: #668087;
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.12em;
-  white-space: nowrap;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.066em;
 }
 .metric-grid h2 {
-  font: 600 32px "Space Grotesk";
+  font: 600 clamp(25px, 0.62vw + 22px, 32px) "Space Grotesk";
   margin: 12px 0 10px;
   letter-spacing: -0.04em;
 }
 .metric-grid h2 sup {
-  font-size: 13px;
+  font-size: clamp(15.5px, 0.2vw + 14.5px, 18px);
   color: #789098;
 }
 .metric-grid .up {
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   color: var(--mint);
   background: rgba(25, 230, 165, 0.07);
   padding: 4px 6px;
 }
 .metric-grid p {
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   color: #587078;
   display: inline;
   margin-left: 5px;
@@ -1175,8 +1192,10 @@ h2 em {
 }
 .gauge,
 .clock-ring {
-  width: 62px;
-  height: 62px;
+  position: relative;
+  flex: 0 0 clamp(44px, 5vw, 62px);
+  width: clamp(44px, 5vw, 62px);
+  aspect-ratio: 1;
   border-radius: 50%;
   margin: auto 0 auto auto;
   background: conic-gradient(var(--cyan) 0 94%, #193139 94%);
@@ -1187,18 +1206,19 @@ h2 em {
 .clock-ring::before {
   content: "";
   position: absolute;
-  width: 52px;
-  height: 52px;
+  inset: 5px;
   border-radius: 50%;
   background: var(--dashpanel);
 }
 .gauge span,
 .clock-ring span {
-  font: 600 9px "Space Grotesk";
+  z-index: 1;
+  font: 600 clamp(11px, 0.85vw + 8px, 14px) "Space Grotesk";
   position: relative;
+  white-space: nowrap;
 }
 .pending > div:first-child span {
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   color: #ffae42;
   background: rgba(255, 174, 66, 0.08);
   padding: 4px 6px;
@@ -1247,12 +1267,12 @@ h2 em {
 }
 .table-head h3,
 .section-title h3 {
-  font: 600 11px "Space Grotesk";
-  letter-spacing: 0.09em;
+  font: 600 clamp(16.25px, 0.23vw + 15.15px, 19px) "Space Grotesk";
+  letter-spacing: 0.05em;
 }
 .table-head p,
 .section-title p {
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   color: #668087;
   margin-top: 4px;
 }
@@ -1262,7 +1282,8 @@ h2 em {
   align-items: center;
 }
 .table-tools label {
-  height: 30px;
+  min-height: 40px;
+  height: auto;
   border: 1px solid var(--line);
   display: flex;
   align-items: center;
@@ -1275,14 +1296,15 @@ h2 em {
   background: transparent;
   border: 0;
   color: var(--dashtext);
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
 }
 .table-tools button {
-  height: 30px;
+  min-height: 40px;
+  height: auto;
   border: 1px solid transparent;
   background: transparent;
   color: #668087;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   padding: 0 9px;
 }
 .table-tools button.active {
@@ -1300,8 +1322,8 @@ table {
 }
 th {
   text-align: left;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.12em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.066em;
   color: #536d75;
   padding: 11px 14px;
   background: rgba(0, 0, 0, 0.09);
@@ -1309,7 +1331,7 @@ th {
 td {
   padding: 13px 14px;
   border-top: 1px solid rgba(105, 166, 178, 0.09);
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #81989e;
 }
 tbody tr:hover {
@@ -1324,18 +1346,18 @@ td:first-child {
   align-items: center;
 }
 .request-id b {
-  font: 600 8px "Space Grotesk";
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
   color: var(--cyan);
   background: rgba(0, 217, 255, 0.07);
   padding: 3px 5px;
 }
 .request-id span {
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
   color: #526a72;
 }
 .request-id ~ p {
   color: var(--dashtext);
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1343,7 +1365,7 @@ td:first-child {
   margin: 6px 0 4px;
 }
 .request-id ~ small {
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
   color: #5c747c;
 }
 .category-dot {
@@ -1356,7 +1378,7 @@ td:first-child {
 }
 .priority,
 .state {
-  font: 600 7px "Space Grotesk";
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
   letter-spacing: 0.07em;
   padding: 5px 7px;
   border: 1px solid;
@@ -1388,7 +1410,7 @@ td:first-child {
 }
 .confidence-cell {
   color: var(--dashtext);
-  font: 600 9px "Space Grotesk";
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
 }
 .mini-confidence {
   display: inline-block;
@@ -1422,8 +1444,8 @@ td:first-child {
   border: 1px solid rgba(0, 217, 255, 0.25);
   color: var(--cyan);
   background: rgba(0, 217, 255, 0.05);
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.044em;
   padding: 0 9px;
   display: flex;
   align-items: center;
@@ -1443,7 +1465,7 @@ td:first-child {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   color: #617980;
 }
 .table-footer > div {
@@ -1457,7 +1479,7 @@ td:first-child {
   border: 1px solid var(--line);
   color: #668087;
   background: transparent;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
 }
 .table-footer button.active {
   color: #04151a;
@@ -1479,7 +1501,7 @@ td:first-child {
   border-bottom: 1px solid var(--line);
 }
 .section-title button {
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
   color: #6e858b;
   border: 1px solid var(--line);
   background: transparent;
@@ -1492,12 +1514,22 @@ td:first-child {
   height: 230px;
   padding: 15px;
 }
+.zone-chart .heat-body {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  height: auto;
+  min-height: 230px;
+}
 .radar {
   width: 190px;
   height: 190px;
   position: relative;
   margin: auto;
   background: radial-gradient(circle, rgba(0, 217, 255, 0.03), transparent 65%);
+}
+.zone-chart .radar {
+  width: min(190px, 100%);
+  aspect-ratio: 1;
+  height: auto;
 }
 .radar-ring {
   position: absolute;
@@ -1519,6 +1551,9 @@ td:first-child {
   height: 174px;
   background: rgba(87, 156, 169, 0.12);
 }
+.zone-chart .radar-axis {
+  height: calc(100% - 16px);
+}
 .radar-axis.a2 {
   transform: rotate(60deg);
 }
@@ -1534,12 +1569,15 @@ td:first-child {
 }
 .zone-list > div {
   display: grid;
-  grid-template-columns: 1fr 28px;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  margin: 10px 0;
+  margin: 6px 0;
+}
+.zone-list {
+  min-width: 0;
 }
 .zone-list b {
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   font-weight: 500;
 }
 .zone-list b > i {
@@ -1549,7 +1587,7 @@ td:first-child {
   margin-right: 6px;
 }
 .zone-list > div > span {
-  font: 600 9px "Space Grotesk";
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
   text-align: right;
 }
 .zone-list small {
@@ -1564,7 +1602,7 @@ td:first-child {
   background: linear-gradient(90deg, #117a8f, var(--cyan));
 }
 .stable {
-  font: 600 7px "Space Grotesk";
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
   color: var(--mint);
 }
 .model-score {
@@ -1575,8 +1613,9 @@ td:first-child {
   padding: 18px;
 }
 .score-ring {
-  width: 80px;
-  height: 80px;
+  flex: 0 0 clamp(56px, 7vw, 80px);
+  width: clamp(56px, 7vw, 80px);
+  aspect-ratio: 1;
   border-radius: 50%;
   background: conic-gradient(var(--cyan) 95%, #1a3239 0);
   display: grid;
@@ -1592,17 +1631,22 @@ td:first-child {
 }
 .score-ring span {
   position: relative;
-  font: 600 19px "Space Grotesk";
+  z-index: 1;
+  font: 600 clamp(13px, 1.2vw + 9px, 18px) "Space Grotesk";
+  white-space: nowrap;
 }
 .score-ring small {
-  font-size: 9px;
+  font-size: 0.72em;
+}
+.model-score > div:last-child {
+  min-width: 0;
 }
 .model-score > div:last-child b {
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.055em;
 }
 .model-score > div:last-child p {
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
   color: var(--mint);
   margin-top: 5px;
 }
@@ -1617,7 +1661,7 @@ td:first-child {
 }
 .model-stats span,
 .model-stats b {
-  font: 600 7px "Space Grotesk";
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
   color: #70878d;
 }
 .model-stats b {
@@ -1640,8 +1684,8 @@ td:first-child {
   color: var(--cyan);
   height: 39px;
   width: 100%;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.055em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1654,13 +1698,14 @@ td:first-child {
   gap: 5px;
   align-items: center;
 }
+
 .nlp-button {
   height: 28px;
   border: 1px solid rgba(135, 104, 255, 0.35);
   color: #a98dff;
   background: rgba(135, 104, 255, 0.07);
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.044em;
   padding: 0 9px;
   white-space: nowrap;
 }
@@ -1691,7 +1736,7 @@ td:first-child {
   background: #0c2826;
   border: 1px solid rgba(25, 230, 165, 0.4);
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
   animation: toastIn 0.3s ease;
 }
 .admin-toast span {
@@ -1746,12 +1791,12 @@ td:first-child {
 }
 .inspector-head > div > span,
 .module-heading > div > span {
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.16em;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.088em;
   color: var(--cyan);
 }
 .inspector-head h2 {
-  font: 600 25px "Space Grotesk";
+  font: 600 clamp(24px, 0.58vw + 21.2px, 31px) "Space Grotesk";
   margin: 6px 0 4px;
 }
 .inspector-head h2 em {
@@ -1759,13 +1804,13 @@ td:first-child {
   font-style: normal;
 }
 .inspector-head p {
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #6e888f;
 }
 .inspector-otb {
   display: block;
   color: var(--cyan);
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   margin-top: 5px;
 }
 .inspector-head > button,
@@ -1775,7 +1820,7 @@ td:first-child {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.02);
   color: #789198;
-  font-size: 22px;
+  font-size: clamp(22.29px, 0.46vw + 20.09px, 27.79px);
 }
 .inspector-head > button:hover,
 .utility-close:hover {
@@ -1790,16 +1835,17 @@ td:first-child {
   padding: 0 24px;
 }
 .pipeline-nav button {
-  min-height: 82px;
+  min-height: 108px;
   position: relative;
   border: 0;
   border-bottom: 2px solid transparent;
   color: #577179;
   background: transparent;
   display: grid;
-  grid-template-columns: 26px 1fr;
-  grid-template-rows: 1fr 1fr;
-  column-gap: 9px;
+  grid-template-columns: 36px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  row-gap: 2px;
   text-align: left;
   align-content: center;
   padding: 14px 10px;
@@ -1818,21 +1864,21 @@ td:first-child {
 }
 .pipeline-nav button > span {
   grid-row: 1 / 3;
-  width: 26px;
-  height: 26px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   border: 1px solid #2b464e;
-  font: 600 8px "Space Grotesk";
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
 }
 .pipeline-nav button small {
-  font-size: 6px;
-  letter-spacing: 0.13em;
+  font-size: clamp(13px, 0.13vw + 12.4px, 14.5px);
+  letter-spacing: 0.072em;
   align-self: end;
 }
 .pipeline-nav button b {
-  font: 600 8px "Space Grotesk";
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
   color: #839aa0;
   align-self: start;
   margin-top: 2px;
@@ -1879,15 +1925,15 @@ td:first-child {
   color: var(--cyan);
   border: 1px solid rgba(0, 217, 255, 0.3);
   background: rgba(0, 217, 255, 0.05);
-  font: 600 11px "Space Grotesk";
+  font: 600 clamp(16.25px, 0.23vw + 15.15px, 19px) "Space Grotesk";
 }
 .step-heading h3 {
-  font: 600 17px "Space Grotesk";
+  font: 600 clamp(19.33px, 0.28vw + 18px, 22.67px) "Space Grotesk";
   margin-bottom: 4px;
 }
 .step-heading p {
   color: #6e878e;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
 }
 .input-comparison {
   display: grid;
@@ -1912,11 +1958,11 @@ td:first-child {
 .teacher-note b,
 .decision-card > small {
   color: #658087;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.13em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.072em;
 }
 .input-comparison blockquote {
-  font: 500 14px/1.6 "Space Grotesk";
+  font: 500 clamp(17.58px, 0.24vw + 16.42px, 20.5px)/1.6 "Space Grotesk";
   color: #c7dadd;
   margin: 17px 0;
 }
@@ -1925,7 +1971,7 @@ td:first-child {
 }
 .input-comparison article > span {
   color: #577078;
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
 }
 .transform-arrow {
   text-align: center;
@@ -1941,7 +1987,7 @@ td:first-child {
 }
 .teacher-note p {
   color: #8ba0a5;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   line-height: 1.6;
   margin-top: 7px;
 }
@@ -1967,11 +2013,11 @@ td:first-child {
   display: block;
 }
 .token-explainer button b {
-  font: 500 11px "Space Grotesk";
+  font: 500 clamp(16.25px, 0.23vw + 15.15px, 19px) "Space Grotesk";
 }
 .token-explainer button small {
   color: #566f76;
-  font-size: 6px;
+  font-size: clamp(13px, 0.13vw + 12.4px, 14.5px);
   margin-top: 6px;
 }
 .token-explainer button.strong {
@@ -1989,7 +2035,7 @@ td:first-child {
   gap: 22px;
   margin: 14px 0 20px;
   color: #6a8289;
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
 }
 .token-legend i {
   width: 7px;
@@ -2007,7 +2053,7 @@ td:first-child {
 .code-line {
   padding: 15px 18px;
   color: #91a9af;
-  font: 500 9px/1.6 monospace;
+  font: 500 clamp(15.25px, 0.21vw + 14.25px, 17.75px)/1.6 monospace;
 }
 .code-line span {
   color: #a98dff;
@@ -2023,7 +2069,7 @@ td:first-child {
 .vector-grid article > div:first-child {
   display: flex;
   justify-content: space-between;
-  font: 500 9px "Space Grotesk";
+  font: 500 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
 }
 .vector-grid article span {
   color: var(--cyan);
@@ -2031,7 +2077,7 @@ td:first-child {
 .vector-grid code {
   display: block;
   color: #647c83;
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
   margin-top: 8px;
 }
 .vector-bar {
@@ -2074,7 +2120,7 @@ td:first-child {
 .embedding-map > span {
   position: absolute;
   color: #a7bdc1;
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
 }
 .embedding-map > span i {
   display: inline-block;
@@ -2089,8 +2135,8 @@ td:first-child {
   left: 10px;
   bottom: 8px;
   color: #4e6870;
-  font: 600 6px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(13px, 0.13vw + 12.4px, 14.5px) "Space Grotesk";
+  letter-spacing: 0.055em;
 }
 .supervised-flow {
   display: grid;
@@ -2106,18 +2152,18 @@ td:first-child {
 }
 .supervised-flow small {
   color: #617b83;
-  font-size: 6px;
-  letter-spacing: 0.11em;
+  font-size: clamp(13px, 0.13vw + 12.4px, 14.5px);
+  letter-spacing: 0.061em;
 }
 .supervised-flow b {
   display: block;
-  font: 600 18px "Space Grotesk";
+  font: 600 clamp(20px, 0.29vw + 18.6px, 23.5px) "Space Grotesk";
   color: var(--cyan-soft);
   margin: 8px 0 4px;
 }
 .supervised-flow p {
   color: #586f76;
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
 }
 .class-probabilities {
   padding: 18px;
@@ -2126,12 +2172,12 @@ td:first-child {
 }
 .class-probabilities > div {
   display: grid;
-  grid-template-columns: 170px 1fr 45px 90px;
+  grid-template-columns: minmax(11rem, 1.3fr) minmax(4rem, 1fr) auto auto;
   gap: 10px;
   align-items: center;
   margin: 10px 0;
   color: #738a90;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
 }
 .class-probabilities > div > i {
   height: 6px;
@@ -2145,10 +2191,10 @@ td:first-child {
 }
 .class-probabilities b {
   text-align: right;
-  font: 600 9px "Space Grotesk";
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
 }
 .class-probabilities small {
-  font: 600 6px "Space Grotesk";
+  font: 600 clamp(13px, 0.13vw + 12.4px, 14.5px) "Space Grotesk";
   color: transparent;
 }
 .class-probabilities .winner {
@@ -2166,7 +2212,7 @@ td:first-child {
   padding: 14px;
   margin-top: 12px;
   color: #778f95;
-  font: 500 10px monospace;
+  font: 500 clamp(15.75px, 0.23vw + 14.65px, 18.5px) monospace;
 }
 .model-formula b {
   color: var(--cyan);
@@ -2188,7 +2234,7 @@ td:first-child {
   margin: 0 auto 12px;
 }
 .decision-card h3 {
-  font: 600 22px "Space Grotesk";
+  font: 600 clamp(22.29px, 0.46vw + 20.09px, 27.79px) "Space Grotesk";
   color: var(--cyan-soft);
   margin: 8px 0 18px;
 }
@@ -2201,7 +2247,7 @@ td:first-child {
   border: 1px solid var(--line);
   padding: 8px 12px;
   color: #688087;
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
 }
 .decision-card > div:last-child b {
   color: #c4d9dd;
@@ -2227,16 +2273,16 @@ td:first-child {
 }
 .reason-grid article span {
   color: var(--cyan);
-  font: 600 8px "Space Grotesk";
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
 }
 .reason-grid article b {
   display: block;
-  font: 600 8px "Space Grotesk";
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
   margin: 8px 0 5px;
 }
 .reason-grid article p {
   color: #687f86;
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
 }
 .audit-row {
   display: flex;
@@ -2248,11 +2294,11 @@ td:first-child {
 }
 .audit-row span {
   color: #536d74;
-  font-size: 6px;
+  font-size: clamp(13px, 0.13vw + 12.4px, 14.5px);
 }
 .audit-row b {
   color: #90a8ad;
-  font: 600 7px "Space Grotesk";
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
 }
 .inspector-footer {
   position: sticky;
@@ -2272,8 +2318,8 @@ td:first-child {
   border: 1px solid var(--line);
   background: transparent;
   color: #71898f;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.044em;
 }
 .inspector-footer button:disabled {
   opacity: 0.25;
@@ -2307,7 +2353,11 @@ td:first-child {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   padding: 18px 22px;
+}
+.module-heading > div {
+  min-width: 0;
 }
 .module-back {
   display: inline-flex;
@@ -2318,8 +2368,10 @@ td:first-child {
   border: 1px solid rgba(0, 217, 255, 0.35);
   background: rgba(0, 217, 255, 0.08);
   color: var(--cyan);
-  font: 600 9px "Space Grotesk";
-  letter-spacing: 0.14em;
+  font: 600 clamp(13.5px, 0.16vw + 12.75px, 15.5px) "Space Grotesk";
+  letter-spacing: 0.077em;
+  line-height: 1.25;
+  text-align: left;
   cursor: pointer;
 }
 .module-back:hover {
@@ -2332,21 +2384,26 @@ td:first-child {
   outline-offset: 3px;
 }
 .module-heading h2 {
-  font: 600 20px "Space Grotesk";
+  font: 600 clamp(21.14px, 0.38vw + 19.34px, 25.64px) "Space Grotesk";
   margin: 5px 0 3px;
 }
 .module-heading p {
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #657e85;
 }
 .module-heading > button {
-  height: 34px;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  min-height: 34px;
   border: 1px solid rgba(0, 217, 255, 0.3);
   color: var(--cyan);
   background: rgba(0, 217, 255, 0.06);
   padding: 0 13px;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(12.75px, 0.14vw + 12.1px, 14.5px) "Space Grotesk";
+  line-height: 1.25;
+  letter-spacing: 0.044em;
 }
 .operations-map {
   position: relative;
@@ -2381,7 +2438,7 @@ td:first-child {
   border: 1px solid rgba(0, 217, 255, 0.27);
   background: rgba(5, 26, 32, 0.9);
   color: #b7d0d5;
-  font: 600 8px "Space Grotesk";
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
   padding: 8px;
 }
 .map-pin i {
@@ -2396,7 +2453,7 @@ td:first-child {
 .map-pin small {
   display: block;
   color: #627b82;
-  font-size: 6px;
+  font-size: clamp(13px, 0.13vw + 12.4px, 14.5px);
   margin-top: 3px;
 }
 .map-pin:hover {
@@ -2438,12 +2495,12 @@ td:first-child {
   gap: 10px;
 }
 .map-legend b {
-  font: 600 7px "Space Grotesk";
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
   color: #6f8990;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.055em;
 }
 .map-legend label {
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   color: #8ca1a6;
 }
 .map-legend input {
@@ -2459,11 +2516,11 @@ td:first-child {
   align-items: center;
 }
 .map-summary b {
-  font: 600 18px "Space Grotesk";
+  font: 600 clamp(20px, 0.29vw + 18.6px, 23.5px) "Space Grotesk";
   color: var(--cyan);
 }
 .map-summary span {
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
   color: #688087;
 }
 .crew-grid {
@@ -2492,19 +2549,19 @@ td:first-child {
   top: 22px;
   right: 22px;
   color: #f6b849;
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
 }
 .crew-status.s1,
 .crew-status.s3 {
   color: var(--mint);
 }
 .crew-grid h3 {
-  font: 600 18px "Space Grotesk";
+  font: 600 clamp(20px, 0.29vw + 18.6px, 23.5px) "Space Grotesk";
   margin: 17px 0 4px;
 }
 .crew-grid article > p {
   color: #688087;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
 }
 .crew-grid article > div:nth-of-type(2) {
   display: flex;
@@ -2513,12 +2570,12 @@ td:first-child {
 }
 .crew-grid article > div:nth-of-type(2) span {
   color: #586f76;
-  font-size: 6px;
+  font-size: clamp(13px, 0.13vw + 12.4px, 14.5px);
 }
 .crew-grid article > div:nth-of-type(2) b {
   display: block;
   color: #a7bbc0;
-  font: 600 9px "Space Grotesk";
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
   margin-top: 4px;
 }
 .crew-grid article > button {
@@ -2527,8 +2584,8 @@ td:first-child {
   border: 1px solid var(--line);
   color: var(--cyan);
   background: transparent;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.044em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2553,26 +2610,26 @@ td:first-child {
 .architecture-flow span {
   display: block;
   color: var(--cyan);
-  font: 600 8px "Space Grotesk";
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
   margin-bottom: 11px;
 }
 .architecture-flow b {
-  font: 600 9px "Space Grotesk";
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
 }
 .architecture-flow i {
   position: absolute;
-  right: -7px;
+  right: -12px;
   top: 42%;
   z-index: 1;
-  width: 14px;
-  height: 14px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-style: normal;
   color: #07171d;
   background: var(--cyan);
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
 }
 .model-detail-grid {
   display: grid;
@@ -2588,36 +2645,38 @@ td:first-child {
 }
 .model-detail-grid article > small {
   color: #647d84;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.055em;
 }
 .model-detail-grid h3 {
   color: var(--cyan);
-  font: 600 30px "Space Grotesk";
+  font: 600 clamp(26.73px, 0.7vw + 23.38px, 35.09px) "Space Grotesk";
   margin: 15px 0 7px;
 }
 .model-detail-grid h3 span {
   color: #758d93;
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
 }
 .model-detail-grid article > p {
   color: #698087;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   line-height: 1.6;
 }
 .dataset-split {
   margin-top: 18px;
 }
 .dataset-split span {
-  display: block;
+  display: flex;
+  align-items: center;
   color: #758b91;
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
   margin: 8px 0;
 }
 .dataset-split i {
   display: inline-block;
-  height: 4px;
-  max-width: 90px;
+  height: 7px;
+  max-width: 140px;
+  flex: none;
   background: var(--cyan);
   margin-right: 8px;
 }
@@ -2628,12 +2687,14 @@ td:first-child {
   margin: 16px 0 10px;
 }
 .confusion-matrix span {
-  height: 30px;
+  min-height: 42px;
+  height: auto;
+  padding: 6px 4px;
   display: grid;
   place-items: center;
   background: rgba(64, 104, 113, 0.16);
   color: #71878d;
-  font: 600 7px "Space Grotesk";
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
 }
 .confusion-matrix span.hot {
   color: #06171d;
@@ -2641,22 +2702,22 @@ td:first-child {
 }
 .metric-row {
   display: grid;
-  grid-template-columns: 55px 1fr 35px;
-  gap: 8px;
+  grid-template-columns: minmax(8.5rem, 1.15fr) minmax(4rem, 1fr) auto;
+  gap: 10px;
   align-items: center;
   margin: 16px 0;
 }
 .metric-row span,
 .metric-row b {
   color: #71888e;
-  font: 600 7px "Space Grotesk";
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
 }
 .metric-row b {
   color: var(--dashtext);
   text-align: right;
 }
 .metric-row i {
-  height: 4px;
+  height: 8px;
   background: #1a3037;
 }
 .metric-row em {
@@ -2673,16 +2734,16 @@ td:first-child {
 }
 .training-explanation > div:first-child span {
   color: var(--cyan);
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.12em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.066em;
 }
 .training-explanation h3 {
-  font: 600 17px "Space Grotesk";
+  font: 600 clamp(19.33px, 0.28vw + 18px, 22.67px) "Space Grotesk";
   margin: 8px 0;
 }
 .training-explanation p {
   color: #71878d;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   line-height: 1.6;
 }
 .training-example {
@@ -2698,7 +2759,7 @@ td:first-child {
 }
 .training-example span {
   color: #a68cff;
-  font: 600 7px "Space Grotesk";
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
 }
 .training-example p {
   color: #c2d1d4;
@@ -2706,17 +2767,17 @@ td:first-child {
 }
 .training-example i {
   color: #61777e;
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
   font-style: normal;
   margin: 8px 0;
 }
 .training-example b {
   color: var(--cyan);
-  font: 600 9px "Space Grotesk";
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
 }
 .academic-brief {
   display: grid;
-  grid-template-columns: 110px repeat(3, 1fr);
+  grid-template-columns: minmax(140px, 0.7fr) repeat(3, 1fr);
   margin-top: 14px;
   border: 1px solid rgba(0, 217, 255, 0.22);
   background: linear-gradient(90deg, rgba(0, 217, 255, 0.045), transparent 35%), var(--dashpanel);
@@ -2734,26 +2795,26 @@ td:first-child {
   flex-direction: column;
   justify-content: space-between;
   color: #627b82;
-  font: 600 7px/1.6 "Space Grotesk";
-  letter-spacing: 0.13em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px)/1.6 "Space Grotesk";
+  letter-spacing: 0.072em;
 }
 .academic-brief .brief-index b {
   color: var(--cyan);
-  font-size: 31px;
+  font-size: clamp(27.27px, 0.72vw + 23.82px, 35.91px);
   letter-spacing: -0.04em;
 }
 .academic-brief small {
   color: var(--cyan);
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.12em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.066em;
 }
 .academic-brief h3 {
-  font: 600 12px/1.3 "Space Grotesk";
+  font: 600 clamp(16.75px, 0.23vw + 15.65px, 19.5px)/1.3 "Space Grotesk";
   margin: 12px 0 8px;
 }
 .academic-brief p {
   color: #6c8389;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   line-height: 1.6;
 }
 
@@ -2784,16 +2845,16 @@ td:first-child {
 .utility-panel > small {
   display: block;
   color: var(--cyan);
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.13em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.072em;
 }
 .utility-panel h3 {
-  font: 600 21px "Space Grotesk";
+  font: 600 clamp(21.71px, 0.42vw + 19.71px, 26.71px) "Space Grotesk";
   margin: 6px 0 20px;
 }
 .utility-panel > p {
   color: #71878d;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   line-height: 1.8;
   margin-bottom: 15px;
 }
@@ -2804,7 +2865,7 @@ td:first-child {
   align-items: center;
   justify-content: space-between;
   color: #8da2a7;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
 }
 .utility-panel input {
   accent-color: var(--cyan);
@@ -2817,8 +2878,8 @@ td:first-child {
   border: 1px solid var(--cyan);
   background: var(--cyan);
   color: #06171d;
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.044em;
 }
 .support-option {
   display: flex;
@@ -2844,7 +2905,7 @@ td:first-child {
   border-radius: 50%;
   color: #06171d;
   background: var(--cyan);
-  font: 600 15px "Space Grotesk";
+  font: 600 clamp(18px, 0.25vw + 16.8px, 21px) "Space Grotesk";
   margin-bottom: 16px;
 }
 
@@ -2884,7 +2945,7 @@ td:first-child {
     grid-template-columns: 1fr 1fr;
   }
   .academic-brief {
-    grid-template-columns: 90px 1fr 1fr;
+    grid-template-columns: minmax(120px, 0.8fr) 1fr 1fr;
   }
   .academic-brief > div:last-child {
     grid-column: 2/-1;
@@ -2892,6 +2953,11 @@ td:first-child {
   }
   .model-detail-grid > article:last-child {
     grid-column: 1/-1;
+  }
+}
+@media (max-width: 900px) {
+  .module-heading {
+    align-items: flex-start;
   }
 }
 @media (max-width: 720px) {
@@ -2960,6 +3026,13 @@ td:first-child {
   .dash-content > header {
     padding: 20px;
     align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .dash-header-actions {
+    margin-left: auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
   .dash-header-actions .live,
   .dash-header-actions .kiosk-link {
@@ -2970,6 +3043,14 @@ td:first-child {
   }
   .metric-grid {
     grid-template-columns: 1fr;
+  }
+  .module-heading {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+  }
+  .module-heading > button {
+    align-self: flex-start;
   }
   .table-head {
     align-items: flex-start;
@@ -2985,6 +3066,12 @@ td:first-child {
   .heat-body {
     grid-template-columns: 1fr;
     height: auto;
+  }
+  .zone-chart .heat-body {
+    grid-template-columns: 1fr;
+  }
+  .zone-chart .radar {
+    width: min(170px, 100%);
   }
   .radar {
     width: 170px;
@@ -3035,7 +3122,7 @@ td:first-child {
     transform: rotate(90deg);
   }
   .class-probabilities > div {
-    grid-template-columns: 110px 1fr 35px;
+    grid-template-columns: minmax(7rem, 1.1fr) minmax(3rem, 1fr) auto;
   }
   .class-probabilities small {
     display: none;
@@ -3111,7 +3198,7 @@ td:first-child {
   align-items: center;
   gap: 9px;
   color: #5e7a83;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   letter-spacing: 0.05em;
 }
 .live-preview.empty svg {
@@ -3121,8 +3208,8 @@ td:first-child {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.13em;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.072em;
   color: #6f8b93;
 }
 .live-preview-head > span {
@@ -3165,12 +3252,12 @@ td:first-child {
 }
 .preview-category small {
   display: block;
-  font-size: 7px;
-  letter-spacing: 0.13em;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
+  letter-spacing: 0.072em;
   color: #5f7880;
 }
 .preview-category b {
-  font: 600 13px "Space Grotesk";
+  font: 600 clamp(17.17px, 0.24vw + 16.03px, 20px) "Space Grotesk";
   color: #dffbff;
   display: block;
   margin-top: 3px;
@@ -3181,13 +3268,13 @@ td:first-child {
   gap: 12px;
 }
 .preview-confidence {
-  font-size: 8px;
-  letter-spacing: 0.1em;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
+  letter-spacing: 0.055em;
   color: #5f7880;
 }
 .preview-confidence b {
   color: var(--cyan);
-  font: 600 12px "Space Grotesk";
+  font: 600 clamp(16.75px, 0.23vw + 15.65px, 19.5px) "Space Grotesk";
 }
 .preview-keywords {
   display: flex;
@@ -3195,7 +3282,7 @@ td:first-child {
   gap: 6px;
 }
 .preview-keywords span {
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #a9c2c7;
   border: 1px solid var(--line);
   background: rgba(9, 30, 36, 0.6);
@@ -3205,7 +3292,7 @@ td:first-child {
 .preview-keywords small {
   color: var(--cyan);
   margin-left: 4px;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
 }
 .preview-icon.cat-agua {
   color: #4cc9f0;
@@ -3244,7 +3331,7 @@ td:first-child {
 }
 .voice-notice {
   margin-top: 10px;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #ffcf6b;
   letter-spacing: 0.02em;
 }
@@ -3281,8 +3368,8 @@ td:first-child {
   background: transparent;
   border: 0;
   color: #6c8a93;
-  font: 600 9px "Space Grotesk";
-  letter-spacing: 0.12em;
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
+  letter-spacing: 0.066em;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -3321,18 +3408,18 @@ td:first-child {
   gap: 7px;
 }
 .inspector-stats small {
-  font: 600 6px "Space Grotesk";
-  letter-spacing: 0.11em;
+  font: 600 clamp(13px, 0.13vw + 12.4px, 14.5px) "Space Grotesk";
+  letter-spacing: 0.061em;
   color: #5f7880;
 }
 .inspector-stats b {
-  font: 600 16px "Space Grotesk";
+  font: 600 clamp(18.67px, 0.26vw + 17.4px, 21.83px) "Space Grotesk";
   color: var(--cyan);
 }
 .subsection-title {
   margin: 20px 0 10px;
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.13em;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.072em;
   color: #6f8b93;
   display: flex;
   align-items: center;
@@ -3353,7 +3440,7 @@ td:first-child {
   border: 1px solid rgba(0, 217, 255, 0.2);
   background: rgba(0, 217, 255, 0.05);
   color: #b8d2d7;
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
   padding: 6px 10px;
   display: flex;
   gap: 8px;
@@ -3361,7 +3448,7 @@ td:first-child {
 }
 .bigram-list b {
   color: var(--cyan);
-  font: 600 8px "Space Grotesk";
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
 }
 .vector-doc {
   margin-top: 14px;
@@ -3373,19 +3460,19 @@ td:first-child {
   gap: 7px;
 }
 .vector-doc > span {
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.12em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.066em;
   color: #6f8b93;
 }
 .vector-doc code {
   color: var(--cyan);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 11px;
+  font-size: clamp(16.25px, 0.23vw + 15.15px, 19px);
   word-break: break-all;
 }
 .vector-doc small {
   color: #5f7880;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
 }
 .entity-grid {
   display: grid;
@@ -3401,16 +3488,16 @@ td:first-child {
   gap: 6px;
 }
 .entity-grid small {
-  font: 600 6px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(13px, 0.13vw + 12.4px, 14.5px) "Space Grotesk";
+  letter-spacing: 0.055em;
   color: #5f7880;
 }
 .entity-grid b {
-  font: 600 13px "Space Grotesk";
+  font: 600 clamp(17.17px, 0.24vw + 16.03px, 20px) "Space Grotesk";
   color: #dffbff;
 }
 .entity-grid span {
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
   color: #627b82;
 }
 .entity-bar {
@@ -3439,12 +3526,12 @@ td:first-child {
   gap: 6px;
 }
 .context-row small {
-  font: 600 6px "Space Grotesk";
-  letter-spacing: 0.11em;
+  font: 600 clamp(13px, 0.13vw + 12.4px, 14.5px) "Space Grotesk";
+  letter-spacing: 0.061em;
   color: #5f7880;
 }
 .context-row b {
-  font: 600 11px "Space Grotesk";
+  font: 600 clamp(16.25px, 0.23vw + 15.15px, 19px) "Space Grotesk";
   color: #cfe4e8;
   display: flex;
   align-items: center;
@@ -3455,14 +3542,14 @@ td:first-child {
 }
 .feature-row {
   display: grid;
-  grid-template-columns: 130px 1fr 46px 90px;
+  grid-template-columns: minmax(9rem, 1.2fr) minmax(4rem, 1fr) auto auto;
   align-items: center;
   gap: 12px;
   padding: 9px 0;
   border-bottom: 1px solid var(--line);
 }
 .feature-row > span {
-  font: 600 10px "Space Grotesk";
+  font: 600 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
   color: #cfe4e8;
 }
 .feature-row > i {
@@ -3476,12 +3563,12 @@ td:first-child {
   background: linear-gradient(90deg, #147d91, var(--cyan));
 }
 .feature-row > b {
-  font: 600 10px "Space Grotesk";
+  font: 600 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
   color: var(--cyan);
   text-align: right;
 }
 .feature-row > small {
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
   color: #627b82;
   text-align: right;
 }
@@ -3491,8 +3578,8 @@ td:first-child {
    ============================================================ */
 .kiosk-tag {
   font-style: normal;
-  font: 600 6px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(13px, 0.13vw + 12.4px, 14.5px) "Space Grotesk";
+  letter-spacing: 0.055em;
   color: var(--mint);
   border: 1px solid rgba(25, 230, 165, 0.25);
   background: rgba(25, 230, 165, 0.07);
@@ -3504,8 +3591,8 @@ td:first-child {
   display: inline-block;
   margin-top: 4px;
   font-style: normal;
-  font: 600 6px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(13px, 0.13vw + 12.4px, 14.5px) "Space Grotesk";
+  letter-spacing: 0.044em;
   color: #f3b43f;
   border: 1px solid rgba(243, 180, 63, 0.3);
   background: rgba(243, 180, 63, 0.09);
@@ -3516,11 +3603,11 @@ td:first-child {
   text-align: center;
   padding: 30px 14px;
   color: #5c747c;
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
 }
 .zone-empty {
   color: #5c747c;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   padding: 16px;
 }
 .secondary-action {
@@ -3530,8 +3617,8 @@ td:first-child {
   border: 1px solid var(--line);
   background: transparent;
   color: #93a9ae;
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.044em;
 }
 .secondary-action:hover {
   color: var(--cyan);
@@ -3554,22 +3641,22 @@ td:first-child {
 }
 .lexicon-grid small {
   color: var(--cyan);
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.12em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.066em;
 }
 .lexicon-grid h3 {
-  font: 600 24px "Space Grotesk";
+  font: 600 clamp(23.43px, 0.54vw + 20.83px, 29.93px) "Space Grotesk";
   margin: 10px 0 6px;
   color: var(--dashtext);
 }
 .lexicon-grid h3 span {
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
   color: #657e85;
   font-weight: 500;
 }
 .lexicon-grid article > p {
   color: #6c8389;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   line-height: 1.65;
 }
 .lexicon-list,
@@ -3587,7 +3674,7 @@ td:first-child {
   align-items: center;
   justify-content: space-between;
   padding: 10px 13px;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #8ca1a6;
 }
 .lexicon-list > div > span {
@@ -3600,16 +3687,16 @@ td:first-child {
 }
 .lexicon-list b {
   color: var(--cyan);
-  font: 600 10px "Space Grotesk";
+  font: 600 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
 }
 .distribution-list > div {
   background: var(--dashpanel);
   display: grid;
-  grid-template-columns: 120px 1fr 34px;
+  grid-template-columns: minmax(8rem, 1.2fr) minmax(3rem, 1fr) auto;
   gap: 12px;
   align-items: center;
   padding: 9px 13px;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #8ca1a6;
 }
 .distribution-list > div > span {
@@ -3632,7 +3719,7 @@ td:first-child {
 }
 .distribution-list b {
   color: var(--dashtext);
-  font: 600 10px "Space Grotesk";
+  font: 600 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
   text-align: right;
 }
 
@@ -3667,8 +3754,8 @@ td:first-child {
 }
 .map-otb-list > b {
   display: block;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.055em;
   color: #6f8990;
   margin-bottom: 10px;
 }
@@ -3678,12 +3765,12 @@ td:first-child {
   align-items: center;
   padding: 7px 0;
   border-top: 1px solid var(--line);
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   color: #8ca1a6;
 }
 .map-otb-list > div > b {
   color: var(--cyan);
-  font: 600 10px "Space Grotesk";
+  font: 600 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
 }
 .crew-task {
   border: 1px solid var(--line);
@@ -3696,12 +3783,12 @@ td:first-child {
   gap: 4px;
 }
 .crew-task small {
-  font: 600 6px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(13px, 0.13vw + 12.4px, 14.5px) "Space Grotesk";
+  letter-spacing: 0.055em;
   color: #5f7880;
 }
 .crew-task b {
-  font: 600 11px "Space Grotesk";
+  font: 600 clamp(16.25px, 0.23vw + 15.15px, 19px) "Space Grotesk";
   color: #cfe4e8;
 }
 
@@ -3732,7 +3819,7 @@ td:first-child {
     grid-template-columns: 1fr;
   }
   .feature-row {
-    grid-template-columns: 90px 1fr 40px;
+    grid-template-columns: minmax(7rem, 1.1fr) minmax(3rem, 1fr) auto;
   }
   .feature-row > small {
     display: none;
@@ -3753,7 +3840,7 @@ td:first-child {
   margin: 16px 0;
   border: 1px solid var(--line);
   background: var(--panel);
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
   line-height: 1.55;
   color: #b9cdd2;
 }
@@ -3795,7 +3882,7 @@ td:first-child {
   gap: 12px;
 }
 .label-panel-text {
-  font-size: 11px;
+  font-size: clamp(16.25px, 0.23vw + 15.15px, 19px);
   line-height: 1.55;
   color: #cfe4e8;
   background: rgba(0, 217, 255, 0.04);
@@ -3803,8 +3890,8 @@ td:first-child {
   padding: 10px 12px;
 }
 .label-panel-pred {
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.044em;
   color: #7d959b;
 }
 .label-panel-pred b {
@@ -3816,8 +3903,8 @@ td:first-child {
   background: transparent;
   border: 1px solid var(--line);
   color: #9fb4ba;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.044em;
   white-space: nowrap;
 }
 .row-actions .label:hover {
@@ -3874,8 +3961,8 @@ td:first-child {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.055em;
   color: #6f8990;
 }
 .etiquetador-field input {
@@ -3883,16 +3970,16 @@ td:first-child {
   border: 1px solid var(--line);
   color: #d6e7ea;
   padding: 9px 11px;
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
   min-width: 230px;
 }
 .cola-resumen {
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #8ca1a6;
 }
 .cola-resumen b {
   color: var(--cyan);
-  font: 600 12px "Space Grotesk";
+  font: 600 clamp(15.5px, 0.2vw + 14.5px, 18px) "Space Grotesk";
 }
 
 .queue-list {
@@ -3919,7 +4006,7 @@ td:first-child {
   gap: 12px;
 }
 .queue-head b {
-  font: 600 9px "Space Grotesk";
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
   color: var(--cyan);
   letter-spacing: 0.04em;
 }
@@ -3928,15 +4015,15 @@ td:first-child {
   align-items: center;
   gap: 5px;
   margin-left: 10px;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   color: #7d959b;
 }
 .queue-inspect {
   background: transparent;
   border: 1px solid var(--line);
   color: #8fb6bd;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.055em;
   padding: 5px 9px;
 }
 .queue-inspect:hover {
@@ -3944,7 +4031,7 @@ td:first-child {
   border-color: var(--cyan);
 }
 .queue-item > p {
-  font-size: 11px;
+  font-size: clamp(16.25px, 0.23vw + 15.15px, 19px);
   line-height: 1.55;
   color: #cfe4e8;
 }
@@ -3953,8 +4040,8 @@ td:first-child {
   flex-wrap: wrap;
   align-items: center;
   gap: 8px 14px;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.044em;
   color: #5f7880;
 }
 .queue-pred b {
@@ -3962,13 +4049,13 @@ td:first-child {
   align-items: center;
   gap: 5px;
   color: #d6e7ea;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   letter-spacing: 0;
 }
 .queue-confidence b,
 .queue-margin b {
   color: var(--cyan);
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
 }
 .queue-actions,
 .queue-form-actions {
@@ -3983,8 +4070,8 @@ td:first-child {
   background: #0d3128;
   border: 1px solid rgba(25, 230, 165, 0.4);
   color: #bfffe8;
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.044em;
   padding: 10px 15px;
 }
 .queue-actions .confirm:hover,
@@ -4000,8 +4087,8 @@ td:first-child {
   background: transparent;
   border: 1px solid var(--line);
   color: #9fb4ba;
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.044em;
   padding: 10px 15px;
 }
 .queue-actions .correct:hover {
@@ -4019,8 +4106,8 @@ td:first-child {
   display: flex;
   flex-direction: column;
   gap: 7px;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.055em;
   color: #6f8990;
 }
 .queue-form select {
@@ -4028,14 +4115,14 @@ td:first-child {
   border: 1px solid var(--line);
   color: #d6e7ea;
   padding: 10px 11px;
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
 }
 .cancel {
   background: transparent;
   border: 1px solid var(--line);
   color: #829ba4;
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.044em;
   padding: 10px 15px;
 }
 .cancel:hover {
@@ -4052,8 +4139,8 @@ td:first-child {
   border: 1px solid var(--line);
   background: transparent;
   color: #829ba4;
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.055em;
 }
 .priority-picker button.alta.active {
   background: rgba(255, 98, 105, 0.15);
@@ -4110,8 +4197,8 @@ td:first-child {
   gap: 10px;
 }
 .guide-block > small {
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.12em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.066em;
   color: #5f7880;
 }
 .guide-row {
@@ -4121,14 +4208,14 @@ td:first-child {
   min-width: 0;
 }
 .guide-row > b {
-  font: 600 9px "Space Grotesk";
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
   color: #cfe4e8;
   flex: 0 0 96px;
   overflow-wrap: anywhere;
 }
 .guide-row > p {
   min-width: 0;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   line-height: 1.5;
   color: #8ca1a6;
   overflow-wrap: anywhere;
@@ -4140,13 +4227,13 @@ td:first-child {
   border-top: 1px solid var(--line);
 }
 .guide-row.compact b {
-  font: 600 9px "Space Grotesk";
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
   color: #cfe4e8;
   min-width: 0;
 }
 .guide-row.compact p {
   color: var(--cyan);
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
 }
 .progress-list {
   display: flex;
@@ -4171,7 +4258,7 @@ td:first-child {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #cfe4e8;
 }
 .progress-list > div > i {
@@ -4189,11 +4276,11 @@ td:first-child {
   grid-area: count;
   text-align: right;
   color: var(--cyan);
-  font: 600 10px "Space Grotesk";
+  font: 600 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
 }
 .progress-list > div > small {
   grid-area: meta;
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
   color: #5f7880;
 }
 .progress-list > div.done > i > em {
@@ -4215,8 +4302,8 @@ td:first-child {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font: 600 8px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
+  letter-spacing: 0.044em;
   color: #8ca1a6;
   cursor: pointer;
 }
@@ -4236,21 +4323,21 @@ td:first-child {
   border: 1px solid var(--line);
 }
 .model-meta-bar span {
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.055em;
   color: #5f7880;
 }
 .model-meta-bar b {
   display: block;
   margin-top: 5px;
-  font: 600 11px "Space Grotesk";
+  font: 600 clamp(16.25px, 0.23vw + 15.15px, 19px) "Space Grotesk";
   color: #cfe4e8;
   letter-spacing: 0;
 }
 
 .confusion-card > p {
   margin-top: 12px;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   color: #6f8990;
 }
 .confusion-scroll {
@@ -4265,16 +4352,16 @@ td:first-child {
 .confusion-table th,
 .confusion-table td {
   width: auto;
-  padding: 6px 9px;
+  padding: 8px 12px;
   text-align: center;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   color: #8ca1a6;
   border: 1px solid rgba(105, 166, 178, 0.12);
 }
 .confusion-table th {
   background: rgba(0, 0, 0, 0.14);
   color: #6f8990;
-  font: 600 7px "Space Grotesk";
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
   letter-spacing: 0.06em;
 }
 .confusion-table td.hot {
@@ -4297,15 +4384,15 @@ td:first-child {
 .class-metrics td {
   width: auto;
   padding: 8px 10px;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   text-align: left;
   border-top: 1px solid rgba(105, 166, 178, 0.1);
 }
 .class-metrics th {
   background: rgba(0, 0, 0, 0.1);
   color: #6f8990;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.1em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.055em;
 }
 .class-metrics td:first-child {
   width: auto;
@@ -4329,7 +4416,7 @@ td:first-child {
   display: flex;
   justify-content: space-between;
   padding: 6px 18px 0;
-  font: 600 7px "Space Grotesk";
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
   color: #5f7880;
 }
 .curve-legend {
@@ -4337,7 +4424,7 @@ td:first-child {
   flex-wrap: wrap;
   gap: 6px 16px;
   margin-top: 12px;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   color: #8ca1a6;
 }
 .curve-legend span {
@@ -4353,7 +4440,7 @@ td:first-child {
 .curve-legend em {
   width: 100%;
   font-style: normal;
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
   color: #5f7880;
 }
 
@@ -4381,16 +4468,16 @@ td:first-child {
   border-radius: 2px 2px 0 0;
 }
 .version-evolution > div > b {
-  font: 600 9px "Space Grotesk";
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
   color: #cfe4e8;
 }
 .version-evolution > div > span {
-  font: 600 7px "Space Grotesk";
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
   letter-spacing: 0.06em;
   color: #7d959b;
 }
 .version-evolution > div > small {
-  font-size: 7px;
+  font-size: clamp(13.88px, 0.16vw + 13.13px, 15.75px);
   color: #5f7880;
 }
 .version-evolution > div.active > b {
@@ -4411,7 +4498,7 @@ td:first-child {
   align-items: center;
   gap: 5px;
   margin-bottom: 6px;
-  font: 600 8px "Space Grotesk";
+  font: 600 clamp(14.75px, 0.19vw + 13.85px, 17px) "Space Grotesk";
   color: #cfe4e8;
 }
 
@@ -4435,7 +4522,8 @@ td:first-child {
    Prueba del agente en vivo (FASE 4.3)
    ============================================================ */
 .prueba-page .heading-actions button {
-  height: 34px;
+  height: auto;
+  min-height: 34px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -4443,8 +4531,9 @@ td:first-child {
   color: var(--cyan);
   background: rgba(0, 217, 255, 0.06);
   padding: 0 13px;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  line-height: 1.25;
+  letter-spacing: 0.044em;
   cursor: pointer;
 }
 .prueba-input-card {
@@ -4458,8 +4547,8 @@ td:first-child {
 }
 .prueba-input-card label > span {
   display: block;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.12em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.066em;
   color: #7d959b;
   margin-bottom: 8px;
 }
@@ -4470,7 +4559,7 @@ td:first-child {
   border: 1px solid var(--line);
   background: #0b171c;
   color: #dceef1;
-  font-size: 11px;
+  font-size: clamp(16.25px, 0.23vw + 15.15px, 19px);
   line-height: 1.5;
   outline: none;
 }
@@ -4495,7 +4584,7 @@ td:first-child {
   background: transparent;
   color: #8ca1a6;
   padding: 5px 10px;
-  font-size: 8px;
+  font-size: clamp(14.75px, 0.19vw + 13.85px, 17px);
   cursor: pointer;
 }
 .prueba-ejemplos button:hover {
@@ -4515,17 +4604,17 @@ td:first-child {
 }
 .prueba-result-grid small {
   display: block;
-  font: 600 7px "Space Grotesk";
-  letter-spacing: 0.12em;
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
+  letter-spacing: 0.066em;
   color: #7d959b;
   margin-bottom: 12px;
 }
 .prueba-verdict h3 {
-  font: 600 18px "Space Grotesk";
+  font: 600 clamp(20px, 0.29vw + 18.6px, 23.5px) "Space Grotesk";
   margin: 8px 0 2px;
 }
 .prueba-departamento {
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #657e85;
 }
 .prueba-badges {
@@ -4538,11 +4627,11 @@ td:first-child {
   border: 1px solid var(--line);
   color: #a9c0c6;
   padding: 4px 9px;
-  font: 600 7px "Space Grotesk";
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
   letter-spacing: 0.06em;
 }
 .prueba-meta {
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   color: #657e85;
 }
 .prueba-terms {
@@ -4566,12 +4655,12 @@ td:first-child {
 }
 .error-list p {
   color: #c9dbe0;
-  font-size: 9px;
+  font-size: clamp(15.25px, 0.21vw + 14.25px, 17.75px);
   line-height: 1.5;
   margin: 0 0 5px;
 }
 .error-list span {
-  font: 600 7px "Space Grotesk";
+  font: 600 clamp(13.88px, 0.16vw + 13.13px, 15.75px) "Space Grotesk";
   letter-spacing: 0.05em;
   color: #7d959b;
 }
@@ -4609,21 +4698,21 @@ td:first-child {
   margin-bottom: 8px;
 }
 .ecuacion-card header span {
-  font: 700 9px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 700 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
+  letter-spacing: 0.044em;
   color: #041014;
   background: var(--cyan);
   border-radius: 5px;
   padding: 3px 6px;
 }
 .ecuacion-card header b {
-  font: 600 11px "Space Grotesk";
+  font: 600 clamp(16.25px, 0.23vw + 15.15px, 19px) "Space Grotesk";
   letter-spacing: 0.04em;
   color: #eaf5f7;
 }
 .ecuacion-card code {
   display: block;
-  font: 500 11px "Space Grotesk";
+  font: 500 clamp(16.25px, 0.23vw + 15.15px, 19px) "Space Grotesk";
   letter-spacing: 0.02em;
   color: var(--cyan-soft);
   background: rgba(0, 217, 255, 0.07);
@@ -4635,7 +4724,7 @@ td:first-child {
   word-break: break-word;
 }
 .ecuacion-card p {
-  font: 400 11px "DM Sans";
+  font: 400 clamp(16.25px, 0.23vw + 15.15px, 19px) "DM Sans";
   line-height: 1.5;
   color: #9db6bd;
   margin: 0 0 8px;
@@ -4651,10 +4740,10 @@ td:first-child {
   display: flex;
   gap: 8px;
   align-items: baseline;
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
 }
 .ecuacion-vars li i {
-  font: 600 10px "Space Grotesk";
+  font: 600 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
   font-style: normal;
   color: var(--cyan-soft);
   min-width: 56px;
@@ -4678,6 +4767,18 @@ td:first-child {
 /* --- Traza del agente (11 etapas) --- */
 .traza-flow {
   margin-bottom: 16px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.traza-flow > div {
+  min-width: 0;
+  padding: 14px;
+}
+.traza-flow b {
+  display: block;
+  font-size: clamp(13px, 0.25vw + 12px, 15px);
+  line-height: 1.3;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 .traza-card {
   background: rgba(6, 22, 28, 0.6);
@@ -4688,12 +4789,13 @@ td:first-child {
 }
 .traza-nav {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 8px;
   margin-bottom: 16px;
 }
 .traza-nav button {
   display: grid;
+  min-width: 0;
   gap: 4px;
   text-align: left;
   border: 1px solid var(--line);
@@ -4707,13 +4809,15 @@ td:first-child {
   border-color: rgba(0, 217, 255, 0.4);
 }
 .traza-nav button span {
-  font: 700 10px "Space Grotesk";
+  font: 700 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
   color: var(--cyan);
 }
 .traza-nav button b {
-  font: 600 9.5px "Space Grotesk";
+  font: 600 clamp(12.5px, 0.25vw + 11.5px, 14.5px) "Space Grotesk";
   letter-spacing: 0.03em;
   line-height: 1.3;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 .traza-nav button.active {
   border-color: var(--cyan);
@@ -4728,9 +4832,9 @@ td:first-child {
   padding-top: 16px;
 }
 .traza-contador {
-  font: 600 8.5px "Space Grotesk";
+  font: 600 clamp(15px, 0.2vw + 14.05px, 17.38px) "Space Grotesk";
   font-style: normal;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.044em;
   color: var(--cyan);
   background: rgba(0, 217, 255, 0.1);
   border-radius: 5px;
@@ -4744,7 +4848,7 @@ td:first-child {
   background: rgba(0, 217, 255, 0.05);
   border-radius: 8px;
   padding: 10px 12px;
-  font: 400 12px "DM Sans";
+  font: 400 clamp(16.75px, 0.23vw + 15.65px, 19.5px) "DM Sans";
   font-style: italic;
   color: #d4e6ea;
 }
@@ -4754,12 +4858,12 @@ td:first-child {
 }
 .traza-bars > div {
   display: grid;
-  grid-template-columns: 132px 1fr 56px auto;
+  grid-template-columns: minmax(8.5rem, 1.15fr) minmax(3rem, 1fr) auto auto;
   align-items: center;
   gap: 10px;
 }
 .traza-bars > div > span {
-  font: 600 10px "Space Grotesk";
+  font: 600 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
   letter-spacing: 0.03em;
   text-transform: capitalize;
   color: #b7cdd3;
@@ -4777,18 +4881,18 @@ td:first-child {
   background: linear-gradient(90deg, #00d9ff, #5b8cff);
 }
 .traza-bars > div > b {
-  font: 700 10px "Space Grotesk";
+  font: 700 clamp(15.75px, 0.23vw + 14.65px, 18.5px) "Space Grotesk";
   color: #eaf5f7;
   text-align: right;
 }
 .traza-bars > div > small {
-  font: 500 9px "DM Sans";
+  font: 500 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "DM Sans";
   color: #7d959b;
 }
 .traza-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 10.5px;
+  font-size: clamp(16px, 0.23vw + 14.9px, 18.75px);
 }
 .traza-table th,
 .traza-table td {
@@ -4797,7 +4901,7 @@ td:first-child {
   border-bottom: 1px solid var(--line);
 }
 .traza-table th {
-  font: 600 8.5px "Space Grotesk";
+  font: 600 clamp(15px, 0.2vw + 14.05px, 17.38px) "Space Grotesk";
   letter-spacing: 0.06em;
   color: #7d959b;
 }
@@ -4821,16 +4925,16 @@ td:first-child {
   padding: 11px 13px;
 }
 .traza-umbrales > div > span {
-  font: 600 8.5px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(15px, 0.2vw + 14.05px, 17.38px) "Space Grotesk";
+  letter-spacing: 0.044em;
   color: #7d959b;
 }
 .traza-umbrales > div > b {
-  font: 700 20px "Space Grotesk";
+  font: 700 clamp(21.14px, 0.38vw + 19.34px, 25.64px) "Space Grotesk";
   color: #eaf5f7;
 }
 .traza-umbrales > div > small {
-  font-size: 9.5px;
+  font-size: clamp(15.5px, 0.22vw + 14.45px, 18.13px);
   color: #829ba4;
 }
 .traza-umbrales > div.ok {
@@ -4859,7 +4963,7 @@ td:first-child {
   border-radius: 9px;
   background: rgba(8, 26, 32, 0.7);
   color: #b7cdd3;
-  font: 600 9.5px "Space Grotesk";
+  font: 600 clamp(15.5px, 0.22vw + 14.45px, 18.13px) "Space Grotesk";
   letter-spacing: 0.05em;
   padding: 8px 12px;
   transition: 0.18s ease;
@@ -4890,7 +4994,68 @@ td:first-child {
   background: var(--cyan);
 }
 .traza-verdict {
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 14px;
+  padding: 16px;
+  background: var(--panel);
   border: 1px solid rgba(0, 217, 255, 0.3);
+}
+.traza-verdict > small,
+.traza-verdict .prueba-badges,
+.traza-verdict .prueba-meta {
+  grid-column: 1 / -1;
+}
+.traza-verdict .department-icon {
+  grid-column: 1;
+  grid-row: 2 / span 2;
+  margin: 0;
+}
+.traza-verdict h3,
+.traza-verdict .prueba-departamento {
+  grid-column: 2;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+.traza-verdict h3 {
+  margin: 0;
+}
+.traza-verdict .prueba-departamento {
+  margin: 2px 0 0;
+}
+.traza-verdict .prueba-badges {
+  margin: 12px 0 0;
+}
+
+@media (max-width: 900px) {
+  .traza-flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .traza-nav {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 720px) {
+  .traza-flow,
+  .traza-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .traza-flow > div {
+    padding: 12px;
+  }
+  .traza-flow > div:nth-child(even) {
+    border-right: 0;
+  }
+  .traza-verdict {
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 10px;
+    padding: 14px;
+  }
+  .traza-verdict .department-icon {
+    width: 42px;
+    height: 42px;
+  }
 }
 
 /* --- Mapa de calor de la matriz de confusión --- */
@@ -4909,7 +5074,7 @@ td:first-child {
   border-radius: 7px;
   background: rgba(8, 26, 32, 0.7);
   color: #829ba4;
-  font: 600 8.5px "Space Grotesk";
+  font: 600 clamp(15px, 0.2vw + 14.05px, 17.38px) "Space Grotesk";
   letter-spacing: 0.06em;
   padding: 5px 10px;
 }
@@ -4919,13 +5084,13 @@ td:first-child {
   color: #eaf5f7;
 }
 .heatmap-toggle span {
-  font: 400 9px "DM Sans";
+  font: 400 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "DM Sans";
   color: #7d959b;
 }
 .heatmap-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 10px;
+  font-size: clamp(15.75px, 0.23vw + 14.65px, 18.5px);
 }
 .heatmap-table th,
 .heatmap-table td {
@@ -4935,7 +5100,7 @@ td:first-child {
   min-width: 34px;
 }
 .heatmap-table th {
-  font: 600 8.5px "Space Grotesk";
+  font: 600 clamp(15px, 0.2vw + 14.05px, 17.38px) "Space Grotesk";
   letter-spacing: 0.03em;
   color: #8aa4ab;
   background: rgba(8, 26, 32, 0.6);
@@ -4971,8 +5136,8 @@ td:first-child {
 }
 .parametro-bloque > small {
   display: block;
-  font: 600 8.5px "Space Grotesk";
-  letter-spacing: 0.08em;
+  font: 600 clamp(15px, 0.2vw + 14.05px, 17.38px) "Space Grotesk";
+  letter-spacing: 0.044em;
   color: var(--cyan);
   margin-bottom: 8px;
 }
@@ -4985,11 +5150,11 @@ td:first-child {
   border-bottom: 1px dashed rgba(130, 206, 220, 0.12);
 }
 .parametro-fila > span {
-  font: 400 10.5px "DM Sans";
+  font: 400 clamp(16px, 0.23vw + 14.9px, 18.75px) "DM Sans";
   color: #829ba4;
 }
 .parametro-fila > b {
-  font: 600 10.5px "Space Grotesk";
+  font: 600 clamp(16px, 0.23vw + 14.9px, 18.75px) "Space Grotesk";
   color: #eaf5f7;
   text-align: right;
   word-break: break-word;
@@ -5014,24 +5179,24 @@ td:first-child {
   padding: 14px;
 }
 .ciclo-mejora article > span {
-  font: 700 18px "Space Grotesk";
+  font: 700 clamp(20px, 0.29vw + 18.6px, 23.5px) "Space Grotesk";
   color: rgba(0, 217, 255, 0.35);
 }
 .ciclo-mejora article h4 {
   margin: 0;
-  font: 600 12px "Space Grotesk";
+  font: 600 clamp(16.75px, 0.23vw + 15.65px, 19.5px) "Space Grotesk";
   letter-spacing: 0.03em;
   color: #eaf5f7;
 }
 .ciclo-mejora article b {
-  font: 600 8.5px "Space Grotesk";
+  font: 600 clamp(15px, 0.2vw + 14.05px, 17.38px) "Space Grotesk";
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--cyan-soft);
 }
 .ciclo-mejora article p {
   margin: 4px 0 0;
-  font: 400 10.5px "DM Sans";
+  font: 400 clamp(16px, 0.23vw + 14.9px, 18.75px) "DM Sans";
   line-height: 1.5;
   color: #8aa4ab;
 }
@@ -5040,7 +5205,7 @@ td:first-child {
 .informe-card .section-title button {
   border-color: rgba(0, 217, 255, 0.45);
   color: var(--cyan-soft);
-  font-size: 8.5px;
+  font-size: clamp(15px, 0.2vw + 14.05px, 17.38px);
   letter-spacing: 0.05em;
   padding: 8px 12px;
 }
@@ -5077,7 +5242,7 @@ td:first-child {
   border-radius: 9px;
   background: rgba(0, 217, 255, 0.1);
   color: var(--cyan-soft);
-  font: 600 9px "Space Grotesk";
+  font: 600 clamp(15.25px, 0.21vw + 14.25px, 17.75px) "Space Grotesk";
   letter-spacing: 0.05em;
   padding: 8px 12px;
   transition: 0.18s ease;
@@ -5099,7 +5264,7 @@ td:first-child {
   border-radius: 12px;
   background: rgba(4, 16, 20, 0.7);
   color: #c7dbe0;
-  font: 400 11px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font: 400 clamp(16.25px, 0.23vw + 15.15px, 19px)/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   white-space: pre-wrap;
   word-break: break-word;
 }
