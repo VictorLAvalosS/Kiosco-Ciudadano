@@ -26,6 +26,7 @@ import { ModelPage } from "@/components/ModelPage";
 import { EtiquetadoPage } from "@/components/EtiquetadoPage";
 import { PruebaAgente } from "@/components/PruebaAgente";
 import { CrewsPage, MapPage } from "@/components/OperationsModules";
+import { Navar, type SubseccionModelo } from "@/components/navar";
 
 type UtilityPanel = "settings" | "support" | "profile" | null;
 
@@ -62,6 +63,7 @@ export function Dashboard({
   const [filter, setFilter] = useState("Todas");
   const [search, setSearch] = useState("");
   const [activeSection, setActiveSection] = useState<AdminSection>("overview");
+  const [subseccionModelo, setSubseccionModelo] = useState<SubseccionModelo>("resumen");
   const [pagina, setPagina] = useState(1);
   const [notice, setNotice] = useState("");
   const [utilityPanel, setUtilityPanel] = useState<UtilityPanel>(null);
@@ -277,11 +279,23 @@ export function Dashboard({
           </button>
           <button
             className={activeSection === "model" ? "active" : ""}
-            onClick={() => setActiveSection("model")}
+            onClick={() => {
+              setActiveSection("model");
+              setSubseccionModelo("resumen");
+            }}
           >
             <Icon name="bolt" />
             <span>Modelo Agente</span>
           </button>
+          {activeSection === "model" && (
+            <Navar
+              activa={subseccionModelo}
+              onCambiar={(subseccion) => {
+                setSubseccionModelo(subseccion);
+                setActiveSection("model");
+              }}
+            />
+          )}
         </nav>
         <div className="side-bottom">
           <button onClick={() => setUtilityPanel("settings")}>
@@ -689,6 +703,7 @@ export function Dashboard({
             <ModelPage
               onNotice={showNotice}
               onDemo={solicitudes[0] ? () => onInspect(solicitudes[0]) : undefined}
+              subseccion={subseccionModelo}
             />
           )}
           {activeSection === "prueba" && (
