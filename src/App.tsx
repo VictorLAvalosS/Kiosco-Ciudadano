@@ -7,6 +7,7 @@ import { Processing } from "@/components/Processing";
 import { Result } from "@/components/Result";
 import { Dashboard } from "@/components/Dashboard";
 import { NLPInspector } from "@/components/NlpInspector";
+import { AdminLogin, CLAVE_SESION } from "@/components/AdminLogin"; // NUEVO
 
 type View = "kiosk" | "processing" | "result" | "dashboard";
 
@@ -23,6 +24,45 @@ export default function App() {
   const [animationDone, setAnimationDone] = useState(false);
   const [inspected, setInspected] = useState<Solicitud | null>(null);
   const [error, setError] = useState("");
+
+  
+  const [pidiendoClave, setPidiendoClave] = useState(false);
+  const [esAdmin, setEsAdmin] = useState(() => {
+    try {
+      return !!sessionStorage.getItem(CLAVE_SESION);
+    } catch {
+      return false;
+    }
+  });
+
+  
+  const abrirPanel = useCallback(() => {
+    if (esAdmin) setView("dashboard");
+    else setPidiendoClave(true);
+  }, [esAdmin]);
+
+  // NUEVO: contraseña correcta, se guarda el token y se abre el panel.
+  const alEntrar = useCallback((token: string) => {
+    try {
+      sessionStorage.setItem(CLAVE_SESION, token);
+    } catch {
+      /* sin almacenamiento disponible */
+    }
+    setEsAdmin(true);
+    setPidiendoClave(false);
+    setView("dashboard");
+  }, []);
+
+  // NUEVO: el kiosco es un equipo público, así que al volver a él se cierra la sesión.
+  const salirAlKiosco = useCallback(() => {
+    try {
+      sessionStorage.removeItem(CLAVE_SESION);
+    } catch {
+      /* sin almacenamiento disponible */
+    }
+    setEsAdmin(false);
+    setView("kiosk");
+  }, []);
 
   /** Envía la solicitud al backend, que la clasifica y la guarda en la base de datos. */
   const handleAnalyze = useCallback(async (text: string, otb: string) => {
@@ -77,17 +117,24 @@ export default function App() {
         />
       )}
 
-      {view === "dashboard" && (
-        <Dashboard onKiosk={() => setView("kiosk")} onInspect={(solicitud) => setInspected(solicitud)} />
+      {/* CAMBIADO: el dashboard solo se muestra si hay sesión de administrador */}
+      {view === "dashboard" && esAdmin && (
+        <Dashboard onKiosk={salirAlKiosco} onInspect={(solicitud) => setInspected(solicitud)} />
       )}
 
+      {/* el botón llama a abrirPanel en lugar de abrir el dashboard directo */}
       {view !== "dashboard" && (
-        <button className="admin-peek" onClick={() => setView("dashboard")}>
+        <button className="admin-peek" onClick={abrirPanel}>
           <Icon name="dashboard" size={18} /> PANEL ADMIN
         </button>
       )}
 
       {inspected && <NLPInspector solicitud={inspected} onClose={() => setInspected(null)} />}
+
+      {/* ventana que pide la contraseña */}
+      {pidiendoClave && (
+        <AdminLogin onSuccess={alEntrar} onCancel={() => setPidiendoClave(false)} />
+      )}
     </>
   );
 }

@@ -9,6 +9,8 @@ from __future__ import annotations
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.routers import admin
+
 from app.config import settings
 from app.routers import (
     etiquetado,
@@ -46,3 +48,4 @@ app.include_router(estadisticas.router, prefix="/api")
 app.include_router(predecir.router, prefix="/api")
 app.include_router(sistema.router, prefix="/api")
 app.include_router(informes.router, prefix="/api")
+app.include_router(admin.router, prefix="/api")

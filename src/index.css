@@ -5391,3 +5391,15 @@ td:first-child {
     grid-template-columns: 1fr;
   }
 }
+
+.admin-login input {
+  width: 100%;
+  background: #06161b;
+  border: 1px solid var(--line);
+  color: #d6e7ea;
+  padding: 11px 12px;
+  font-size: clamp(16px, 0.23vw + 14.9px, 18.75px);
+}
+.admin-login .alert-banner {
+  margin: 12px 0 0;
+}
