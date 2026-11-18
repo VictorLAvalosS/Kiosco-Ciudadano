@@ -28,6 +28,7 @@ import {
 import { Icon } from "@/components/Icon";
 import { EcuacionLista } from "@/components/Ecuacion";
 import { InformeCard } from "@/components/InformeCard";
+import type { SubseccionModelo } from "@/components/navar";
 
 /** Abreviaturas usadas en la matriz de confusión (encabezados de 8 columnas). */
 const ABREVIATURA: Record<string, string> = {
@@ -512,9 +513,11 @@ function MatrizConfusion({
 export function ModelPage({
   onNotice,
   onDemo,
+  subseccion,
 }: {
   onNotice: (message: string) => void;
   onDemo?: () => void;
+  subseccion: SubseccionModelo;
 }) {
   const [modelo, setModelo] = useState<Modelo | null>(null);
   const [versiones, setVersiones] = useState<Modelo[]>([]);
@@ -530,37 +533,24 @@ export function ModelPage({
   const [forzar, setForzar] = useState(false);
   const [resultado, setResultado] = useState<EntrenarResponse | null>(null);
   const [error, setError] = useState("");
+  const [auxiliaresCargados, setAuxiliaresCargados] = useState(false);
 
-  /** Recarga el modelo activo, el historial de versiones y las estadísticas. */
+  /** Recarga los datos necesarios para el resumen del modelo. */
   const cargar = useCallback(async () => {
     setCargando(true);
     setError("");
+    setAuxiliaresCargados(false);
     try {
-      const [activo, historial, nuevasStats, nuevaGuia, nuevoCatalogo] = await Promise.all([
+      const [activo, nuevasStats, nuevaGuia, nuevoCatalogo] = await Promise.all([
         modeloActivo(),
-        listarVersiones(),
         obtenerEstadisticas(),
         obtenerGuia(),
         listarCategorias(),
       ]);
       setModelo(activo);
-      setVersiones(historial);
       setStats(nuevasStats);
       setGuia(nuevaGuia);
       setCategorias(nuevoCatalogo);
-      // Fuentes auxiliares de la defensa: calidad, acuerdo y mejora por volumen.
-      // Se cargan por separado para que un fallo en una no bloquee el resto.
-      void Promise.all([
-        obtenerCalidadDataset().catch(() => null),
-        obtenerAcuerdo().catch(() => null),
-        listarExperimentos().catch(() => []),
-        modeloParametros().catch(() => null),
-      ]).then(([nuevaCalidad, nuevoAcuerdo, nuevosExperimentos, nuevosParametros]) => {
-        setCalidad(nuevaCalidad);
-        setAcuerdo(nuevoAcuerdo);
-        setExperimentos(nuevosExperimentos);
-        setParametros(nuevosParametros);
-      });
     } catch (fallo) {
       setError(fallo instanceof Error ? fallo.message : "No se pudo consultar el modelo.");
     } finally {
@@ -571,6 +561,24 @@ export function ModelPage({
   useEffect(() => {
     void cargar();
   }, [cargar]);
+
+  useEffect(() => {
+    if (subseccion !== "analisis" || auxiliaresCargados) return;
+    setAuxiliaresCargados(true);
+    void Promise.all([
+      listarVersiones().catch(() => []),
+      obtenerCalidadDataset().catch(() => null),
+      obtenerAcuerdo().catch(() => null),
+      listarExperimentos().catch(() => []),
+      modeloParametros().catch(() => null),
+    ]).then(([historial, nuevaCalidad, nuevoAcuerdo, nuevosExperimentos, nuevosParametros]) => {
+      setVersiones(historial);
+      setCalidad(nuevaCalidad);
+      setAcuerdo(nuevoAcuerdo);
+      setExperimentos(nuevosExperimentos);
+      setParametros(nuevosParametros);
+    });
+  }, [subseccion, auxiliaresCargados]);
 
   /** Ejecuta el reentrenamiento real del agente. */
   const reentrenar = useCallback(async () => {
@@ -698,6 +706,18 @@ export function ModelPage({
         </div>
       </div>
 
+      <div className="model-subsection-heading">
+        <div>
+          <small>MODELO AGENTE · SECCIÓN {subseccion === "resumen" ? "01" : "02"}</small>
+          <h3>{subseccion === "resumen" ? "Resumen y evaluación" : "Análisis y configuración"}</h3>
+        </div>
+        <p>
+          {subseccion === "resumen"
+            ? "Estado, métricas y resultados principales de la versión activa."
+            : "Calidad de datos, historial, configuración y trazabilidad del modelo."}
+        </p>
+      </div>
+
       {error && (
         <div className="alert-banner error">
           <Icon name="bolt" size={16} />
@@ -741,6 +761,8 @@ export function ModelPage({
         </div>
       )}
 
+      {subseccion === "resumen" && (
+        <>
       <div className="academic-brief">
         <div className="brief-index">
           PROYECTO
@@ -779,6 +801,8 @@ export function ModelPage({
           </div>
         ))}
       </div>
+        </>
+      )}
 
       {cargando && <p className="zone-empty">Consultando el modelo almacenado en la base de datos…</p>}
 
@@ -794,6 +818,13 @@ export function ModelPage({
 
       {modelo && (
         <>
+          {subseccion === "resumen" ? (
+          <>
+          <div className="model-content-heading">
+            <span>RESUMEN</span>
+            <h3>Estado y conjunto de datos</h3>
+            <p>Información general de la versión activa y los ejemplos disponibles para entrenarla.</p>
+          </div>
           <div className="model-meta-bar">
             <span>
               VERSIÓN ACTIVA <b>{modelo.version}</b>
@@ -852,7 +883,15 @@ export function ModelPage({
                 </span>
               </div>
             </article>
+          </div>
 
+          <div className="model-content-heading">
+            <span>EVALUACIÓN</span>
+            <h3>Resultados de clasificación</h3>
+            <p>Métricas y pruebas que miden el rendimiento del modelo sobre casos etiquetados.</p>
+          </div>
+
+          <div className="model-detail-grid">
             <article>
               <small>MÉTRICAS DE EVALUACIÓN</small>
               {[
@@ -1171,6 +1210,15 @@ export function ModelPage({
             </div>
           ) : null}
 
+          </>
+          ) : (
+          <>
+          <div className="model-content-heading">
+            <span>ANÁLISIS</span>
+            <h3>Confiabilidad y comportamiento del modelo</h3>
+            <p>Revisa la confianza, los errores, la calidad de las etiquetas y las oportunidades de mejora.</p>
+          </div>
+
           <div className="model-detail-grid">
             <article>
               <small>CURVA COBERTURA-PRECISIÓN (ELECCIÓN DEL UMBRAL DE REVISIÓN)</small>
@@ -1410,6 +1458,12 @@ export function ModelPage({
               <small>EVOLUCIÓN DEL F1 MACRO POR VERSIÓN</small>
               <EvolucionVersiones versiones={versiones} />
             </article>
+          </div>
+
+          <div className="model-content-heading">
+            <span>CONFIGURACIÓN</span>
+            <h3>Versiones, parámetros y trazabilidad</h3>
+            <p>Administra las versiones del agente y consulta los valores usados para entrenarlo y operarlo.</p>
           </div>
 
           <div className="versions-card">
@@ -1699,9 +1753,12 @@ export function ModelPage({
 
           {/* B5 · Informe del agente (Markdown, JSON y ZIP) */}
           <InformeCard onNotice={onNotice} />
+          </>
+          )}
         </>
       )}
 
+      {subseccion === "analisis" && (
       <div className="training-explanation">
         <div>
           <span>APRENDIZAJE SUPERVISADO</span>
@@ -1719,6 +1776,7 @@ export function ModelPage({
           <b>Etiqueta: Agua potable y alcantarillado</b>
         </div>
       </div>
+      )}
     </section>
   );
 }
