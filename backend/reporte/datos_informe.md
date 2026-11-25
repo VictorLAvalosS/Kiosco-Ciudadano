@@ -4,53 +4,53 @@ Documento generado automáticamente desde la base de datos y el modelo activo. T
 
 ## 1. Cabecera
 
-- **Fecha de generación:** 2026-11-16T18:59:30
-- **Versión del modelo activa:** v6
+- **Fecha de generación:** 2026-11-24T18:25:01
+- **Versión del modelo activa:** v8
 - **Método de evaluación:** conjunto_prueba_fijo
 - **Conjunto de prueba vigente:** prueba-g3
-- **Ejemplos de entrenamiento:** 464
+- **Ejemplos de entrenamiento:** 864
 - **Ejemplos de prueba fija:** 116
 - **Ejemplos de prueba externa:** 40
-- **Etiquetas del pool de entrenamiento:** 580
-- **Hash corto de los datos (SHA-256, 12 hex):** `76ea27372094`
+- **Etiquetas del pool de entrenamiento:** 980
+- **Hash corto de los datos (SHA-256, 12 hex):** `156df645803a`
 - **Umbrales de revisión (Ec. 9):** confianza ≥ 60% y margen ≥ 15%
 
 ## 2. Calidad del dataset
 
-- **Etiquetas analizadas:** 580
-- **Vocabulario único:** 726 términos
+- **Etiquetas analizadas:** 980
+- **Vocabulario único:** 1392 términos
 
 ### 2.1 Distribución por categoría
 
 | Categoría | Nº ejemplos | % del total |
 | --- | --- | --- |
-| alumbrado | 73 | 12.6% |
-| limpieza | 73 | 12.6% |
-| calles | 73 | 12.6% |
-| agua | 73 | 12.6% |
-| seguridad | 72 | 12.4% |
-| areas_verdes | 72 | 12.4% |
-| drenaje | 72 | 12.4% |
-| contaminacion | 72 | 12.4% |
+| calles | 298 | 30.4% |
+| alumbrado | 98 | 10.0% |
+| limpieza | 98 | 10.0% |
+| agua | 98 | 10.0% |
+| seguridad | 97 | 9.9% |
+| areas_verdes | 97 | 9.9% |
+| drenaje | 97 | 9.9% |
+| contaminacion | 97 | 9.9% |
 
-> Desbalance: razón máx/mín = **1.01**, coeficiente de variación = **0.007**.
+> Desbalance: razón máx/mín = **3.07**, coeficiente de variación = **0.541**.
 
 ### 2.2 Distribución por prioridad
 
 | Prioridad | Nº ejemplos | % del total |
 | --- | --- | --- |
-| ALTA | 248 | 42.8% |
-| MEDIA | 229 | 39.5% |
-| BAJA | 103 | 17.8% |
+| ALTA | 428 | 43.7% |
+| MEDIA | 382 | 39.0% |
+| BAJA | 170 | 17.3% |
 
 ### 2.3 Longitud de los textos (palabras)
 
-- Mínima: **8**, mediana: **28.0**, media: **26.4**, máxima: **39**.
+- Mínima: **5**, mediana: **19.0**, media: **19.9**, máxima: **39**.
 
 ### 2.4 Duplicados, casi-duplicados y contradicciones
 
 - Duplicados exactos: **0** grupos (0 extra).
-- Casi-duplicados (coseno TF-IDF ≥ 0.85): **11** extra en **11** grupos.
+- Casi-duplicados (coseno TF-IDF ≥ 0.85): **10** extra en **10** grupos.
 - Etiquetas contradictorias (mismo texto, categoría distinta): **0**.
 
 ## 3. Parámetros del modelo y comparación de algoritmos
@@ -59,18 +59,18 @@ Documento generado automáticamente desde la base de datos y el modelo activo. T
 
 | Parámetro | Valor |
 | --- | --- |
-| Nº de características TF-IDF | 697 |
-| Tamaño del vocabulario | 697 |
+| Nº de características TF-IDF | 1377 |
+| Tamaño del vocabulario | 1377 |
 | ngram_range | [1, 1] |
 | min_df | 1 |
 | sublinear_tf | True |
-| Nº de características (prioridad) | 697 |
+| Nº de características (prioridad) | 5095 |
 
 ### 3.2 Clasificadores e hiperparámetros por clase
 
 | Clase | Algoritmo | C | alpha | class_weight | max_iter | calibrado |
 | --- | --- | --- | --- | --- | --- | --- |
-| Categoría | LinearSVC (calibrado) | 5.0 | None | balanced | 1000 | True |
+| Categoría | LinearSVC (calibrado) | 1.0 | None | balanced | 1000 | True |
 | Prioridad | Naive Bayes Multinomial | None | 0.1 | None | None | False |
 
 ### 3.3 División de datos y semilla
@@ -79,7 +79,7 @@ Documento generado automáticamente desde la base de datos y el modelo activo. T
 | --- | --- |
 | Esquema | entrenamiento + conjunto de prueba fijo reservado por grupos de casi-duplicados (comparabilidad entre versiones) |
 | Semilla | 42 |
-| Entrenamiento | 464 |
+| Entrenamiento | 864 |
 | Prueba fija | 116 |
 | Prueba externa | 40 |
 | Folds máximos | 5 |
@@ -91,17 +91,17 @@ Documento generado automáticamente desde la base de datos y el modelo activo. T
 
 | Algoritmo | F1 macro | Accuracy | Precisión macro | Recall macro |
 | --- | --- | --- | --- | --- |
-| LinearSVC (calibrado) | 89.9% | 89.9% | 90.0% | 89.8% |
-| Regresión Logística | 88.5% | 88.6% | 88.7% | 88.5% |
-| Naive Bayes Multinomial | 85.8% | 85.8% | 86.2% | 85.8% |
+| LinearSVC (calibrado) | 90.5% | 91.9% | 90.8% | 90.5% |
+| Regresión Logística | 86.5% | 88.0% | 87.3% | 86.0% |
+| Naive Bayes Multinomial | 58.6% | 60.8% | 91.9% | 48.9% |
 
 **Prioridad** — ganador: `Naive Bayes Multinomial`
 
 | Algoritmo | F1 macro | Accuracy | Precisión macro | Recall macro |
 | --- | --- | --- | --- | --- |
-| LinearSVC (calibrado) | 80.5% | 80.8% | 82.5% | 79.2% |
-| Regresión Logística | 79.4% | 80.2% | 80.4% | 78.7% |
-| Naive Bayes Multinomial | 67.3% | 73.9% | 81.8% | 66.0% |
+| LinearSVC (calibrado) | 68.9% | 70.8% | 72.0% | 67.3% |
+| Regresión Logística | 67.3% | 69.8% | 69.2% | 66.2% |
+| Naive Bayes Multinomial | 54.0% | 66.3% | 75.1% | 55.6% |
 
 > Leyenda de ecuaciones: TF-IDF en la vectorización (Ec. 1–3), puntaje lineal por clase (Ec. 4), objetivo de la SVM (Ec. 5), Naive Bayes como algoritmo comparado (Ec. 19) y softmax de la regresión logística (Ec. 20).
 
@@ -111,57 +111,57 @@ Documento generado automáticamente desde la base de datos y el modelo activo. T
 
 | Conjunto | N | Accuracy (IC 95 %) | Precisión macro | Recall macro | F1 macro |
 | --- | --- | --- | --- | --- | --- |
-| Prueba fija | 116 | 95.7% [90.3%, 98.2%] | 95.8% | 95.7% | 95.7% |
-| Prueba externa | 40 | 85.0% [70.9%, 92.9%] | 86.9% | 85.0% | 84.8% |
+| Prueba fija | 116 | 98.3% [93.9%, 99.5%] | 98.4% | 98.3% | 98.3% |
+| Prueba externa | 40 | 85.0% [70.9%, 92.9%] | 87.8% | 85.0% | 85.1% |
 
 #### Categoría — métricas por clase (Ec. 10–12)
 
 | Clase | Precisión | Recall | F1 | Soporte |
 | --- | --- | --- | --- | --- |
 | agua | 100.0% | 100.0% | 100.0% | 14 |
-| calles | 93.3% | 93.3% | 93.3% | 15 |
+| calles | 93.8% | 100.0% | 96.8% | 15 |
 | drenaje | 100.0% | 100.0% | 100.0% | 14 |
 | limpieza | 100.0% | 100.0% | 100.0% | 15 |
-| alumbrado | 100.0% | 100.0% | 100.0% | 15 |
-| seguridad | 87.5% | 93.3% | 90.3% | 15 |
-| areas_verdes | 92.9% | 92.9% | 92.9% | 14 |
-| contaminacion | 92.3% | 85.7% | 88.9% | 14 |
+| alumbrado | 100.0% | 93.3% | 96.5% | 15 |
+| seguridad | 93.3% | 93.3% | 93.3% | 15 |
+| areas_verdes | 100.0% | 100.0% | 100.0% | 14 |
+| contaminacion | 100.0% | 100.0% | 100.0% | 14 |
 
 #### Categoría — IC de Wilson por clase (Ec. 17)
 
 | Clase | Precisión IC 95 % | Recall IC 95 % | Soporte |
 | --- | --- | --- | --- |
-| alumbrado | 100.0% [79.6%, 100.0%] | 100.0% [79.6%, 100.0%] | 15 |
+| alumbrado | 100.0% [78.5%, 100.0%] | 93.3% [70.2%, 98.8%] | 15 |
 | limpieza | 100.0% [79.6%, 100.0%] | 100.0% [79.6%, 100.0%] | 15 |
-| calles | 93.3% [70.2%, 98.8%] | 93.3% [70.2%, 98.8%] | 15 |
+| calles | 93.8% [71.7%, 98.9%] | 100.0% [79.6%, 100.0%] | 15 |
 | agua | 100.0% [78.5%, 100.0%] | 100.0% [78.5%, 100.0%] | 14 |
-| seguridad | 87.5% [64.0%, 96.5%] | 93.3% [70.2%, 98.8%] | 15 |
-| areas_verdes | 92.9% [68.5%, 98.7%] | 92.9% [68.5%, 98.7%] | 14 |
+| seguridad | 93.3% [70.2%, 98.8%] | 93.3% [70.2%, 98.8%] | 15 |
+| areas_verdes | 100.0% [78.5%, 100.0%] | 100.0% [78.5%, 100.0%] | 14 |
 | drenaje | 100.0% [78.5%, 100.0%] | 100.0% [78.5%, 100.0%] | 14 |
-| contaminacion | 92.3% [66.7%, 98.6%] | 85.7% [60.1%, 96.0%] | 14 |
+| contaminacion | 100.0% [78.5%, 100.0%] | 100.0% [78.5%, 100.0%] | 14 |
 
 ### 4.2 Prioridad
 
 | Conjunto | N | Accuracy (IC 95 %) | Precisión macro | Recall macro | F1 macro |
 | --- | --- | --- | --- | --- | --- |
-| Prueba fija | 116 | 93.1% [87.0%, 96.5%] | 94.6% | 91.9% | 93.1% |
-| Prueba externa | 40 | 45.0% [30.7%, 60.2%] | — | — | 43.0% |
+| Prueba fija | 116 | 94.0% [88.1%, 97.0%] | 95.3% | 93.9% | 94.6% |
+| Prueba externa | 40 | 35.0% [22.1%, 50.5%] | — | — | 31.0% |
 
 #### Prioridad — métricas por clase (Ec. 10–12)
 
 | Clase | Precisión | Recall | F1 | Soporte |
 | --- | --- | --- | --- | --- |
 | ALTA | 93.1% | 94.7% | 93.9% | 57 |
-| BAJA | 100.0% | 88.2% | 93.8% | 17 |
-| MEDIA | 90.7% | 92.9% | 91.8% | 42 |
+| BAJA | 100.0% | 94.1% | 97.0% | 17 |
+| MEDIA | 92.9% | 92.9% | 92.9% | 42 |
 
 #### Prioridad — IC de Wilson por clase (Ec. 17)
 
 | Clase | Precisión IC 95 % | Recall IC 95 % | Soporte |
 | --- | --- | --- | --- |
 | ALTA | 93.1% [83.6%, 97.3%] | 94.7% [85.6%, 98.2%] | 57 |
-| MEDIA | 90.7% [78.4%, 96.3%] | 92.9% [81.0%, 97.5%] | 42 |
-| BAJA | 100.0% [79.6%, 100.0%] | 88.2% [65.7%, 96.7%] | 17 |
+| MEDIA | 92.9% [81.0%, 97.5%] | 92.9% [81.0%, 97.5%] | 42 |
+| BAJA | 100.0% [80.6%, 100.0%] | 94.1% [73.0%, 99.0%] | 17 |
 
 ## 5. Matrices de confusión (absolutas y normalizadas por fila)
 
@@ -171,27 +171,27 @@ Documento generado automáticamente desde la base de datos y el modelo activo. T
 
 | real \ pred | alumbrad | limpieza | calles | agua | segurida | areas_ve | drenaje | contamin |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| alumbrado | 15 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| alumbrado | 14 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
 | limpieza | 0 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
-| calles | 0 | 0 | 14 | 0 | 0 | 1 | 0 | 0 |
+| calles | 0 | 0 | 15 | 0 | 0 | 0 | 0 | 0 |
 | agua | 0 | 0 | 0 | 14 | 0 | 0 | 0 | 0 |
-| seguridad | 0 | 0 | 0 | 0 | 14 | 0 | 0 | 1 |
-| areas_verdes | 0 | 0 | 1 | 0 | 0 | 13 | 0 | 0 |
+| seguridad | 0 | 0 | 1 | 0 | 14 | 0 | 0 | 0 |
+| areas_verdes | 0 | 0 | 0 | 0 | 0 | 14 | 0 | 0 |
 | drenaje | 0 | 0 | 0 | 0 | 0 | 0 | 14 | 0 |
-| contaminacion | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 12 |
+| contaminacion | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 14 |
 
 **Normalizada por fila (proporción)**
 
 | real \ pred | alumbrad | limpieza | calles | agua | segurida | areas_ve | drenaje | contamin |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| alumbrado | 100.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+| alumbrado | 93.3% | 0.0% | 0.0% | 0.0% | 6.7% | 0.0% | 0.0% | 0.0% |
 | limpieza | 0.0% | 100.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
-| calles | 0.0% | 0.0% | 93.3% | 0.0% | 0.0% | 6.7% | 0.0% | 0.0% |
+| calles | 0.0% | 0.0% | 100.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
 | agua | 0.0% | 0.0% | 0.0% | 100.0% | 0.0% | 0.0% | 0.0% | 0.0% |
-| seguridad | 0.0% | 0.0% | 0.0% | 0.0% | 93.3% | 0.0% | 0.0% | 6.7% |
-| areas_verdes | 0.0% | 0.0% | 7.1% | 0.0% | 0.0% | 92.9% | 0.0% | 0.0% |
+| seguridad | 0.0% | 0.0% | 6.7% | 0.0% | 93.3% | 0.0% | 0.0% | 0.0% |
+| areas_verdes | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 100.0% | 0.0% | 0.0% |
 | drenaje | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 100.0% | 0.0% |
-| contaminacion | 0.0% | 0.0% | 0.0% | 0.0% | 14.3% | 0.0% | 0.0% | 85.7% |
+| contaminacion | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 100.0% |
 
 ### 5.2 Prioridad (3×3)
 
@@ -201,7 +201,7 @@ Documento generado automáticamente desde la base de datos y el modelo activo. T
 | --- | --- | --- | --- |
 | ALTA | 54 | 3 | 0 |
 | MEDIA | 3 | 39 | 0 |
-| BAJA | 1 | 1 | 15 |
+| BAJA | 1 | 0 | 16 |
 
 **Normalizada por fila (proporción)**
 
@@ -209,7 +209,7 @@ Documento generado automáticamente desde la base de datos y el modelo activo. T
 | --- | --- | --- | --- |
 | ALTA | 94.7% | 5.3% | 0.0% |
 | MEDIA | 7.1% | 92.9% | 0.0% |
-| BAJA | 5.9% | 5.9% | 88.2% |
+| BAJA | 5.9% | 0.0% | 94.1% |
 
 ## 6. Baselines, calibración y curvas
 
@@ -219,15 +219,15 @@ Documento generado automáticamente desde la base de datos y el modelo activo. T
 
 | Clasificador | Accuracy | F1 macro |
 | --- | --- | --- |
-| Agente (modelo activo) | 95.7% | 95.7% |
-| Clase mayoritaria (agua) | 12.1% | 2.7% |
-| Aleatoria estratificada | 12.9% | 12.5% |
+| Agente (modelo activo) | 98.3% | 98.3% |
+| Clase mayoritaria (calles) | 12.9% | 2.9% |
+| Aleatoria estratificada | 9.5% | 8.1% |
 
 **Prioridad**
 
 | Clasificador | Accuracy | F1 macro |
 | --- | --- | --- |
-| Agente (modelo activo) | 93.1% | 93.1% |
+| Agente (modelo activo) | 94.0% | 94.6% |
 | Clase mayoritaria (ALTA) | 49.1% | 22.0% |
 | Aleatoria estratificada | 37.1% | 31.4% |
 
@@ -235,47 +235,44 @@ Documento generado automáticamente desde la base de datos y el modelo activo. T
 
 | Rango de confianza | N | Confianza media | Exactitud real |
 | --- | --- | --- | --- |
-| [0.0%, 50.0%) | 6 | 39.8% | 16.7% |
-| [50.0%, 60.0%) | 2 | 57.6% | 100.0% |
-| [60.0%, 70.0%) | 0 | — | — |
-| [70.0%, 80.0%) | 8 | 74.5% | 100.0% |
-| [80.0%, 90.0%) | 60 | 88.3% | 100.0% |
-| [90.0%, 100.0%) | 40 | 91.0% | 100.0% |
+| [0.0%, 50.0%) | 2 | 39.5% | 100.0% |
+| [50.0%, 60.0%) | 2 | 52.5% | 50.0% |
+| [60.0%, 70.0%) | 7 | 67.2% | 85.7% |
+| [70.0%, 80.0%) | 1 | 78.3% | 100.0% |
+| [80.0%, 90.0%) | 15 | 85.6% | 100.0% |
+| [90.0%, 100.0%) | 89 | 93.4% | 100.0% |
 
-> Brier score: **0.0643** · ECE: **0.1288** · casos: **116**.
+> Brier score: **0.0462** · ECE: **0.0930** · casos: **116**.
 
 ### 6.3 Curva cobertura-precisión y umbral de revisión (Ec. 9)
 
 | Umbral de confianza | Cobertura | N aceptados | Precisión |
 | --- | --- | --- | --- |
-| 0% | 100.0% | 116 | 95.7% |
-| 40% | 98.3% | 114 | 96.5% |
-| 50% | 94.8% | 110 | 100.0% |
-| 60% | 93.1% | 108 | 100.0% |
-| 70% | 93.1% | 108 | 100.0% |
-| 80% | 86.2% | 100 | 100.0% |
-| 90% | 34.5% | 40 | 100.0% |
-| 95% | 0.0% | 0 | — |
+| 0% | 100.0% | 116 | 98.3% |
+| 40% | 99.1% | 115 | 98.3% |
+| 50% | 98.3% | 114 | 98.2% |
+| 60% | 96.5% | 112 | 99.1% |
+| 70% | 90.5% | 105 | 100.0% |
+| 80% | 89.7% | 104 | 100.0% |
+| 90% | 76.7% | 89 | 100.0% |
+| 95% | 12.9% | 15 | 100.0% |
 
 ### 6.4 Análisis de errores
 
 | Texto (recortado) | Real | Predicha | Confianza |
 | --- | --- | --- | --- |
-| `Se escuchan detonaciones de arma de fuego en la madrugada` | seguridad | contaminacion | 45.1% |
-| `Pedimos pintar un paso peatonal frente al colegio` | calles | areas_verdes | 44.9% |
-| `Las bancas del parque están rotas y no se pueden usar` | areas_verdes | calles | 43.2% |
-| `Alerta vecinal: hay un criadero clandestino de animales en e` | contaminacion | seguridad | 41.8% |
-| `Es urgente atender esto: hay un criadero clandestino de anim` | contaminacion | seguridad | 38.0% |
+| `Necesitamos un botón de auxilio en la parada de transporte` | seguridad | calles | 69.3% |
+| `Falta iluminación en la cancha del barrio y los jóvenes jueg` | alumbrado | seguridad | 51.0% |
 
 ### 6.5 Curva de aprendizaje
 
 | Nº ejemplos | F1 entrenamiento | F1 validación |
 | --- | --- | --- |
-| 74 | 100.0% | 44.3% |
-| 148 | 100.0% | 73.7% |
-| 222 | 100.0% | 86.7% |
-| 296 | 100.0% | 90.6% |
-| 371 | 100.0% | 92.7% |
+| 138 | 100.0% | 64.4% |
+| 276 | 100.0% | 74.7% |
+| 414 | 100.0% | 74.6% |
+| 552 | 100.0% | 92.0% |
+| 691 | 100.0% | 93.8% |
 
 ## 7. Eficiencia medida y evolución por versión
 
@@ -283,19 +280,21 @@ Documento generado automáticamente desde la base de datos y el modelo activo. T
 
 | Métrica | Valor |
 | --- | --- |
-| Tiempo de entrenamiento | 193.280 s |
-| Tamaño del modelo serializado | 292.87 KB |
+| Tiempo de entrenamiento | 11.184 s |
+| Tamaño del modelo serializado | 843.93 KB |
 | Nº de predicciones medidas | 500 |
 | Textos distintos usados | 116 |
-| Latencia media | 111.864 ms |
-| Latencia p95 | 428.267 ms |
+| Latencia media | 7.296 ms |
+| Latencia p95 | 8.723 ms |
 
 ### 7.2 Evolución por versión válida (sin fuga de datos)
 
 | Versión | Algoritmo | Entren. (s) | Modelo (KB) | Latencia p95 (ms) | Prueba | Accuracy cat. | F1 cat. | F1 prioridad |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | v5 | LinearSVC (calibrado) | — | — | — | 116 | 95.7% | 95.7% | 93.1% |
-| v6 (activa) | LinearSVC (calibrado) | 193.280 | 292.87 | 428.267 | 116 | 95.7% | 95.7% | 93.1% |
+| v6 | LinearSVC (calibrado) | 193.280 | 292.87 | 428.267 | 116 | 95.7% | 95.7% | 93.1% |
+| v7 | Regresión Logística | 113.051 | 186.44 | 29.706 | 116 | 97.4% | 97.5% | 93.8% |
+| v8 (activa) | LinearSVC (calibrado) | 11.184 | 843.93 | 8.723 | 116 | 98.3% | 98.3% | 94.6% |
 
 ### 7.3 Versiones excluidas de la comparación (fuga de datos)
 
@@ -323,52 +322,52 @@ Diagrama del pipeline: **texto → normalización → tokens/stopwords → n-gra
 
 | Término | tf | idf | tf-idf |
 | --- | --- | --- | --- |
-| `tuberia` | 1 | 5.5326 | 0.55784 |
-| `fuga` | 1 | 4.8395 | 0.48795 |
-| `agua` | 2 | 2.6877 | 0.45883 |
-| `potable` | 1 | 3.8839 | 0.39161 |
-| `esquina` | 1 | 2.9225 | 0.29467 |
+| `tuberia` | 1 | 5.1978 | 0.50327 |
+| `fuga` | 1 | 5.0547 | 0.48941 |
+| `agua` | 2 | 2.9752 | 0.48775 |
+| `potable` | 1 | 4.2074 | 0.40737 |
+| `esquina` | 1 | 3.3201 | 0.32146 |
 
 **Matriz documento-término TF-IDF reducida (8 términos más relevantes)**
 
 | Documento \ término | `tuberia` | `fuga` | `agua` | `potable` | `esquina` |
 | --- | --- | --- | --- | --- | --- |
-| peso tf-idf | 0.55784 | 0.48795 | 0.45883 | 0.39161 | 0.29467 |
+| peso tf-idf | 0.50327 | 0.48941 | 0.48775 | 0.40737 | 0.32146 |
 
 **7. Puntajes de decisión por clase (Ec. 4)**
 
 | Clase | s_c(x) |
 | --- | --- |
-| `agua` | 2.61188 |
-| `drenaje` | -0.03810 |
-| `areas_verdes` | -0.27468 |
-| `limpieza` | -0.38099 |
-| `alumbrado` | -0.42068 |
-| `contaminacion` | -0.50436 |
-| `calles` | -0.58696 |
-| `seguridad` | -0.67447 |
+| `agua` | 2.74177 |
+| `drenaje` | 0.04030 |
+| `limpieza` | -0.22419 |
+| `areas_verdes` | -0.34944 |
+| `alumbrado` | -0.41935 |
+| `seguridad` | -0.59379 |
+| `contaminacion` | -0.65850 |
+| `calles` | -0.81903 |
 
 **8. Probabilidades calibradas de categoría (Ec. 6, 7)**
 
 | Clase | Probabilidad |
 | --- | --- |
-| `agua` | 93.6% |
-| `drenaje` | 2.1% |
-| `areas_verdes` | 1.3% |
-| `limpieza` | 0.8% |
-| `calles` | 0.7% |
-| `alumbrado` | 0.6% |
-| `contaminacion` | 0.6% |
-| `seguridad` | 0.4% |
+| `agua` | 96.9% |
+| `drenaje` | 2.2% |
+| `limpieza` | 0.4% |
+| `areas_verdes` | 0.2% |
+| `alumbrado` | 0.1% |
+| `seguridad` | 0.1% |
+| `calles` | 0.1% |
+| `contaminacion` | 0.1% |
 
 **9–10. Margen y decisión (Ec. 8, 9)**
 
 | Concepto | Valor |
 | --- | --- |
-| Confianza (categoría) | 93.62% |
+| Confianza (categoría) | 96.85% |
 | Umbral de confianza | 60% |
 | ¿Cumple confianza? | True |
-| Margen p₁ − p₂ | 91.55% |
+| Margen p₁ − p₂ | 94.70% |
 | Umbral de margen | 15% |
 | ¿Cumple margen? | True |
 | Categoría final | `agua` |
@@ -379,71 +378,79 @@ Diagrama del pipeline: **texto → normalización → tokens/stopwords → n-gra
 
 | Clase | Puntaje s_c(x) | Probabilidad |
 | --- | --- | --- |
-| `ALTA` | -12.33097 | 69.3% |
-| `MEDIA` | -13.19262 | 28.7% |
-| `BAJA` | -15.08253 | 2.0% |
+| `ALTA` | -17.30894 | 76.5% |
+| `MEDIA` | -18.41834 | 23.1% |
+| `BAJA` | -21.67713 | 0.4% |
 
-> Prioridad con mayor probabilidad: **`ALTA`** (confianza 69.33%, margen 40.65%).
+> Prioridad con mayor probabilidad: **`ALTA`** (confianza 76.49%, margen 53.37%).
 
 ### 8.2 Ejemplo 2 — origen: `prueba_fija_dudosa`
 
-- **1. Texto original:** `Necesitamos un botón de auxilio en la parada de transporte`
-- **2. Texto normalizado:** `necesitamos un boton de auxilio en la parada de transporte`
-- **3. Tokens (10):** `necesitamos`, `un`, `boton`, `de`, `auxilio`, `en`, `la`, `parada`, `de`, `transporte`
-- **4. Tokens sin stopwords (5):** `necesitamos`, `boton`, `auxilio`, `parada`, `transporte`
-- **Stopwords eliminadas:** `de`, `en`, `la`, `un`
-- **5. N-gramas generados (5):** `necesitamos`, `boton`, `auxilio`, `parada`, `transporte`
+- **1. Texto original:** `Alerta vecinal: hay un criadero clandestino de animales en el pasaje Los Pinos que genera olores fuertes y plagas, ya lleva varios días así.`
+- **2. Texto normalizado:** `alerta vecinal hay un criadero clandestino de animales en el pasaje los pinos que genera olores fuertes y plagas ya lleva varios dias asi`
+- **3. Tokens (24):** `alerta`, `vecinal`, `hay`, `un`, `criadero`, `clandestino`, `de`, `animales`, `en`, `el`, `pasaje`, `los`, `pinos`, `que`, `genera`, `olores`, `fuertes`, `y`, `plagas`, `ya`, `lleva`, `varios`, `dias`, `asi`
+- **4. Tokens sin stopwords (14):** `alerta`, `vecinal`, `criadero`, `clandestino`, `animales`, `pasaje`, `pinos`, `genera`, `olores`, `fuertes`, `plagas`, `lleva`, `varios`, `dias`
+- **Stopwords eliminadas:** `asi`, `de`, `el`, `en`, `hay`, `los`, `que`, `un`, `ya`
+- **5. N-gramas generados (14):** `alerta`, `vecinal`, `criadero`, `clandestino`, `animales`, `pasaje`, `pinos`, `genera`, `olores`, `fuertes`, `plagas`, `lleva`, `varios`, `dias`
 
 **6. Términos con mayor peso TF-IDF (Ec. 1–3)**
 
 | Término | tf | idf | tf-idf |
 | --- | --- | --- | --- |
-| `parada` | 1 | 4.2517 | 0.80811 |
-| `necesitamos` | 1 | 3.0990 | 0.58902 |
+| `olores` | 1 | 7.0696 | 0.37703 |
+| `animales` | 1 | 7.0696 | 0.37703 |
+| `plagas` | 1 | 6.6641 | 0.35541 |
+| `clandestino` | 1 | 5.9710 | 0.31844 |
+| `fuertes` | 1 | 5.4601 | 0.29120 |
+| `genera` | 1 | 5.2778 | 0.28147 |
+| `pinos` | 1 | 4.5046 | 0.24024 |
+| `alerta` | 1 | 4.3287 | 0.23086 |
+| `pasaje` | 1 | 4.2970 | 0.22917 |
+| `lleva` | 1 | 4.1518 | 0.22142 |
 
 **Matriz documento-término TF-IDF reducida (8 términos más relevantes)**
 
-| Documento \ término | `parada` | `necesitamos` |
-| --- | --- | --- |
-| peso tf-idf | 0.80811 | 0.58902 |
+| Documento \ término | `olores` | `animales` | `plagas` | `clandestino` | `fuertes` | `genera` | `pinos` | `alerta` |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| peso tf-idf | 0.37703 | 0.37703 | 0.35541 | 0.31844 | 0.29120 | 0.28147 | 0.24024 | 0.23086 |
 
 **7. Puntajes de decisión por clase (Ec. 4)**
 
 | Clase | s_c(x) |
 | --- | --- |
-| `limpieza` | 0.14529 |
-| `areas_verdes` | 0.14101 |
-| `seguridad` | 0.11064 |
-| `calles` | -0.02713 |
-| `agua` | -0.04463 |
-| `drenaje` | -0.11671 |
-| `alumbrado` | -0.12077 |
-| `contaminacion` | -0.21343 |
+| `contaminacion` | 0.25283 |
+| `limpieza` | 0.22051 |
+| `areas_verdes` | 0.18062 |
+| `seguridad` | 0.08553 |
+| `alumbrado` | 0.00120 |
+| `drenaje` | -0.01311 |
+| `agua` | -0.02019 |
+| `calles` | -0.62255 |
 
 **8. Probabilidades calibradas de categoría (Ec. 6, 7)**
 
 | Clase | Probabilidad |
 | --- | --- |
-| `seguridad` | 25.8% |
-| `calles` | 18.1% |
-| `areas_verdes` | 17.3% |
-| `limpieza` | 17.1% |
-| `alumbrado` | 6.2% |
-| `agua` | 5.7% |
-| `contaminacion` | 5.6% |
-| `drenaje` | 4.2% |
+| `contaminacion` | 34.9% |
+| `seguridad` | 21.3% |
+| `areas_verdes` | 15.7% |
+| `limpieza` | 15.0% |
+| `alumbrado` | 4.2% |
+| `drenaje` | 3.5% |
+| `agua` | 3.3% |
+| `calles` | 2.1% |
 
 **9–10. Margen y decisión (Ec. 8, 9)**
 
 | Concepto | Valor |
 | --- | --- |
-| Confianza (categoría) | 25.81% |
+| Confianza (categoría) | 34.86% |
 | Umbral de confianza | 60% |
 | ¿Cumple confianza? | False |
-| Margen p₁ − p₂ | 7.68% |
+| Margen p₁ − p₂ | 13.52% |
 | Umbral de margen | 15% |
 | ¿Cumple margen? | False |
-| Categoría final | `seguridad` |
+| Categoría final | `contaminacion` |
 | Prioridad final | `ALTA` |
 | **Decisión final** | **revisión humana** |
 
@@ -451,11 +458,11 @@ Diagrama del pipeline: **texto → normalización → tokens/stopwords → n-gra
 
 | Clase | Puntaje s_c(x) | Probabilidad |
 | --- | --- | --- |
-| `BAJA` | -7.51680 | 27.3% |
-| `ALTA` | -7.85531 | 43.2% |
-| `MEDIA` | -8.21866 | 29.4% |
+| `MEDIA` | -30.28296 | 47.7% |
+| `ALTA` | -30.34823 | 48.8% |
+| `BAJA` | -32.10371 | 3.5% |
 
-> Prioridad con mayor probabilidad: **`ALTA`** (confianza 43.24%, margen 13.80%).
+> Prioridad con mayor probabilidad: **`ALTA`** (confianza 48.79%, margen 1.06%).
 
 ## 9. Librerías y versiones instaladas
 
@@ -463,19 +470,19 @@ Diagrama del pipeline: **texto → normalización → tokens/stopwords → n-gra
 
 | Librería | Versión instalada |
 | --- | --- |
-| scikit-learn | 1.9.1 |
-| numpy | 2.5.4 |
-| scipy | 1.18.1 |
-| pandas | 3.1.1 |
+| scikit-learn | 1.7.2 |
+| numpy | 2.2.6 |
+| scipy | 1.15.3 |
+| pandas | 2.3.3 |
 | joblib | 1.6.0 |
-| fastapi | 0.163.0 |
-| starlette | 1.10.0 |
-| pydantic | 2.14.3 |
+| fastapi | 0.162.5 |
+| starlette | 1.7.0 |
+| pydantic | 2.14.4 |
 | uvicorn | 0.54.0 |
-| sqlalchemy | 2.1.8 |
+| sqlalchemy | 2.0.58 |
 | alembic | 1.20.1 |
 | psycopg2-binary | 2.9.13 |
-| python-dotenv | 1.2.3 |
+| python-dotenv | 1.2.4 |
 | pytest | 9.2.0 |
 | httpx | 0.28.1 |
 

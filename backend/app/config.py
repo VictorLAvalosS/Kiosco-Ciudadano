@@ -44,6 +44,9 @@ class Settings:
         # vacía, no se exige cabecera (útil en desarrollo y pruebas locales).
         self.api_key: str = os.getenv("API_KEY", "").strip()
 
+        # Contraseña del administrador para el panel administrativo en modo local.
+        self.admin_password: str = os.getenv("ADMIN_PASSWORD", "admin").strip()
+
         # Directorio de datos (CSV de ejemplo) y de modelos temporales.
         self.data_dir: Path = BASE_DIR / "data"
 

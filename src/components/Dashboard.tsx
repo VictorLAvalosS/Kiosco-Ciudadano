@@ -796,7 +796,7 @@ export function Dashboard({
                   <br />
                   Etiquetas registradas: <b>{salud?.n_etiquetas ?? stats?.etiquetadas ?? 0}</b>
                   <br />
-                  Origen de datos: <b>Supabase PostgreSQL (backend FastAPI)</b>
+                  Origen de datos: <b>PostgreSQL Local (backend FastAPI)</b>
                 </p>
                 <button
                   className="utility-action"

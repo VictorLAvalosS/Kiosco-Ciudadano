@@ -9,12 +9,12 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "format": "oxfmt",
-    "api": "cd backend && .venv\\Scripts\\python.exe -m uvicorn app.main:app --reload --reload-dir app --reload-dir ml --reload-dir alembic --host 127.0.0.1 --port 8000",
-    "migrate": "cd backend && .venv\\Scripts\\python.exe -m alembic upgrade head",
-    "importar": "cd backend && .venv\\Scripts\\python.exe importar_csv.py",
-    "demo": "cd backend && .venv\\Scripts\\python.exe demo_mejora.py",
-    "informe": "cd backend && .venv\\Scripts\\python.exe exportar_datos_informe.py",
-    "test:backend": "cd backend && .venv\\Scripts\\python.exe -m pytest",
+    "api": "node scripts/py.mjs -m uvicorn app.main:app --reload --reload-dir app --reload-dir ml --reload-dir alembic --host 127.0.0.1 --port 8000",
+    "migrate": "node scripts/py.mjs -m alembic upgrade head",
+    "importar": "node scripts/py.mjs importar_csv.py",
+    "demo": "node scripts/py.mjs demo_mejora.py",
+    "informe": "node scripts/py.mjs exportar_datos_informe.py",
+    "test:backend": "node scripts/py.mjs -m pytest",
     "dev:all": "concurrently -k -n API,WEB -c blue,green \"npm:api\" \"npm:dev\""
   },
   "dependencies": {

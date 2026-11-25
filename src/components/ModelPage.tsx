@@ -76,7 +76,7 @@ const CICLO_MEJORA: { numero: number; titulo: string; detalle: string; descripci
     titulo: "Etiquetar",
     detalle: "Dato supervisado",
     descripcion:
-      "El equipo clasifica solicitudes reales (categoría y prioridad) y las guarda en Supabase.",
+      "El equipo clasifica solicitudes reales (categoría y prioridad) y las guarda en PostgreSQL.",
   },
   {
     numero: 2,
@@ -853,7 +853,7 @@ export function ModelPage({
                 {totalCasos} <span>casos etiquetados</span>
               </h3>
               <p>
-                Solicitudes reales etiquetadas por el equipo y almacenadas en Supabase. El conjunto
+                Solicitudes reales etiquetadas por el equipo y almacenadas en PostgreSQL. El conjunto
                 de prueba fijo nunca se usa para entrenar.
               </p>
               <div className="dataset-split">
