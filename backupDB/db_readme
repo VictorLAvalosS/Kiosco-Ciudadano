@@ -1,0 +1,118 @@
+# Guía de Restauración de la Base de Datos (ia_agentes.backup)
+
+Este directorio contiene el respaldo completo de la base de datos de **Kiosco Ciudadano** exportado desde Supabase (`ia_agentes.backup`), el cual incluye:
+
+* **1,035 solicitudes ciudadanas** históricas.
+* **1,020 etiquetas vigentes** clasificadas por el equipo.
+* **8 versiones del modelo NLP** (incluyendo la versión activa `v8` con F1 Macro de 0.9833).
+* **116 casos del conjunto de prueba fijo** (`prueba-g3`).
+* Experimentos de mejora por volumen e informes académicos.
+
+---
+
+## Requisitos Previos
+
+1. **PostgreSQL** instalado y en ejecución en tu máquina (puerto por defecto: `5432`).
+2. Cliente de PostgreSQL con versión compatible (**pg_restore versión 17 o superior**, ya que el backup fue exportado con PostgreSQL 17).
+3. Conocer tu usuario y contraseña de PostgreSQL (en este proyecto por defecto usamos `postgres` con contraseña `admin`).
+
+---
+
+## Paso 1: Crear la Base de Datos
+
+Abre una terminal y crea una nueva base de datos llamada `kiosco_ciudadano`:
+
+### En Linux / macOS:
+```bash
+PGPASSWORD=admin psql -h 127.0.0.1 -p 5432 -U postgres -c "CREATE DATABASE kiosco_ciudadano;"
+```
+
+### En Windows (PowerShell / CMD):
+```powershell
+$env:PGPASSWORD="admin"; psql -h 127.0.0.1 -p 5432 -U postgres -c "CREATE DATABASE kiosco_ciudadano;"
+```
+*(Si tu usuario o contraseña son diferentes, ajusta los parámetros `-U` y `PGPASSWORD` según corresponda).*
+
+---
+
+## Paso 2: Restaurar el Respaldo
+
+Ejecuta `pg_restore` apuntando al archivo `ia_agentes.backup`. 
+
+> **IMPORTANTE:** Usamos los parámetros `--schema=public --no-owner --no-privileges` para restaurar limpiamente todas las tablas, datos y modelos del proyecto sin errores de roles de Supabase (como `supabase_admin`, `auth`, etc.).
+
+### Desde la carpeta `backupDB/`:
+
+#### En Linux:
+Si tu comando `pg_restore` por defecto es versión 17:
+```bash
+PGPASSWORD=admin pg_restore -h 127.0.0.1 -p 5432 -U postgres -d kiosco_ciudadano --schema=public --no-owner --no-privileges ia_agentes.backup
+```
+
+*Nota para sistemas Linux con múltiples versiones (ej. Ubuntu/Mint con PostgreSQL 14 y 17 instalados):*
+Si te arroja el error `unsupported version (1.16)`, usa directamente el binario de PostgreSQL 17:
+```bash
+PGPASSWORD=admin /usr/lib/postgresql/17/bin/pg_restore -h 127.0.0.1 -p 5432 -U postgres -d kiosco_ciudadano --schema=public --no-owner --no-privileges ia_agentes.backup
+```
+
+#### En Windows (PowerShell):
+```powershell
+$env:PGPASSWORD="admin"
+pg_restore -h 127.0.0.1 -p 5432 -U postgres -d kiosco_ciudadano --schema=public --no-owner --no-privileges ia_agentes.backup
+```
+
+*(Si `pg_restore` muestra alguna advertencia como `errores ignorados durante la recuperación: 1` por parámetros como `transaction_timeout`, es normal y no afecta; todos los datos se restauran al 100%).*
+
+---
+
+## Paso 3: Configurar el archivo `.env` del Backend
+
+Asegúrate de que el archivo `backend/.env` tenga la cadena de conexión apuntando a tu base de datos local:
+
+```env
+DATABASE_URL=postgresql+psycopg2://postgres:admin@127.0.0.1:5432/kiosco_ciudadano
+CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
+ETIQUETADOR_POR_DEFECTO="Equipo # 3"
+UMBRAL_CONFIANZA=60
+UMBRAL_MARGEN=15
+API_KEY=
+ADMIN_PASSWORD=admin
+```
+
+---
+
+## Paso 4: Verificar la Restauración
+
+Para confirmar que todas las tablas y registros están completos, puedes ejecutar:
+
+```bash
+PGPASSWORD=admin psql -h 127.0.0.1 -p 5432 -U postgres -d kiosco_ciudadano -c "
+SELECT table_name, count
+FROM (
+  SELECT 'solicitudes' as table_name, count(*) as count FROM solicitudes
+  UNION ALL SELECT 'etiquetas', count(*) FROM etiquetas
+  UNION ALL SELECT 'modelos', count(*) FROM modelos
+  UNION ALL SELECT 'conjunto_prueba_fijo', count(*) FROM conjunto_prueba_fijo
+) t;
+"
+```
+
+Deberías ver:
+* `solicitudes`: 1035
+* `etiquetas`: 1020
+* `modelos`: 8
+* `conjunto_prueba_fijo`: 116
+
+---
+
+## Paso 5: Iniciar el Sistema
+
+Desde la raíz del repositorio:
+
+```bash
+npm run dev:all
+```
+
+* **Frontend:** `http://localhost:5173`
+* **Backend:** `http://127.0.0.1:8000`
+* **Contraseña de administrador:** `admin` (configurada en `ADMIN_PASSWORD`).
